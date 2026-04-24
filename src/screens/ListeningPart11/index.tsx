@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, Clock, Play, Pause, SkipBack, SkipForward } from "lucide-react-native";
 import {
   View,
@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../../../App";
-import { Audio } from "expo-av";
+import { useAudioPlayer, useAudioPlayerStatus, setAudioModeAsync } from "expo-audio";
 import {
   getExamPart,
   saveAttempt,
@@ -40,10 +40,12 @@ export default (props: ListeningPart11Props) => {
   const [answers, setAnswers] = useState<Array<AnswerIndex | null>>([]);
 
   // ── Audio state ──────────────────────────────────────────────────────────────
-  const soundRef = useRef<Audio.Sound | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioDuration, setAudioDuration] = useState(0);   // ms
-  const [audioPosition, setAudioPosition] = useState(0);   // ms
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const player = useAudioPlayer(audioUrl ? { uri: audioUrl } : null);
+  const status = useAudioPlayerStatus(player);
+  const isPlaying = status.playing;
+  const audioDuration = (status.duration ?? 0) * 1000;   // expo-audio returns seconds
+  const audioPosition = (status.currentTime ?? 0) * 1000;
 
   // ── Fetch data ───────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -65,44 +67,24 @@ export default (props: ListeningPart11Props) => {
   // ── Audio helpers ─────────────────────────────────────────────────────────────
   const loadAndPlayAudio = async (url: string) => {
     try {
-      // unload bài trước
-      if (soundRef.current) {
-        await soundRef.current.unloadAsync();
-        soundRef.current = null;
-      }
-
-      await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
-
-      const { sound } = await Audio.Sound.createAsync(
-        { uri: url },
-        { shouldPlay: true },
-        (status) => {
-          if (!status.isLoaded) return;
-          setIsPlaying(status.isPlaying);
-          setAudioPosition(status.positionMillis ?? 0);
-          setAudioDuration(status.durationMillis ?? 0);
-        }
-      );
-      soundRef.current = sound;
-      setIsPlaying(true);
+      await setAudioModeAsync({ playsInSilentMode: true });
+      setAudioUrl(url);
     } catch (e) {
       console.warn("[audio] loadAndPlayAudio error:", e);
     }
   };
 
   const togglePlayPause = async () => {
-    if (!soundRef.current) return;
     if (isPlaying) {
-      await soundRef.current.pauseAsync();
+      player.pause();
     } else {
-      await soundRef.current.playAsync();
+      player.play();
     }
   };
 
   const replayAudio = async () => {
-    if (!soundRef.current) return;
-    await soundRef.current.setPositionAsync(0);
-    await soundRef.current.playAsync();
+    player.seekTo(0);
+    player.play();
   };
 
   // Auto-play khi đổi câu
@@ -110,21 +92,20 @@ export default (props: ListeningPart11Props) => {
     if (questions.length === 0) return;
     const q = questions[currentIndex];
     const audio = q.media.find((m) => m.type === "AUDIO");
-    setAudioPosition(0);
-    setAudioDuration(0);
     if (audio?.url) {
       loadAndPlayAudio(audio.url);
+    } else {
+      setAudioUrl(null);
     }
-    // Cleanup khi unmount
     return () => {
-      soundRef.current?.unloadAsync();
+      try { player.pause(); } catch (_) {}
     };
   }, [currentIndex, questions]);
 
   // Cleanup khi rời màn hình
   useEffect(() => {
     return () => {
-      soundRef.current?.unloadAsync();
+      try { player.pause(); } catch (_) {}
     };
   }, []);
 

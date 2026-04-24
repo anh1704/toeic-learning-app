@@ -10,6 +10,9 @@ import ListeningHome from "./src/screens/ListeningHome";
 import ListeningPart1 from "./src/screens/ListeningPart1";
 import ListeningPart11 from "./src/screens/ListeningPart11";
 import ListeningPart1Result from "./src/screens/ListeningPart1Result";
+import ListeningPart2 from "./src/screens/ListeningPart2";
+import ListeningPart21 from "./src/screens/ListeningPart21";
+import ListeningPart2Result from "./src/screens/ListeningPart2Result";
 import ListeningDictation from "./src/screens/ListeningDictation";
 import ListeningDictationResult from "./src/screens/ListeningDictationResult";
 import ListeningHistory from "./src/screens/ListeningHistory";
@@ -86,6 +89,14 @@ export type RootStackParamList = {
   ListeningPart1: undefined;
   ListeningPart11: { examId: string };
   ListeningPart1Result:
+    | {
+        answers?: Array<number | null>;
+        correctAnswers?: number[];
+      }
+    | undefined;
+  ListeningPart2: undefined;
+  ListeningPart21: { examId: string };
+  ListeningPart2Result:
     | {
         answers?: Array<number | null>;
         correctAnswers?: number[];
@@ -193,6 +204,12 @@ const ListeningStack = () => {
       <Stack.Screen
         name="ListeningPart1Result"
         component={ListeningPart1Result}
+      />
+      <Stack.Screen name="ListeningPart2" component={ListeningPart2} />
+      <Stack.Screen name="ListeningPart21" component={ListeningPart21} />
+      <Stack.Screen
+        name="ListeningPart2Result"
+        component={ListeningPart2Result}
       />
       <Stack.Screen name="ListeningDictation" component={ListeningDictation} />
       <Stack.Screen
@@ -460,7 +477,10 @@ const TabsNavigator = () => {
             getFocusedRouteNameFromRoute(route) ?? "ListeningHome";
           const hideTabBar =
             routeName === "ListeningPart11" ||
-            routeName === "ListeningPart1Result";
+            routeName === "ListeningPart1Result" ||
+            routeName === "ListeningPart2" ||
+            routeName === "ListeningPart21" ||
+            routeName === "ListeningPart2Result";
 
           return {
             title: "Listening",

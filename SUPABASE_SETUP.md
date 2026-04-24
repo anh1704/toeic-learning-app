@@ -1308,3 +1308,74 @@ SELECT public.get_exams_for_part(1);
 SELECT public.get_exam_part('00000001-0000-0000-0000-000000000001', 1);
 ```
 
+## 4.11. Data Mẫu – Part 2 (5 câu, UUID hợp lệ)
+
+```sql
+-- =========================================
+-- STEP 1: Dùng chung Exam Test 1 (nếu chưa tạo thì tạo mới)
+-- =========================================
+-- Đã có exam id '00000001-0000-0000-0000-000000000001' từ Part 1
+
+-- =========================================
+-- STEP 2: Insert Section (Part 2)
+-- =========================================
+INSERT INTO public.section (id, exam_id, part, order_index) VALUES
+('00000002-0000-0000-0000-000000000002', '00000001-0000-0000-0000-000000000001', 2, 2);
+
+-- =========================================
+-- STEP 3: Insert Media (5 audio, Part 2 không có image)
+-- =========================================
+INSERT INTO public.media (id, type, url) VALUES
+('00000003-0000-0000-0000-000000000013', 'AUDIO', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3'),
+('00000003-0000-0000-0000-000000000014', 'AUDIO', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'),
+('00000003-0000-0000-0000-000000000015', 'AUDIO', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3'),
+('00000003-0000-0000-0000-000000000016', 'AUDIO', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3'),
+('00000003-0000-0000-0000-000000000017', 'AUDIO', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3');
+
+-- =========================================
+-- STEP 4: Insert Questions (Part 2, question_type = 'QA')
+-- =========================================
+INSERT INTO public.question (id, section_id, group_id, question_type, content, explanation, order_index) VALUES
+('00000004-0000-0000-0000-000000000007', '00000002-0000-0000-0000-000000000002', NULL, 'QA', 'When is the project deadline?', 'The question asks for a time.', 1),
+('00000004-0000-0000-0000-000000000008', '00000002-0000-0000-0000-000000000002', NULL, 'QA', 'Who is managing the new marketing campaign?', 'The question asks for a person.', 2),
+('00000004-0000-0000-0000-000000000009', '00000002-0000-0000-0000-000000000002', NULL, 'QA', 'Where did you put the financial reports?', 'The question asks for a location.', 3),
+('00000004-0000-0000-0000-000000000010', '00000002-0000-0000-0000-000000000002', NULL, 'QA', 'Why was the meeting postponed?', 'The question asks for a reason.', 4),
+('00000004-0000-0000-0000-000000000011', '00000002-0000-0000-0000-000000000002', NULL, 'QA', 'Would you like some coffee or tea?', 'This is an alternative question.', 5);
+
+-- =========================================
+-- STEP 5: Insert Answers (3 đáp án A/B/C cho Part 2)
+-- =========================================
+INSERT INTO public.answer (question_id, content, is_correct, order_index) VALUES
+-- Q7
+('00000004-0000-0000-0000-000000000007', 'Next Friday at 5 PM.', TRUE, 0),
+('00000004-0000-0000-0000-000000000007', 'I like the new design.', FALSE, 1),
+('00000004-0000-0000-0000-000000000007', 'It was on my desk.', FALSE, 2),
+-- Q8
+('00000004-0000-0000-0000-000000000008', 'The campaign starts tomorrow.', FALSE, 0),
+('00000004-0000-0000-0000-000000000008', 'Sarah from the PR department.', TRUE, 1),
+('00000004-0000-0000-0000-000000000008', 'We need more budget.', FALSE, 2),
+-- Q9
+('00000004-0000-0000-0000-000000000009', 'They are in the top drawer.', TRUE, 0),
+('00000004-0000-0000-0000-000000000009', 'Yes, I read the report.', FALSE, 1),
+('00000004-0000-0000-0000-000000000009', 'The meeting is at 2 PM.', FALSE, 2),
+-- Q10
+('00000004-0000-0000-0000-000000000010', 'In the main conference room.', FALSE, 0),
+('00000004-0000-0000-0000-000000000010', 'Because the manager was sick.', TRUE, 1),
+('00000004-0000-0000-0000-000000000010', 'I will send you an email.', FALSE, 2),
+-- Q11
+('00000004-0000-0000-0000-000000000011', 'Coffee would be great, thanks.', TRUE, 0),
+('00000004-0000-0000-0000-000000000011', 'The tea is too hot.', FALSE, 1),
+('00000004-0000-0000-0000-000000000011', 'Yes, I bought it yesterday.', FALSE, 2);
+
+-- =========================================
+-- STEP 6: Map question ↔ media
+-- =========================================
+INSERT INTO public.question_media (question_id, media_id) VALUES
+('00000004-0000-0000-0000-000000000007', '00000003-0000-0000-0000-000000000013'), -- Q7 audio
+('00000004-0000-0000-0000-000000000008', '00000003-0000-0000-0000-000000000014'), -- Q8 audio
+('00000004-0000-0000-0000-000000000009', '00000003-0000-0000-0000-000000000015'), -- Q9 audio
+('00000004-0000-0000-0000-000000000010', '00000003-0000-0000-0000-000000000016'), -- Q10 audio
+('00000004-0000-0000-0000-000000000011', '00000003-0000-0000-0000-000000000017'); -- Q11 audio
+```
+
+

@@ -222,7 +222,9 @@ export default (props: ListeningHomeProps) => {
             </View>
             <ChevronRight size={16} color="#6E6880" />
           </TouchableOpacity>
-          <View
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("ListeningPart2")}
+            activeOpacity={0.7}
             style={{
               flexDirection: "row",
               alignItems: "center",
@@ -233,7 +235,14 @@ export default (props: ListeningHomeProps) => {
               marginBottom: 13,
             }}
           >
-            <View style={{ width: 53.39, height: 50, borderRadius: 16, backgroundColor: "#8B6BAE", justifyContent: "center", alignItems: "center", marginRight: 12 }}>
+            <View style={{ 
+              width: 53.39, 
+              height: 50, 
+              borderRadius: 16, 
+              backgroundColor: "#8B6BAE", 
+              justifyContent: "center", 
+              alignItems: "center", 
+              marginRight: 12 }}>
               <MessageSquare size={24} color="#FFFFFF" />
             </View>
             <View
@@ -279,7 +288,7 @@ export default (props: ListeningHomeProps) => {
               </View>
             </View>
             <ChevronRight size={16} color="#6E6880" />
-          </View>
+          </TouchableOpacity>
           <View
             style={{
               flexDirection: "row",
