@@ -1,19 +1,79 @@
 import { ArrowLeft } from "lucide-react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   ScrollView,
-  Image,
   Text,
   TouchableOpacity,
   TextInput,
+  ActivityIndicator,
+  Alert,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import { getPostCategories, createPost, PostCategory } from "../../lib/communityService";
+
 export default () => {
   const navigation = useNavigation<any>();
-  const [textInput1, onChangeTextInput1] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [categories, setCategories] = useState<PostCategory[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  const loadCategories = async () => {
+    try {
+      setLoading(true);
+      const data = await getPostCategories();
+      setCategories(data);
+      if (data.length > 0) {
+        setSelectedCategory(data[0].id); // Select first category by default
+      }
+    } catch (error) {
+      console.error("Error loading categories:", error);
+      Alert.alert("Error", "Failed to load categories");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handlePublish = async () => {
+    if (!title.trim()) {
+      Alert.alert("Error", "Please enter a title");
+      return;
+    }
+    if (!content.trim()) {
+      Alert.alert("Error", "Please enter content");
+      return;
+    }
+    if (!selectedCategory) {
+      Alert.alert("Error", "Please select a category");
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+      await createPost(title.trim(), content.trim(), selectedCategory);
+      Alert.alert("Success", "Post created successfully", [
+        {
+          text: "OK",
+          onPress: () => navigation.navigate("CommunityForum"),
+        },
+      ]);
+    } catch (error) {
+      console.error("Error creating post:", error);
+      Alert.alert("Error", "Failed to create post");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -72,166 +132,58 @@ export default () => {
         >
           {"Category"}
         </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginBottom: 13,
-            marginLeft: 21,
-          }}
-        >
-          <TouchableOpacity
+        {loading ? (
+          <ActivityIndicator size="small" color="#A47551" style={{ marginBottom: 13 }} />
+        ) : (
+          <View
             style={{
-              flex: 1,
+              flexWrap: "wrap",
+              flexDirection: "row",
               alignItems: "center",
-              backgroundColor: "#A47551",
-              borderRadius: 28138600,
-              paddingVertical: 6,
-              marginRight: 10,
+              marginBottom: 13,
+              marginLeft: 21,
             }}
-            onPress={() => alert("Pressed!")}
           >
-            <Text
-              style={{
-                color: "#FFFFFF",
-                fontSize: 14,
-                fontWeight: "bold",
-              }}
-            >
-              {"General"}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 28138600,
-              borderWidth: 1,
-              paddingVertical: 6,
-              marginRight: 10,
-            }}
-            onPress={() => alert("Pressed!")}
-          >
-            <Text
-              style={{
-                color: "#2C2636",
-                fontSize: 14,
-                fontWeight: "bold",
-              }}
-            >
-              {"Listening"}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 28138600,
-              borderWidth: 1,
-              paddingVertical: 6,
-              marginRight: 10,
-            }}
-            onPress={() => alert("Pressed!")}
-          >
-            <Text
-              style={{
-                color: "#2C2636",
-                fontSize: 14,
-                fontWeight: "bold",
-              }}
-            >
-              {"Reading"}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 28138600,
-              borderWidth: 1,
-              paddingVertical: 6,
-            }}
-            onPress={() => alert("Pressed!")}
-          >
-            <Text
-              style={{
-                color: "#2C2636",
-                fontSize: 14,
-                fontWeight: "bold",
-              }}
-            >
-              {"Grammar"}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            alignSelf: "flex-start",
-            flexDirection: "row",
-            alignItems: "center",
-            marginBottom: 9,
-            marginLeft: 21,
-          }}
-        >
-          <TouchableOpacity
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 28138600,
-              borderWidth: 1,
-              paddingVertical: 6,
-              paddingHorizontal: 12,
-              marginRight: 10,
-            }}
-            onPress={() => alert("Pressed!")}
-          >
-            <Text
-              style={{
-                color: "#2C2636",
-                fontSize: 14,
-                fontWeight: "bold",
-              }}
-            >
-              {"Vocabulary"}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 28138600,
-              borderWidth: 1,
-              paddingVertical: 6,
-              paddingHorizontal: 13,
-            }}
-            onPress={() => alert("Pressed!")}
-          >
-            <Text
-              style={{
-                color: "#2C2636",
-                fontSize: 14,
-                fontWeight: "bold",
-              }}
-            >
-              {"Tips"}
-            </Text>
-          </TouchableOpacity>
-        </View>
+            {categories.map((category) => (
+              <TouchableOpacity
+                key={category.id}
+                style={{
+                  alignItems: "center",
+                  backgroundColor: selectedCategory === category.id ? "#A47551" : "#FFFFFF",
+                  borderColor: selectedCategory === category.id ? "#A47551" : "#2C26361A",
+                  borderRadius: 28138600,
+                  borderWidth: 1,
+                  paddingVertical: 6,
+                  paddingHorizontal: 12,
+                  marginRight: 10,
+                  marginBottom: 10,
+                }}
+                onPress={() => setSelectedCategory(category.id)}
+              >
+                <Text
+                  style={{
+                    color: selectedCategory === category.id ? "#FFFFFF" : "#2C2636",
+                    fontSize: 14,
+                    fontWeight: "bold",
+                  }}
+                >
+                  {category.name}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
         <TextInput
           placeholder={"Post title..."}
-          value={textInput1}
-          onChangeText={onChangeTextInput1}
+          value={title}
+          onChangeText={setTitle}
+          editable={!submitting}
           style={{
             color: "#2C2636",
             fontSize: 16,
             marginBottom: 16,
             marginLeft: 21,
+            marginRight: 20,
             backgroundColor: "#FFFFFF",
             borderColor: "#2C26361A",
             borderRadius: 16,
@@ -240,36 +192,27 @@ export default () => {
             paddingHorizontal: 16,
           }}
         />
-        <View
+        <TextInput
+          placeholder={"Write your post..."}
+          value={content}
+          onChangeText={setContent}
+          editable={!submitting}
+          multiline
+          numberOfLines={6}
+          textAlignVertical="top"
           style={{
+            color: "#2C2636",
+            fontSize: 14,
+            marginBottom: 24,
+            marginLeft: 21,
+            marginRight: 20,
             backgroundColor: "#FFFFFF",
             borderColor: "#2C26361A",
             borderRadius: 16,
             borderWidth: 1,
             paddingTop: 16,
-            paddingLeft: 16,
-            marginBottom: 24,
-            marginLeft: 21,
-          }}
-        >
-          <Text
-            style={{
-              color: "#2C2636",
-              fontSize: 14,
-              marginBottom: 122,
-            }}
-          >
-            {"Write your post..."}
-          </Text>
-        </View>
-        <Image
-          source={{
-            uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/5040v2ul_expires_30_days.png",
-          }}
-          resizeMode={"stretch"}
-          style={{
-            height: 45,
-            marginLeft: 21,
+            paddingHorizontal: 16,
+            minHeight: 150,
           }}
         />
         <TouchableOpacity
@@ -278,9 +221,10 @@ export default () => {
             borderRadius: 16,
             paddingVertical: 11,
             marginBottom: 48,
-            margin: 10,
+            marginHorizontal: 21,
           }}
-          onPress={() => navigation.navigate("CommunityForum")}
+          onPress={handlePublish}
+          disabled={submitting}
         >
           <LinearGradient
             start={{ x: 0, y: 0 }}
@@ -289,21 +233,23 @@ export default () => {
             style={{
               alignItems: "center",
               borderRadius: 16,
-              paddingVertical: 11,
-              marginBottom: 48,
-              marginLeft: 21,
+              paddingVertical: 16,
               width: "100%",
             }}
           >
-            <Text
-              style={{
-                color: "#FFFFFF",
-                fontSize: 16,
-                fontWeight: "bold",
-              }}
-            >
-              {"Publish"}
-            </Text>
+            {submitting ? (
+              <ActivityIndicator size="small" color="#FFFFFF" />
+            ) : (
+              <Text
+                style={{
+                  color: "#FFFFFF",
+                  fontSize: 16,
+                  fontWeight: "bold",
+                }}
+              >
+                {"Publish"}
+              </Text>
+            )}
           </LinearGradient>
         </TouchableOpacity>
       </ScrollView>

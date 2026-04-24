@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   View,
   ScrollView,
@@ -7,13 +7,110 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator,
+  Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  getGroupMessages,
+  sendMessage,
+  subscribeToMessages,
+  GroupMessage,
+} from "../../lib/communityService";
+import { supabase } from "../../lib/supabase";
 
 export default () => {
   const navigation = useNavigation<any>();
-  const [textInput1, onChangeTextInput1] = useState("");
+  const route = useRoute<any>();
+  const groupId = route.params?.groupId;
+  const scrollViewRef = useRef<ScrollView>(null);
+
+  const [messages, setMessages] = useState<GroupMessage[]>([]);
+  const [messageText, setMessageText] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [sending, setSending] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState<string>("");
+
+  useEffect(() => {
+    if (!groupId) {
+      Alert.alert("Error", "Group ID not found");
+      navigation.goBack();
+      return;
+    }
+
+    getCurrentUser();
+    loadMessages();
+
+    // Subscribe to real-time messages
+    const unsubscribe = subscribeToMessages(groupId, (newMessage) => {
+      setMessages((prev) => [...prev, newMessage]);
+      // Auto scroll to bottom
+      setTimeout(() => {
+        scrollViewRef.current?.scrollToEnd({ animated: true });
+      }, 100);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [groupId]);
+
+  const getCurrentUser = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      setCurrentUserId(user.id);
+    }
+  };
+
+  const loadMessages = async () => {
+    if (!groupId) return;
+    
+    try {
+      setLoading(true);
+      const data = await getGroupMessages(groupId, 50);
+      setMessages(data);
+      // Scroll to bottom after loading
+      setTimeout(() => {
+        scrollViewRef.current?.scrollToEnd({ animated: false });
+      }, 100);
+    } catch (error) {
+      console.error("Error loading messages:", error);
+      Alert.alert("Error", "Failed to load messages");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSendMessage = async () => {
+    if (!messageText.trim() || !groupId) return;
+
+    try {
+      setSending(true);
+      const newMessage = await sendMessage(groupId, messageText.trim());
+      // Message will be added via real-time subscription
+      setMessageText("");
+    } catch (error) {
+      console.error("Error sending message:", error);
+      Alert.alert("Error", "Failed to send message");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const formatTime = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+  };
+
+  const getInitial = (name: string) => {
+    return name ? name.charAt(0).toUpperCase() : "?";
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -373,8 +470,9 @@ export default () => {
           />
           <TextInput
             placeholder={"Type a message..."}
-            value={textInput1}
-            onChangeText={onChangeTextInput1}
+            value={messageText}
+            onChangeText={setMessageText}
+            editable={!sending}
             style={{
               color: "#2C2636",
               fontSize: 14,
@@ -388,18 +486,29 @@ export default () => {
               paddingHorizontal: 16,
             }}
           />
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/qwziswcd_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              width: 43,
-              height: 45,
-            }}
-          />
+          <TouchableOpacity
+            onPress={handleSendMessage}
+            disabled={sending || !messageText.trim()}
+          >
+            {sending ? (
+              <ActivityIndicator size="small" color="#A47551" />
+            ) : (
+              <Image
+                source={{
+                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/qwziswcd_expires_30_days.png",
+                }}
+                resizeMode={"stretch"}
+                style={{
+                  width: 43,
+                  height: 45,
+                  opacity: messageText.trim() ? 1 : 0.5,
+                }}
+              />
+            )}
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
+          

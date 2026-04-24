@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   ScrollView,
@@ -7,12 +7,108 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  ActivityIndicator,
+  Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  getPostDetail,
+  createReply,
+  likePost,
+  unlikePost,
+  likeReply,
+  unlikeReply,
+  ForumPost,
+  PostReply,
+} from "../../lib/communityService";
+
 export default () => {
   const navigation = useNavigation();
-  const [textInput1, onChangeTextInput1] = useState("");
+  const route = useRoute<any>();
+  const postId = route.params?.postId;
+
+  const [post, setPost] = useState<ForumPost | null>(null);
+  const [replies, setReplies] = useState<PostReply[]>([]);
+  const [replyText, setReplyText] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (postId) {
+      loadPostDetail();
+    }
+  }, [postId]);
+
+  const loadPostDetail = async () => {
+    try {
+      setLoading(true);
+      const data = await getPostDetail(postId);
+      setPost(data.post);
+      setReplies(data.replies);
+    } catch (error) {
+      console.error("Error loading post:", error);
+      Alert.alert("Error", "Failed to load post");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCreateReply = async () => {
+    if (!replyText.trim()) return;
+
+    try {
+      setSubmitting(true);
+      const newReply = await createReply(postId, replyText.trim());
+      setReplies([...replies, newReply]);
+      setReplyText("");
+      // Update reply count
+      if (post) {
+        setPost({ ...post, reply_count: post.reply_count + 1 });
+      }
+    } catch (error) {
+      console.error("Error creating reply:", error);
+      Alert.alert("Error", "Failed to post reply");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const formatTimeAgo = (dateString: string) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffHours < 1) return "Just now";
+    if (diffHours < 24) return `${diffHours}h ago`;
+    if (diffDays === 1) return "Yesterday";
+    return `${diffDays}d ago`;
+  };
+
+  const getInitial = (name: string) => {
+    return name ? name.charAt(0).toUpperCase() : "?";
+  };
+
+  if (loading) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
+        <ActivityIndicator size="large" color="#A47551" style={{ marginTop: 100 }} />
+      </SafeAreaView>
+    );
+  }
+
+  if (!post) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
+        <Text style={{ textAlign: "center", marginTop: 100, color: "#6E6880" }}>
+          Post not found
+        </Text>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView
       style={{
@@ -90,7 +186,7 @@ export default () => {
                 paddingHorizontal: 15,
                 marginRight: 9,
               }}
-              onPress={() => alert("Pressed!")}
+              onPress={() => null}
             >
               <Text
                 style={{
@@ -99,19 +195,8 @@ export default () => {
                   marginRight: 2,
                 }}
               >
-                {"P"}
+                {getInitial(post.author?.name || "?")}
               </Text>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/ydohusyk_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 1,
-                  height: 1,
-                }}
-              />
             </TouchableOpacity>
             <View>
               <View
@@ -126,7 +211,7 @@ export default () => {
                     fontSize: 14,
                   }}
                 >
-                  {"Pham P."}
+                  {post.author?.name || "Anonymous"}
                 </Text>
               </View>
               <View
@@ -140,7 +225,7 @@ export default () => {
                     fontSize: 12,
                   }}
                 >
-                  {"2h ago"}
+                  {formatTimeAgo(post.created_at)}
                 </Text>
               </View>
             </View>
@@ -159,7 +244,7 @@ export default () => {
                 fontWeight: "bold",
               }}
             >
-              {"Tips for Part 3 conversations?"}
+              {post.title}
             </Text>
           </View>
           <View
@@ -167,18 +252,16 @@ export default () => {
               alignSelf: "flex-start",
               marginBottom: 13,
               marginLeft: 16,
+              marginRight: 16,
             }}
           >
             <Text
               style={{
                 color: "#6E6880",
                 fontSize: 14,
-                width: 278,
               }}
             >
-              {
-                "I always struggle with Part 3 in the listening section. The conversations are too fast and I can't keep up with both speakers. Does anyone have tips for improving?"
-              }
+              {post.content}
             </Text>
           </View>
           <View
@@ -214,7 +297,7 @@ export default () => {
                   fontWeight: "bold",
                 }}
               >
-                {" 56"}
+                {` ${post.like_count}`}
               </Text>
             </View>
             <View
@@ -241,7 +324,7 @@ export default () => {
                   fontSize: 14,
                 }}
               >
-                {" 24"}
+                {` ${post.reply_count}`}
               </Text>
             </View>
             <View
@@ -288,7 +371,7 @@ export default () => {
               fontWeight: "bold",
             }}
           >
-            {"Replies (3)"}
+            {`Replies (${replies.length})`}
           </Text>
         </View>
         <View
@@ -297,315 +380,119 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <View
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingVertical: 12,
-              paddingRight: 12,
-              marginBottom: 12,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 9,
-                marginLeft: 12,
-              }}
-            >
-              <TouchableOpacity
+          {replies.length === 0 ? (
+            <Text style={{ color: "#6E6880", fontSize: 14, textAlign: "center", marginVertical: 20 }}>
+              No replies yet. Be the first to reply!
+            </Text>
+          ) : (
+            replies.map((reply, index) => (
+              <View
+                key={reply.id}
                 style={{
-                  backgroundColor: "#8B6BAE1A",
-                  borderRadius: 28138600,
-                  paddingVertical: 7,
-                  paddingHorizontal: 12,
-                  marginRight: 9,
-                }}
-                onPress={() => alert("Pressed!")}
-              >
-                <Text
-                  style={{
-                    color: "#8B6BAE",
-                    fontSize: 12,
-                  }}
-                >
-                  {"H"}
-                </Text>
-              </TouchableOpacity>
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 12,
-                  marginRight: 10,
+                  backgroundColor: "#FFFFFF",
+                  borderColor: "#2C26361A",
+                  borderRadius: 16,
+                  borderWidth: 1,
+                  paddingVertical: 12,
+                  paddingRight: 12,
+                  marginBottom: index === replies.length - 1 ? 0 : 12,
                 }}
               >
-                {"Hoang L."}
-              </Text>
-              <View>
-                <Text
+                <View
                   style={{
-                    color: "#6E6880",
-                    fontSize: 10,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    marginBottom: 9,
+                    marginLeft: 12,
                   }}
                 >
-                  {"1h ago"}
-                </Text>
+                  <TouchableOpacity
+                    style={{
+                      backgroundColor: "#8B6BAE1A",
+                      borderRadius: 28138600,
+                      paddingVertical: 7,
+                      paddingHorizontal: 12,
+                      marginRight: 9,
+                    }}
+                    onPress={() => null}
+                  >
+                    <Text
+                      style={{
+                        color: "#8B6BAE",
+                        fontSize: 12,
+                      }}
+                    >
+                      {getInitial(reply.author?.name || "?")}
+                    </Text>
+                  </TouchableOpacity>
+                  <Text
+                    style={{
+                      color: "#2C2636",
+                      fontSize: 12,
+                      marginRight: 10,
+                    }}
+                  >
+                    {reply.author?.name || "Anonymous"}
+                  </Text>
+                  <View>
+                    <Text
+                      style={{
+                        color: "#6E6880",
+                        fontSize: 10,
+                      }}
+                    >
+                      {formatTimeAgo(reply.created_at)}
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={{
+                    marginBottom: 10,
+                    marginLeft: 12,
+                    marginRight: 12,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "#6E6880",
+                      fontSize: 14,
+                    }}
+                  >
+                    {reply.content}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    alignSelf: "flex-start",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    marginLeft: 12,
+                  }}
+                >
+                  <Image
+                    source={{
+                      uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/b97tkdzi_expires_30_days.png",
+                    }}
+                    resizeMode={"stretch"}
+                    style={{
+                      width: 11,
+                      height: 11,
+                      marginRight: 3,
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#6E6880",
+                      fontSize: 12,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {` ${reply.like_count}`}
+                  </Text>
+                </View>
               </View>
-            </View>
-            <View
-              style={{
-                marginBottom: 10,
-                marginLeft: 12,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#6E6880",
-                  fontSize: 14,
-                  width: 254,
-                }}
-              >
-                {
-                  "Great question! I recommend practicing with transcripts first."
-                }
-              </Text>
-            </View>
-            <View
-              style={{
-                alignSelf: "flex-start",
-                flexDirection: "row",
-                alignItems: "center",
-                marginLeft: 12,
-              }}
-            >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/b97tkdzi_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 11,
-                  height: 11,
-                  marginRight: 3,
-                }}
-              />
-              <Text
-                style={{
-                  color: "#6E6880",
-                  fontSize: 12,
-                  fontWeight: "bold",
-                }}
-              >
-                {" 12"}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingVertical: 12,
-              paddingRight: 12,
-              marginBottom: 12,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 9,
-                marginLeft: 12,
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  backgroundColor: "#8B6BAE1A",
-                  borderRadius: 28138600,
-                  paddingVertical: 7,
-                  paddingHorizontal: 12,
-                  marginRight: 9,
-                }}
-                onPress={() => alert("Pressed!")}
-              >
-                <Text
-                  style={{
-                    color: "#8B6BAE",
-                    fontSize: 12,
-                  }}
-                >
-                  {"T"}
-                </Text>
-              </TouchableOpacity>
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 12,
-                  marginRight: 10,
-                }}
-              >
-                {"Thu H."}
-              </Text>
-              <View>
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 10,
-                  }}
-                >
-                  {"45m ago"}
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                marginBottom: 10,
-                marginLeft: 12,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#6E6880",
-                  fontSize: 14,
-                }}
-              >
-                {"I use the shadowing technique, it helps a lot!"}
-              </Text>
-            </View>
-            <View
-              style={{
-                alignSelf: "flex-start",
-                flexDirection: "row",
-                alignItems: "center",
-                marginLeft: 12,
-              }}
-            >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/hih91rue_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 11,
-                  height: 11,
-                }}
-              />
-              <Text
-                style={{
-                  color: "#6E6880",
-                  fontSize: 12,
-                  fontWeight: "bold",
-                }}
-              >
-                {" 15"}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingVertical: 12,
-              paddingRight: 12,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 9,
-                marginLeft: 12,
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  backgroundColor: "#8B6BAE1A",
-                  borderRadius: 28138600,
-                  paddingVertical: 7,
-                  paddingHorizontal: 12,
-                  marginRight: 9,
-                }}
-                onPress={() => alert("Pressed!")}
-              >
-                <Text
-                  style={{
-                    color: "#8B6BAE",
-                    fontSize: 12,
-                  }}
-                >
-                  {"D"}
-                </Text>
-              </TouchableOpacity>
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 12,
-                  marginRight: 10,
-                }}
-              >
-                {"Duy V."}
-              </Text>
-              <View>
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 10,
-                  }}
-                >
-                  {"30m ago"}
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                marginBottom: 10,
-                marginLeft: 12,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#6E6880",
-                  fontSize: 14,
-                }}
-              >
-                {"Try listening to podcasts at 1.25x speed."}
-              </Text>
-            </View>
-            <View
-              style={{
-                alignSelf: "flex-start",
-                flexDirection: "row",
-                alignItems: "center",
-                marginLeft: 12,
-              }}
-            >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/05x5qicl_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 11,
-                  height: 11,
-                }}
-              />
-              <Text
-                style={{
-                  color: "#6E6880",
-                  fontSize: 12,
-                  fontWeight: "bold",
-                }}
-              >
-                {"55"}
-              </Text>
-            </View>
-          </View>
+            ))
+          )}
         </View>
         <View
           style={{
@@ -617,8 +504,9 @@ export default () => {
         >
           <TextInput
             placeholder={"Write a reply..."}
-            value={textInput1}
-            onChangeText={onChangeTextInput1}
+            value={replyText}
+            onChangeText={setReplyText}
+            editable={!submitting}
             style={{
               color: "#2C2636",
               fontSize: 14,
@@ -632,16 +520,26 @@ export default () => {
               paddingHorizontal: 16,
             }}
           />
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/6sbcgxre_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              width: 43,
-              height: 43,
-            }}
-          />
+          <TouchableOpacity
+            onPress={handleCreateReply}
+            disabled={submitting || !replyText.trim()}
+          >
+            {submitting ? (
+              <ActivityIndicator size="small" color="#A47551" />
+            ) : (
+              <Image
+                source={{
+                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/6sbcgxre_expires_30_days.png",
+                }}
+                resizeMode={"stretch"}
+                style={{
+                  width: 43,
+                  height: 43,
+                  opacity: replyText.trim() ? 1 : 0.5,
+                }}
+              />
+            )}
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

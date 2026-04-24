@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   ScrollView,
@@ -7,14 +7,49 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import { getStudyGroups, StudyGroup } from "../../lib/communityService";
 
 export default () => {
   const navigation = useNavigation<any>();
   const [textInput1, onChangeTextInput1] = useState("");
+  const [groups, setGroups] = useState<StudyGroup[]>([]);
+  const [filteredGroups, setFilteredGroups] = useState<StudyGroup[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadGroups();
+  }, []);
+
+  useEffect(() => {
+    if (textInput1.trim() === "") {
+      setFilteredGroups(groups);
+    } else {
+      const filtered = groups.filter((group) =>
+        group.name.toLowerCase().includes(textInput1.toLowerCase()) ||
+        group.description?.toLowerCase().includes(textInput1.toLowerCase())
+      );
+      setFilteredGroups(filtered);
+    }
+  }, [textInput1, groups]);
+
+  const loadGroups = async () => {
+    try {
+      setLoading(true);
+      const data = await getStudyGroups();
+      setGroups(data);
+      setFilteredGroups(data);
+    } catch (error) {
+      console.error("Error loading groups:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -109,443 +144,137 @@ export default () => {
               paddingBottom: 1,
             }}
           >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                padding: 16,
-                marginBottom: 12,
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  borderRadius: 16,
-                }}
-                onPress={() => navigation.navigate("CommunityChat")}
-              >
-                <LinearGradient
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 0, y: 1 }}
-                  colors={["#A47551", "#8B6BAE"]}
-                  style={{
-                    borderRadius: 16,
-                    paddingVertical: 11,
-                    paddingHorizontal: 19,
-                    marginRight: 13,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#FFFFFF",
-                      fontSize: 16,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"T"}
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-              <View
-                style={{
-                  flex: 1,
-                  paddingRight: 11,
-                }}
-              >
+            {loading ? (
+              <ActivityIndicator size="large" color="#A47551" style={{ marginTop: 40 }} />
+            ) : filteredGroups.length === 0 ? (
+              <Text style={{ color: "#6E6880", fontSize: 14, textAlign: "center", marginTop: 40 }}>
+                {textInput1 ? "No groups found" : "No groups available"}
+              </Text>
+            ) : (
+              filteredGroups.map((group, index) => (
                 <View
+                  key={group.id}
                   style={{
                     flexDirection: "row",
                     alignItems: "center",
-                    marginBottom: 2,
+                    backgroundColor: "#FFFFFF",
+                    borderColor: "#2C26361A",
+                    borderRadius: 16,
+                    borderWidth: 1,
+                    padding: 16,
+                    marginBottom: index === filteredGroups.length - 1 ? 0 : 12,
                   }}
                 >
-                  <View
+                  <TouchableOpacity
                     style={{
-                      marginRight: 9,
+                      borderRadius: 16,
                     }}
+                    onPress={() => navigation.navigate("CommunityChat", { groupId: group.id })}
                   >
-                    <Text
+                    <LinearGradient
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 0, y: 1 }}
+                      colors={["#A47551", "#8B6BAE"]}
                       style={{
-                        color: "#2C2636",
-                        fontSize: 14,
-                        fontWeight: "bold",
+                        borderRadius: 16,
+                        paddingVertical: 11,
+                        paddingHorizontal: 19,
+                        marginRight: 13,
                       }}
                     >
-                      {"TOEIC 800+ Club"}
-                    </Text>
-                  </View>
+                      <Text
+                        style={{
+                          color: "#FFFFFF",
+                          fontSize: 16,
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {group.avatar_letter || group.name.charAt(0).toUpperCase()}
+                      </Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
                   <View
                     style={{
-                      width: 7,
-                      height: 7,
-                      backgroundColor: "#5B9E91",
-                      borderRadius: 28138600,
-                      marginRight: 9,
-                    }}
-                  ></View>
-                  <View
-                    style={{
-                      height: 19,
                       flex: 1,
-                    }}
-                  ></View>
-                </View>
-                <View
-                  style={{
-                    alignSelf: "flex-start",
-                    marginBottom: 1,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#6E6880",
-                      fontSize: 12,
-                      fontWeight: "bold",
+                      paddingRight: 11,
                     }}
                   >
-                    {"156 members"}
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#6E6880",
-                      fontSize: 12,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"For serious learners targeting 800+"}
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                padding: 16,
-                marginBottom: 13,
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  borderRadius: 16,
-                }}
-                onPress={() => navigation.navigate("CommunityChat")}
-              >
-                <LinearGradient
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 0, y: 1 }}
-                  colors={["#A47551", "#8B6BAE"]}
-                  style={{
-                    borderRadius: 16,
-                    paddingVertical: 11,
-                    paddingHorizontal: 18,
-                    marginRight: 13,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#FFFFFF",
-                      fontSize: 16,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"D"}
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-              <View
-                style={{
-                  flex: 1,
-                }}
-              >
-                <View
-                  style={{
-                    alignSelf: "flex-start",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    marginBottom: 2,
-                  }}
-                >
-                  <View
-                    style={{
-                      marginRight: 9,
-                    }}
-                  >
-                    <Text
+                    <View
                       style={{
-                        color: "#2C2636",
-                        fontSize: 14,
-                        fontWeight: "bold",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginBottom: 2,
                       }}
                     >
-                      {"Daily Practice"}
-                    </Text>
-                  </View>
-                  <View
-                    style={{
-                      width: 7,
-                      height: 7,
-                      backgroundColor: "#5B9E91",
-                      borderRadius: 28138600,
-                    }}
-                  ></View>
-                </View>
-                <View
-                  style={{
-                    alignSelf: "flex-start",
-                    marginBottom: 1,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#6E6880",
-                      fontSize: 12,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"89 members"}
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#6E6880",
-                      fontSize: 12,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"Daily study sessions together"}
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                paddingVertical: 17,
-                paddingHorizontal: 16,
-                marginBottom: 12,
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  borderRadius: 16,
-                }}
-                onPress={() => navigation.navigate("CommunityChat")}
-              >
-                <LinearGradient
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 0, y: 1 }}
-                  colors={["#A47551", "#8B6BAE"]}
-                  style={{
-                    borderRadius: 16,
-                    paddingVertical: 11,
-                    paddingHorizontal: 19,
-                    marginRight: 13,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#FFFFFF",
-                      fontSize: 16,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"B"}
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-              <View
-                style={{
-                  flex: 1,
-                }}
-              >
-                <View
-                  style={{
-                    marginBottom: 1,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#2C2636",
-                      fontSize: 14,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"Beginners Welcome"}
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    alignSelf: "flex-start",
-                    marginBottom: 1,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#6E6880",
-                      fontSize: 12,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"522 members"}
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#6E6880",
-                      fontSize: 12,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"Start your TOEIC journey"}
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                padding: 16,
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  borderRadius: 16,
-                }}
-                onPress={() => navigation.navigate("CommunityChat")}
-              >
-                <LinearGradient
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 0, y: 1 }}
-                  colors={["#A47551", "#8B6BAE"]}
-                  style={{
-                    borderRadius: 16,
-                    paddingVertical: 11,
-                    paddingHorizontal: 19,
-                    marginRight: 13,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#FFFFFF",
-                      fontSize: 16,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"L"}
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-              <View
-                style={{
-                  flex: 1,
-                  paddingRight: 27,
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    marginBottom: 2,
-                  }}
-                >
-                  <View
-                    style={{
-                      marginRight: 9,
-                    }}
-                  >
-                    <Text
+                      <View
+                        style={{
+                          marginRight: 9,
+                        }}
+                      >
+                        <Text
+                          style={{
+                            color: "#2C2636",
+                            fontSize: 14,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {group.name}
+                        </Text>
+                      </View>
+                      {group.is_active && (
+                        <View
+                          style={{
+                            width: 7,
+                            height: 7,
+                            backgroundColor: "#5B9E91",
+                            borderRadius: 28138600,
+                            marginRight: 9,
+                          }}
+                        ></View>
+                      )}
+                      <View
+                        style={{
+                          height: 19,
+                          flex: 1,
+                        }}
+                      ></View>
+                    </View>
+                    <View
                       style={{
-                        color: "#2C2636",
-                        fontSize: 14,
-                        fontWeight: "bold",
+                        alignSelf: "flex-start",
+                        marginBottom: 1,
                       }}
                     >
-                      {"Listening Squad"}
-                    </Text>
+                      <Text
+                        style={{
+                          color: "#6E6880",
+                          fontSize: 12,
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {`${group.member_count} members`}
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        alignSelf: "flex-start",
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: "#6E6880",
+                          fontSize: 12,
+                          fontWeight: "bold",
+                        }}
+                        numberOfLines={1}
+                      >
+                        {group.description || "No description"}
+                      </Text>
+                    </View>
                   </View>
-                  <View
-                    style={{
-                      width: 7,
-                      height: 7,
-                      backgroundColor: "#5B9E91",
-                      borderRadius: 28138600,
-                      marginRight: 9,
-                    }}
-                  ></View>
-                  <View
-                    style={{
-                      height: 19,
-                      flex: 1,
-                    }}
-                  ></View>
                 </View>
-                <View
-                  style={{
-                    alignSelf: "flex-start",
-                    marginBottom: 1,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#6E6880",
-                      fontSize: 12,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"123 members"}
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#6E6880",
-                      fontSize: 12,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {"Improve listening skills together"}
-                  </Text>
-                </View>
-              </View>
-            </View>
+              ))
+            )}
           </View>
         </View>
       </ScrollView>

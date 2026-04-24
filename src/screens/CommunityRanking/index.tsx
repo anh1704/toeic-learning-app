@@ -1,12 +1,58 @@
 import { ArrowLeft } from "lucide-react-native";
-import React from "react";
-import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, ScrollView, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import { getUserRankings, getCurrentUserRank, UserRanking } from "../../lib/communityService";
 
 export default () => {
   const navigation = useNavigation<any>();
+  const [rankings, setRankings] = useState<UserRanking[]>([]);
+  const [currentUserRank, setCurrentUserRank] = useState<UserRanking | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadRankings();
+  }, []);
+
+  const loadRankings = async () => {
+    try {
+      setLoading(true);
+      const [rankingsData, userRank] = await Promise.all([
+        getUserRankings("weekly", 100),
+        getCurrentUserRank(),
+      ]);
+      setRankings(rankingsData);
+      setCurrentUserRank(userRank);
+    } catch (error) {
+      console.error("Error loading rankings:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getRankEmoji = (position: number) => {
+    if (position === 1) return "🥇";
+    if (position === 2) return "🥈";
+    if (position === 3) return "🥉";
+    return `#${position}`;
+  };
+
+  const getTierColor = (tier: string) => {
+    switch (tier) {
+      case "Diamond": return "#8B6BAE";
+      case "Platinum": return "#6E6880";
+      case "Gold": return "#D4A853";
+      case "Silver": return "#A9A4B1";
+      default: return "#6E6880";
+    }
+  };
+
+  const getInitial = (name: string) => {
+    return name ? name.charAt(0).toUpperCase() : "?";
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -62,561 +108,127 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              padding: 16,
-              marginBottom: 12,
-            }}
-          >
-            <View style={{}}>
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 18,
-                }}
-              >
-                {"🥇"}
-              </Text>
-            </View>
-            <TouchableOpacity
-              style={{
-                borderRadius: 28138600,
-                paddingHorizontal: 10,
-                marginRight: 6,
-              }}
-            >
-              <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 0, y: 1 }}
-                colors={["#A47551", "#8B6BAE"]}
-                style={{
-                  borderRadius: 28138600,
-                  paddingVertical: 9,
-                  paddingHorizontal: 15,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: 14,
-                  }}
-                >
-                  {"H"}
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-            <View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
-                  marginRight: 45,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 14,
-                  }}
-                >
-                  {"Phe Pham. "}
-                </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 12,
-                    marginRight: 10,
-                  }}
-                >
-                  {"15600 XP"}
-                </Text>
-                <Text
-                  style={{
-                    color: "#8B6BAE",
-                    fontSize: 12,
-                  }}
-                >
-                  {"Diamond"}
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignSelf: "stretch",
-              }}
-            ></View>
-            <View>
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 14,
-                }}
-              >
-                {"800"}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingHorizontal: 16,
-              marginBottom: 13,
-            }}
-          >
-            <View
-              style={{
-                marginTop: 23,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 18,
-                }}
-              >
-                {"🥈"}
-              </Text>
-            </View>
-            <View
-              style={{
-                marginVertical: 17,
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  borderRadius: 28138600,
-                  paddingHorizontal: 10,
-                  marginRight: 6,
-                }}
-              >
-                <LinearGradient
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 0, y: 1 }}
-                  colors={["#A47551", "#8B6BAE"]}
-                  style={{
-                    borderRadius: 28138600,
-                    paddingVertical: 9,
-                    paddingHorizontal: 15,
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "#FFFFFF",
-                      fontSize: 14,
-                    }}
-                  >
-                    {"M"}
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                marginTop: 19,
-                marginRight: 10,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 14,
-                  marginBottom: 2,
-                  marginRight: 12,
-                }}
-              >
-                {"Anh T. "}
-              </Text>
-              <Text
-                style={{
-                  color: "#6E6880",
-                  fontSize: 12,
-                }}
-              >
-                {"12500 XP"}
-              </Text>
-            </View>
-            <Text
-              style={{
-                color: "#6E6880",
-                fontSize: 12,
-                marginTop: 38,
-              }}
-            >
-              {"Platinum"}
+          {loading ? (
+            <ActivityIndicator size="large" color="#A47551" style={{ marginTop: 40 }} />
+          ) : rankings.length === 0 ? (
+            <Text style={{ color: "#6E6880", fontSize: 14, textAlign: "center", marginTop: 40 }}>
+              No rankings available
             </Text>
-            <View
-              style={{
-                flex: 1,
-              }}
-            ></View>
-            <View
-              style={{
-                marginTop: 27,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 14,
-                }}
-              >
-                {"750"}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingVertical: 17,
-              paddingHorizontal: 13,
-              marginBottom: 12,
-            }}
-          >
-            <View style={{}}>
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 18,
-                }}
-              >
-                {"🥉"}
-              </Text>
-            </View>
-            <TouchableOpacity
-              style={{
-                borderRadius: 28138600,
-                paddingHorizontal: 15,
-              }}
-              onPress={() => alert("Pressed!")}
-            >
-              <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 0, y: 1 }}
-                colors={["#A47551", "#8B6BAE"]}
-                style={{
-                  borderRadius: 28138600,
-                  paddingVertical: 9,
-                  paddingHorizontal: 16,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: 14,
-                  }}
-                >
-                  {"L"}
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-            <View
-              style={{
-                flex: 1,
-                marginRight: 13,
-              }}
-            >
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 1,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 14,
-                  }}
-                >
-                  {"Lan N. "}
-                </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
+          ) : (
+            rankings.slice(0, 5).map((ranking, index) => {
+              const isCurrentUser = currentUserRank?.user_id === ranking.user_id;
+              return (
                 <View
+                  key={ranking.id}
                   style={{
-                    marginRight: 8,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    backgroundColor: isCurrentUser ? "#A475510D" : "#FFFFFF",
+                    borderColor: isCurrentUser ? "#A47551" : "#2C26361A",
+                    borderRadius: 16,
+                    borderWidth: 1,
+                    padding: 16,
+                    marginBottom: index === 4 ? 0 : 12,
                   }}
                 >
-                  <Text
+                  <View style={{}}>
+                    <Text
+                      style={{
+                        color: "#2C2636",
+                        fontSize: 18,
+                      }}
+                    >
+                      {getRankEmoji(ranking.rank_position)}
+                    </Text>
+                  </View>
+                  <TouchableOpacity
                     style={{
-                      color: "#6E6880",
-                      fontSize: 12,
+                      borderRadius: 28138600,
+                      paddingHorizontal: 10,
+                      marginRight: 6,
                     }}
                   >
-                    {"11800 XP"}
-                  </Text>
-                </View>
-                <View>
-                  <Text
+                    <LinearGradient
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 0, y: 1 }}
+                      colors={["#A47551", "#8B6BAE"]}
+                      style={{
+                        borderRadius: 28138600,
+                        paddingVertical: 9,
+                        paddingHorizontal: 15,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: "#FFFFFF",
+                          fontSize: 14,
+                        }}
+                      >
+                        {getInitial(ranking.user?.name || "?")}
+                      </Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                  <View
                     style={{
-                      color: "#6E6880",
-                      fontSize: 12,
+                      flex: 1,
+                      marginRight: 13,
                     }}
                   >
-                    {"Platinum"}
-                  </Text>
+                    <View
+                      style={{
+                        alignSelf: "flex-start",
+                        marginBottom: 2,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: "#2C2636",
+                          fontSize: 14,
+                        }}
+                      >
+                        {isCurrentUser ? "You (You)" : ranking.user?.name || "Anonymous"}
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        alignSelf: "flex-start",
+                        flexDirection: "row",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: "#6E6880",
+                          fontSize: 12,
+                          marginRight: 10,
+                        }}
+                      >
+                        {`${ranking.xp_points} XP`}
+                      </Text>
+                      <Text
+                        style={{
+                          color: getTierColor(ranking.rank_tier),
+                          fontSize: 12,
+                        }}
+                      >
+                        {ranking.rank_tier}
+                      </Text>
+                    </View>
+                  </View>
+                  <View>
+                    <Text
+                      style={{
+                        color: "#2C2636",
+                        fontSize: 14,
+                      }}
+                    >
+                      {ranking.current_score}
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            </View>
-            <View>
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 14,
-                }}
-              >
-                {"680"}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingHorizontal: 16,
-              marginBottom: 13,
-            }}
-          >
-            <View
-              style={{
-                marginTop: 16,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 18,
-                }}
-              >
-                {"#4"}
-              </Text>
-            </View>
-            <TouchableOpacity
-              style={{
-                borderRadius: 28138600,
-                paddingVertical: 9,
-                paddingHorizontal: 15,
-              }}
-              onPress={() => alert("Pressed!")}
-            >
-              <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 0, y: 1 }}
-                colors={["#A47551", "#8B6BAE"]}
-                style={{
-                  borderRadius: 28138600,
-                  paddingVertical: 9,
-                  paddingHorizontal: 15,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: 14,
-                  }}
-                >
-                  {"A"}
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-            <View
-              style={{
-                marginRight: 10,
-                paddingVertical: 13,
-              }}
-            >
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
-                  marginRight: 11,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 14,
-                  }}
-                >
-                  {"Anh P. "}
-                </Text>
-              </View>
-              <Text
-                style={{
-                  color: "#6E6880",
-                  fontSize: 12,
-                }}
-              >
-                {"11200 XP"}
-              </Text>
-            </View>
-            <Text
-              style={{
-                color: "#D4A853",
-                fontSize: 12,
-                marginTop: 30,
-              }}
-            >
-              {"Gold"}
-            </Text>
-            <View
-              style={{
-                flex: 1,
-              }}
-            ></View>
-            <View
-              style={{
-                marginTop: 27,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 14,
-                }}
-              >
-                {"550"}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              backgroundColor: "#A475510D",
-              borderColor: "#A47551",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingHorizontal: 16,
-            }}
-          >
-            <View style={{}}>
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 18,
-                }}
-              >
-                {"#5"}
-              </Text>
-            </View>
-            <TouchableOpacity
-              style={{
-                borderRadius: 28138600,
-                paddingVertical: 13,
-                paddingHorizontal: 13,
-              }}
-              onPress={() => alert("Pressed!")}
-            >
-              <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 0, y: 1 }}
-                colors={["#A47551", "#8B6BAE"]}
-                style={{
-                  borderRadius: 28138600,
-                  paddingVertical: 9,
-                  paddingHorizontal: 15,
-                  marginRight: 6,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: 14,
-                  }}
-                >
-                  {"Y"}
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-            <View
-              style={{
-                flex: 1,
-                marginRight: 13,
-              }}
-            >
-              <View
-                style={{
-                  marginBottom: 2,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                  }}
-                >
-                  {"You (You)"}
-                </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 12,
-                    marginRight: 10,
-                  }}
-                >
-                  {"4850 XP"}
-                </Text>
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 12,
-                  }}
-                >
-                  {"Silver"}
-                </Text>
-              </View>
-            </View>
-            <View>
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 14,
-                }}
-              >
-                {"500"}
-              </Text>
-            </View>
-          </View>
+              );
+            })
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
