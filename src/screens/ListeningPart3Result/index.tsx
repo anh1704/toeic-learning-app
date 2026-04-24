@@ -1,35 +1,23 @@
-import React, { useMemo } from "react";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { Check, X, ArrowLeft } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../../../App";
 
-type ListeningPart2ResultProps = NativeStackScreenProps<
+type ListeningPart3ResultProps = NativeStackScreenProps<
   RootStackParamList,
-  "ListeningPart2Result"
+  "ListeningPart3Result"
 >;
 
-export default (props: ListeningPart2ResultProps) => {
-  const answers = props.route.params?.answers ?? [];
-  const correctAnswers = props.route.params?.correctAnswers ?? [];
+export default (props: ListeningPart3ResultProps) => {
+  const { results = [] } = props.route.params || {};
 
-  const total = Math.max(correctAnswers.length, answers.length, 6);
-
-  const resultRows = useMemo(() => {
-    return Array.from({ length: total }, (_, i) => {
-      const answer = answers[i] ?? null;
-      const correct = correctAnswers[i] ?? -1;
-      const isCorrect = answer !== null && answer === correct;
-
-      return { index: i, isCorrect };
-    });
-  }, [answers, correctAnswers, total]);
-
-  const correctCount = resultRows.filter((r) => r.isCorrect).length;
+  const total = results.length;
+  const correctCount = results.filter((r) => r).length;
   const incorrectCount = total - correctCount;
-  const accuracy = Math.round((correctCount / total) * 100);
+  const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
 
   const summaryText =
     accuracy >= 80
@@ -74,7 +62,7 @@ export default (props: ListeningPart2ResultProps) => {
           }}
         >
           <TouchableOpacity
-            onPress={() => props.navigation.pop(2)}
+            onPress={() => props.navigation.navigate("ListeningHome")}
             style={{ width: 38, height: 38, borderRadius: 16, backgroundColor: "#FFFFFF", alignItems: "center", justifyContent: "center", marginRight: 16 }}
           >
             <ArrowLeft size={20} color="#2C2636" />
@@ -97,13 +85,12 @@ export default (props: ListeningPart2ResultProps) => {
             width: "100%",
             paddingHorizontal: 20,
             marginBottom: 13,
-            
           }}
         >
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
-            colors={["#5B9E91", "#8B6BAE"]}
+            colors={["#5B9E91", "#E07B54"]}
             style={{
               width: "100%",
               alignItems: "center",
@@ -249,12 +236,12 @@ export default (props: ListeningPart2ResultProps) => {
               marginHorizontal: 1,
             }}
           >
-            {resultRows.map((row, idx) => {
-              const isLast = idx === resultRows.length - 1;
+            {results.map((isCorrect, idx) => {
+              const isLast = idx === results.length - 1;
 
               return (
                 <View
-                  key={`q-${row.index}`}
+                  key={`q-${idx}`}
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
@@ -275,8 +262,8 @@ export default (props: ListeningPart2ResultProps) => {
                       alignItems: "center",
                     }}
                   >
-                    <View style={{ width: 28, height: 28, borderRadius: 14, backgroundColor: row.isCorrect ? "#5B9E911A" : "#E07B541A", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
-                      {row.isCorrect ? <Check size={16} color="#5B9E91" /> : <X size={16} color="#E07B54" />}
+                    <View style={{ width: 28, height: 28, borderRadius: 14, backgroundColor: isCorrect ? "#5B9E911A" : "#E07B541A", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+                      {isCorrect ? <Check size={16} color="#5B9E91" /> : <X size={16} color="#E07B54" />}
                     </View>
                     <Text
                       style={{
@@ -284,17 +271,17 @@ export default (props: ListeningPart2ResultProps) => {
                         fontSize: 14,
                       }}
                     >
-                      {`Question ${row.index + 1}`}
+                      {`Question ${idx + 1}`}
                     </Text>
                   </View>
 
                   <Text
                     style={{
-                      color: row.isCorrect ? "#5B9E91" : "#E07B54",
+                      color: isCorrect ? "#5B9E91" : "#E07B54",
                       fontSize: 12,
                     }}
                   >
-                    {row.isCorrect ? "Correct" : "Incorrect"}
+                    {isCorrect ? "Correct" : "Incorrect"}
                   </Text>
                 </View>
               );
@@ -318,7 +305,7 @@ export default (props: ListeningPart2ResultProps) => {
                 paddingVertical: 16,
                 marginRight: 44,
               }}
-              onPress={() => props.navigation.pop(2)}
+              onPress={() => props.navigation.navigate("ListeningPart3")}
               activeOpacity={0.7}
             >
               <Text
@@ -336,13 +323,13 @@ export default (props: ListeningPart2ResultProps) => {
               style={{
                 flex: 1,
                 alignItems: "center",
-                backgroundColor: "#8B6BAE",
+                backgroundColor: "#E07B54",
                 borderColor: "#F0EBE4",
                 borderRadius: 16,
                 borderWidth: 1,
                 paddingVertical: 16,
               }}
-              onPress={() => props.navigation.pop(2)}
+              onPress={() => props.navigation.navigate("ListeningHome")}
               activeOpacity={0.7}
             >
               <Text

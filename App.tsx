@@ -13,6 +13,9 @@ import ListeningPart1Result from "./src/screens/ListeningPart1Result";
 import ListeningPart2 from "./src/screens/ListeningPart2";
 import ListeningPart21 from "./src/screens/ListeningPart21";
 import ListeningPart2Result from "./src/screens/ListeningPart2Result";
+import ListeningPart3 from "./src/screens/ListeningPart3";
+import ListeningPart31 from "./src/screens/ListeningPart31";
+import ListeningPart3Result from "./src/screens/ListeningPart3Result";
 import ListeningDictation from "./src/screens/ListeningDictation";
 import ListeningDictationResult from "./src/screens/ListeningDictationResult";
 import ListeningHistory from "./src/screens/ListeningHistory";
@@ -100,6 +103,13 @@ export type RootStackParamList = {
     | {
         answers?: Array<number | null>;
         correctAnswers?: number[];
+      }
+    | undefined;
+  ListeningPart3: undefined;
+  ListeningPart31: { examId: string };
+  ListeningPart3Result:
+    | {
+        results: boolean[];
       }
     | undefined;
   ListeningDictation: undefined;
@@ -210,6 +220,12 @@ const ListeningStack = () => {
       <Stack.Screen
         name="ListeningPart2Result"
         component={ListeningPart2Result}
+      />
+      <Stack.Screen name="ListeningPart3" component={ListeningPart3} />
+      <Stack.Screen name="ListeningPart31" component={ListeningPart31} />
+      <Stack.Screen
+        name="ListeningPart3Result"
+        component={ListeningPart3Result}
       />
       <Stack.Screen name="ListeningDictation" component={ListeningDictation} />
       <Stack.Screen
@@ -480,7 +496,10 @@ const TabsNavigator = () => {
             routeName === "ListeningPart1Result" ||
             routeName === "ListeningPart2" ||
             routeName === "ListeningPart21" ||
-            routeName === "ListeningPart2Result";
+            routeName === "ListeningPart2Result" ||
+            routeName === "ListeningPart3" ||
+            routeName === "ListeningPart31" ||
+            routeName === "ListeningPart3Result";
 
           return {
             title: "Listening",

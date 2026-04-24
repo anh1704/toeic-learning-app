@@ -289,7 +289,9 @@ export default (props: ListeningHomeProps) => {
             </View>
             <ChevronRight size={16} color="#6E6880" />
           </TouchableOpacity>
-          <View
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("ListeningPart3")}
+            activeOpacity={0.7}
             style={{
               flexDirection: "row",
               alignItems: "center",
@@ -346,7 +348,7 @@ export default (props: ListeningHomeProps) => {
               </View>
             </View>
             <ChevronRight size={16} color="#6E6880" />
-          </View>
+          </TouchableOpacity>
           <View
             style={{
               flexDirection: "row",
