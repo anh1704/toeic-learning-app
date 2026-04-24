@@ -25,18 +25,9 @@ export default (props: ListeningDictationResultProps) => {
         style={{
           flex: 1,
           backgroundColor: "#FAF6F1",
-          paddingTop: 0,
+          paddingTop: 19,
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 20,
-            marginHorizontal: 20,
-          }}
-        ></View>
         <View
           style={{
             alignSelf: "flex-start",
@@ -64,6 +55,7 @@ export default (props: ListeningDictationResultProps) => {
                 color: "#000000",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10,
               }}
             >
               {"Results"}

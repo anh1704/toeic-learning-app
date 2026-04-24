@@ -2,6 +2,7 @@ import React from "react";
 import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import { ArrowLeft} from "lucide-react-native";
 export default () => {
   const navigation = useNavigation<any>();
   return (
@@ -28,18 +29,17 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.pop()}>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/wai7zvs3_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 37,
-                height: 37,
-                marginRight: 12,
-              }}
-            />
+          <TouchableOpacity onPress={() => navigation.pop()}
+            style={{
+              width: 38,
+              height: 38,
+              borderRadius: 16,
+              backgroundColor: "#FFFFFF",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ArrowLeft size={20} color="#2C2636" />
           </TouchableOpacity>
           <View>
             <Text
@@ -47,6 +47,7 @@ export default () => {
                 color: "#000000",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10,
               }}
             >
               {"Audio Control"}
@@ -342,7 +343,7 @@ export default () => {
           <View
             style={{
               paddingTop: 2,
-              paddingRight: 28,
+              paddingRight: 0,
             }}
           >
             <Text

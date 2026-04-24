@@ -492,6 +492,7 @@ const TabsNavigator = () => {
           const routeName =
             getFocusedRouteNameFromRoute(route) ?? "ListeningHome";
           const hideTabBar =
+            routeName === "ListeningPart1" ||
             routeName === "ListeningPart11" ||
             routeName === "ListeningPart1Result" ||
             routeName === "ListeningPart2" ||
@@ -499,7 +500,12 @@ const TabsNavigator = () => {
             routeName === "ListeningPart2Result" ||
             routeName === "ListeningPart3" ||
             routeName === "ListeningPart31" ||
-            routeName === "ListeningPart3Result";
+            routeName === "ListeningPart3Result" ||
+            routeName === "ListeningDictation" ||
+            routeName === "ListeningDictationResult" ||
+            routeName === "ListeningTips" ||
+            routeName === "ListeningHistory" ||
+            routeName === "AudioControl";
 
           return {
             title: "Listening",

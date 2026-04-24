@@ -47,6 +47,7 @@ export default () => {
                 color: "#000000",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10,
               }}
             >
               {"Listening History"}
