@@ -49,6 +49,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10
               }}
             >
               {"Milestones"}

@@ -10,11 +10,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import {
-  saveDailySchedule,
-  type DailyScheduleData,
-} from "../../lib/studyPlanStorage";
-import { createStudyPlan } from "../../lib/studyPlanService";
+import { createStudyPlan, saveDailySchedule } from "../../lib/studyPlanService";
 
 const TARGET_SCORE_OPTIONS = ["600+", "700+", "800+", "900+"] as const;
 const DURATION_OPTIONS = [1, 2, 3, 6] as const;
@@ -228,24 +224,36 @@ export default () => {
       "#E07B54",
     ];
 
+    // Convert dailyStudyTime to minutes for calculation
+    const timeInMinutes = dailyStudyTime === "30 min" ? 30 
+      : dailyStudyTime === "1 hour" ? 60 
+      : dailyStudyTime === "2 hours" ? 120 
+      : 180; // 3+ hours
+
     return [
       "You are a TOEIC study plan generator.",
       "Generate a one-day schedule for TODAY.",
       "Return ONLY valid JSON (no markdown, no extra text).",
       "Your response MUST start with '{' and end with '}'.",
       "Example (follow this shape, but with your own values):",
-      '{"todayStudyTime":"2h 40m","progressPercent":70,"items":[{"title":"Word of the Day","startTime":"07:00","duration":"5 min","color":"#D4A853"}]}',
-      "Rules:",
-      "- startTime must be 24h format HH:MM (e.g. 07:00)",
-      "- duration must be a short string like '15 min' or '1h 30m'",
+      '{"todayStudyTime":"2h","progressPercent":70,"items":[{"title":"Word of the Day","startTime":"07:00","duration":"15 min","color":"#D4A853"}]}',
+      "",
+      "CRITICAL RULES:",
+      "- startTime must be 24h format HH:MM (e.g. 07:00, 14:30)",
+      "- duration must be a short string like '15 min', '30 min', '1h', '1h 30m'",
       `- color must be one of: ${allowedColors.join(", ")}`,
-      "- items must be 6 to 10 entries",
-      "- keep titles short and similar to TOEIC study tasks",
+      `- The TOTAL duration of ALL items MUST equal exactly ${dailyStudyTime} (${timeInMinutes} minutes)`,
+      `- todayStudyTime field must be "${dailyStudyTime}"`,
+      `- Create ${timeInMinutes <= 60 ? '3-5' : timeInMinutes <= 120 ? '4-6' : '6-8'} study items`,
+      "- Distribute time wisely across items based on focus areas",
+      "- Keep titles short and relevant to TOEIC study tasks",
+      "- Prioritize focus areas in the schedule",
+      "",
       "User settings:",
       `- targetScore: ${targetScore}`,
       `- studyDurationMonths: ${durationMonths}`,
-      `- dailyStudyTime: ${dailyStudyTime}`,
-      `- focusAreas: ${focusAreas.join(", ")}`,
+      `- dailyStudyTime: ${dailyStudyTime} (TOTAL time for ALL items)`,
+      `- focusAreas: ${focusAreas.join(", ")} (prioritize these)`,
     ].join("\n");
   }, [dailyStudyTime, durationMonths, focusAreas, targetScore]);
 
@@ -365,33 +373,19 @@ export default () => {
               throw new Error("Invalid schedule format returned by Groq");
             }
 
-            const data: DailyScheduleData = {
-              generatedAt: new Date().toISOString(),
-              settings: {
-                targetScore,
-                durationMonths,
-                dailyStudyTime,
-                focusAreas,
-              },
-              todayStudyTime: String(parsed.todayStudyTime ?? dailyStudyTime),
-              progressPercent:
-                typeof parsed.progressPercent === "number"
-                  ? parsed.progressPercent
-                  : 0,
-              items: parsed.items.map((it) => ({
-                title: String(it?.title ?? ""),
-                startTime: String(it?.startTime ?? ""),
-                duration: String(it?.duration ?? ""),
-                color: String(it?.color ?? targetScoreColor),
-              })),
-            };
+            const scheduleItems = parsed.items.map((it) => ({
+              title: String(it?.title ?? ""),
+              startTime: String(it?.startTime ?? ""),
+              duration: String(it?.duration ?? ""),
+              color: String(it?.color ?? targetScoreColor),
+            }));
 
             const numericTarget = Number(
               String(targetScore).replace(/[^0-9]/g, ""),
             );
 
             // Lưu settings lên Supabase (bảng study_plans)
-            await createStudyPlan({
+            const studyPlan = await createStudyPlan({
               targetScore:
                 Number.isFinite(numericTarget) && numericTarget > 0
                   ? numericTarget
@@ -401,7 +395,15 @@ export default () => {
               focusAreas,
             });
 
-            await saveDailySchedule(data);
+            // Lưu daily schedule lên Supabase (bảng daily_schedules)
+            const today = new Date().toISOString().split('T')[0];
+            await saveDailySchedule(
+              today,
+              String(parsed.todayStudyTime ?? dailyStudyTime),
+              typeof parsed.progressPercent === "number" ? parsed.progressPercent : 0,
+              scheduleItems,
+              studyPlan.id
+            );
             navigation.navigate("StudyPlanDaily");
             return;
           } catch (e) {

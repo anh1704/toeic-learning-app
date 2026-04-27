@@ -3,11 +3,11 @@ import React, { useCallback, useState } from "react";
 import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { getLatestStudyPlan, type StudyPlan } from "../../lib/studyPlanService";
+import { getTodaySchedule, type DailySchedule } from "../../lib/studyPlanService";
 
 export default () => {
   const navigation = useNavigation<any>();
-  const [latestPlan, setLatestPlan] = useState<StudyPlan | null>(null);
+  const [todaySchedule, setTodaySchedule] = useState<DailySchedule | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -15,10 +15,10 @@ export default () => {
 
       (async () => {
         try {
-          const plan = await getLatestStudyPlan();
-          if (!cancelled) setLatestPlan(plan);
+          const schedule = await getTodaySchedule();
+          if (!cancelled) setTodaySchedule(schedule);
         } catch {
-          if (!cancelled) setLatestPlan(null);
+          if (!cancelled) setTodaySchedule(null);
         }
       })();
 
@@ -71,6 +71,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10
               }}
             >
               {"Study Plan"}
@@ -85,40 +86,6 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          {latestPlan ? (
-            <View
-              style={{
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                padding: 16,
-                marginBottom: 12,
-                marginRight: 20,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 14,
-                  fontWeight: "bold",
-                  marginBottom: 6,
-                }}
-              >
-                {"Your current plan"}
-              </Text>
-              <Text style={{ color: "#6E6880", fontSize: 12 }}>
-                {`Target: ${latestPlan.target_score} • Duration: ${latestPlan.duration_months} months`}
-              </Text>
-              <Text style={{ color: "#6E6880", fontSize: 12 }}>
-                {`Daily time: ${latestPlan.daily_study_time}`}
-              </Text>
-              <Text style={{ color: "#6E6880", fontSize: 12 }}>
-                {`Focus: ${(latestPlan.focus_areas ?? []).join(", ")}`}
-              </Text>
-            </View>
-          ) : null}
-
           <View
             style={{
               flexDirection: "row",
@@ -455,313 +422,88 @@ export default () => {
             marginLeft: 22,
           }}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              padding: 12,
-              marginBottom: 8,
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/81ecan5e_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 31,
-                height: 31,
-                marginRight: 12,
-              }}
-            />
+          {todaySchedule && todaySchedule.items.length > 0 ? (
+            todaySchedule.items.map((item, index) => (
+              <View
+                key={index}
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  backgroundColor: "#FFFFFF",
+                  borderColor: "#2C26361A",
+                  borderRadius: 16,
+                  borderWidth: 1,
+                  padding: 12,
+                  marginBottom: index === todaySchedule.items.length - 1 ? 0 : 8,
+                }}
+              >
+                <View
+                  style={{
+                    width: 31,
+                    height: 31,
+                    borderRadius: 16,
+                    backgroundColor: item.color || "#A47551",
+                    marginRight: 12,
+                  }}
+                />
+                <View
+                  style={{
+                    flex: 1,
+                  }}
+                >
+                  <View
+                    style={{
+                      alignSelf: "flex-start",
+                      marginBottom: 2,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: "#2C2636",
+                        fontSize: 14,
+                      }}
+                    >
+                      {item.title}
+                    </Text>
+                  </View>
+                  <View
+                    style={{
+                      alignSelf: "flex-start",
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: "#6E6880",
+                        fontSize: 12,
+                      }}
+                    >
+                      {item.startTime}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            ))
+          ) : (
             <View
               style={{
-                flex: 1,
-              }}
-            >
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 14,
-                  }}
-                >
-                  {"Vocabulary Review"}
-                </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 12,
-                  }}
-                >
-                  {"8:00"}
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingVertical: 13,
-              paddingHorizontal: 12,
-              marginBottom: 9,
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/oa1lffz9_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
+                backgroundColor: "#FFFFFF",
+                borderColor: "#2C26361A",
                 borderRadius: 16,
-                width: 31,
-                height: 31,
-                marginRight: 12,
-              }}
-            />
-            <View
-              style={{
-                flex: 1,
+                borderWidth: 1,
+                padding: 20,
+                alignItems: "center",
               }}
             >
-              <View
+              <Text
                 style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
+                  color: "#6E6880",
+                  fontSize: 14,
                 }}
               >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 14,
-                  }}
-                >
-                  {"Listening Part 3"}
-                </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 12,
-                  }}
-                >
-                  {"10:00"}
-                </Text>
-              </View>
+                {"No schedule for today. Create a plan to get started!"}
+              </Text>
             </View>
-          </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingVertical: 13,
-              paddingHorizontal: 12,
-              marginBottom: 8,
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/jp8bzykr_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 31,
-                height: 31,
-                marginRight: 12,
-              }}
-            />
-            <View
-              style={{
-                flex: 1,
-              }}
-            >
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 1,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 14,
-                  }}
-                >
-                  {"Grammar Exercise"}
-                </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 12,
-                  }}
-                >
-                  {"14:00"}
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingVertical: 13,
-              paddingHorizontal: 12,
-              marginBottom: 9,
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/33qhq61m_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 31,
-                height: 31,
-                marginRight: 12,
-              }}
-            />
-            <View
-              style={{
-                flex: 1,
-              }}
-            >
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 14,
-                  }}
-                >
-                  {"Reading Practice"}
-                </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 12,
-                  }}
-                >
-                  {"16:00"}
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              paddingVertical: 13,
-              paddingHorizontal: 12,
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/ujbj65zj_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 31,
-                height: 31,
-                marginRight: 12,
-              }}
-            />
-            <View
-              style={{
-                flex: 1,
-              }}
-            >
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 14,
-                  }}
-                >
-                  {"Mini Test"}
-                </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#6E6880",
-                    fontSize: 12,
-                  }}
-                >
-                  {"20:00"}
-                </Text>
-              </View>
-            </View>
-          </View>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>

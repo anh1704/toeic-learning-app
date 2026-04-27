@@ -10,10 +10,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import {
-  loadDailySchedule,
-  type DailyScheduleData,
+  getTodaySchedule,
+  type DailySchedule,
   type DailyScheduleItem,
-} from "../../lib/studyPlanStorage";
+} from "../../lib/studyPlanService";
 
 const FALLBACK_ITEMS: DailyScheduleItem[] = [
   {
@@ -68,7 +68,7 @@ const FALLBACK_ITEMS: DailyScheduleItem[] = [
 
 export default () => {
   const navigation = useNavigation<any>();
-  const [plan, setPlan] = useState<DailyScheduleData | null>(null);
+  const [schedule, setSchedule] = useState<DailySchedule | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -76,10 +76,10 @@ export default () => {
 
       (async () => {
         try {
-          const loaded = await loadDailySchedule();
-          if (!cancelled) setPlan(loaded);
+          const loaded = await getTodaySchedule();
+          if (!cancelled) setSchedule(loaded);
         } catch {
-          if (!cancelled) setPlan(null);
+          if (!cancelled) setSchedule(null);
         }
       })();
 
@@ -90,13 +90,13 @@ export default () => {
   );
 
   const items = useMemo(() => {
-    if (plan?.items?.length) return plan.items;
+    if (schedule?.items?.length) return schedule.items;
     return FALLBACK_ITEMS;
-  }, [plan?.items]);
+  }, [schedule?.items]);
 
-  const todayStudyTime = plan?.todayStudyTime ?? "2h 40m";
+  const todayStudyTime = schedule?.today_study_time ?? "2h 40m";
   const progressPercent =
-    typeof plan?.progressPercent === "number" ? plan.progressPercent : 70;
+    typeof schedule?.progress_percent === "number" ? schedule.progress_percent : 70;
 
   return (
     <SafeAreaView
@@ -141,6 +141,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10
               }}
             >
               {"Daily Schedule"}

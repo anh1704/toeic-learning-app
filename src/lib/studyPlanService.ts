@@ -11,6 +11,25 @@ export type StudyPlan = {
   updated_at: string;
 };
 
+export type DailyScheduleItem = {
+  title: string;
+  startTime: string;
+  duration: string;
+  color: string;
+};
+
+export type DailySchedule = {
+  id: string;
+  user_id: string;
+  study_plan_id: string | null;
+  schedule_date: string;
+  today_study_time: string;
+  progress_percent: number;
+  items: DailyScheduleItem[];
+  created_at: string;
+  updated_at: string;
+};
+
 export type CreateStudyPlanInput = {
   targetScore: number;
   durationMonths: number;
@@ -125,4 +144,88 @@ export const deleteStudyPlan = async (id: string) => {
     .eq('user_id', user.id);
 
   if (error) throw error;
+};
+
+// Daily Schedule functions
+export const getTodaySchedule = async (): Promise<DailySchedule | null> => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) return null;
+
+  const today = new Date().toISOString().split('T')[0];
+
+  const { data, error } = await supabase
+    .from('daily_schedules')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('schedule_date', today)
+    .maybeSingle();
+
+  if (error) {
+    console.error('Error fetching today schedule:', error);
+    return null;
+  }
+
+  return (data ?? null) as DailySchedule | null;
+};
+
+export const saveDailySchedule = async (
+  scheduleDate: string,
+  todayStudyTime: string,
+  progressPercent: number,
+  items: DailyScheduleItem[],
+  studyPlanId?: string | null,
+) => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) throw new Error('Not authenticated');
+
+  // Check if schedule exists for this date
+  const { data: existing } = await supabase
+    .from('daily_schedules')
+    .select('id')
+    .eq('user_id', user.id)
+    .eq('schedule_date', scheduleDate)
+    .maybeSingle();
+
+  if (existing) {
+    // Update existing
+    const { data, error } = await supabase
+      .from('daily_schedules')
+      .update({
+        today_study_time: todayStudyTime,
+        progress_percent: progressPercent,
+        items,
+        study_plan_id: studyPlanId ?? null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', existing.id)
+      .select('*')
+      .single();
+
+    if (error) throw error;
+    return data as DailySchedule;
+  } else {
+    // Insert new
+    const { data, error } = await supabase
+      .from('daily_schedules')
+      .insert({
+        user_id: user.id,
+        study_plan_id: studyPlanId ?? null,
+        schedule_date: scheduleDate,
+        today_study_time: todayStudyTime,
+        progress_percent: progressPercent,
+        items,
+        updated_at: new Date().toISOString(),
+      })
+      .select('*')
+      .single();
+
+    if (error) throw error;
+    return data as DailySchedule;
+  }
 };
