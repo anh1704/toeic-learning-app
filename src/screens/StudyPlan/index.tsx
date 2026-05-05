@@ -1,13 +1,18 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, PlusCircle, Bell, CalendarDays, CalendarRange, Target, Flag, SlidersHorizontal, Plus } from "lucide-react-native";
 import React, { useCallback, useState } from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 import { getTodaySchedule, type DailySchedule } from "../../lib/studyPlanService";
+import { getProfile } from "../../lib/profileService";
 
 export default () => {
   const navigation = useNavigation<any>();
   const [todaySchedule, setTodaySchedule] = useState<DailySchedule | null>(null);
+  const [targetScore, setTargetScore] = useState(800);
+  const [currentScore, setCurrentScore] = useState(650);
+  const [daysRemaining, setDaysRemaining] = useState(45);
 
   useFocusEffect(
     useCallback(() => {
@@ -15,8 +20,17 @@ export default () => {
 
       (async () => {
         try {
-          const schedule = await getTodaySchedule();
-          if (!cancelled) setTodaySchedule(schedule);
+          const [schedule, profile] = await Promise.all([
+            getTodaySchedule(),
+            getProfile(),
+          ]);
+          if (!cancelled) {
+            setTodaySchedule(schedule);
+            if (profile) {
+              setTargetScore(profile.target_score || 800);
+              setCurrentScore(profile.current_score || 650);
+            }
+          }
         } catch {
           if (!cancelled) setTodaySchedule(null);
         }
@@ -27,6 +41,9 @@ export default () => {
       };
     }, []),
   );
+
+  const progressPercent = Math.min(100, Math.round((currentScore / targetScore) * 100));
+
 
   return (
     <SafeAreaView
@@ -49,7 +66,7 @@ export default () => {
             alignSelf: "flex-start",
             flexDirection: "row",
             alignItems: "center",
-            marginBottom: 21,
+            marginBottom: 10,
             marginLeft: 20,
           }}
         >
@@ -79,6 +96,61 @@ export default () => {
           </View>
         </View>
 
+        {/* Target Banner Card */}
+        <LinearGradient
+          start={{ x: 0.5, y: 0 }} 
+          end={{ x: 0.5, y: 1 }}   
+          colors={["#8B6BAE", "#A47551"]}
+          style={{
+            borderRadius: 20,
+            paddingHorizontal: 20,
+            paddingTop: 10,
+            paddingBottom: 20,
+            marginHorizontal: 20,
+            marginBottom: 22,
+            width: '95%'
+          }}
+        >
+          <Target size={26} color="#FFFFFF" style={{ marginBottom: 10, opacity: 0.9 }} />
+          <Text
+            style={{
+              color: "#FFFFFF",
+              fontSize: 22,
+              fontWeight: "bold",
+              marginBottom: 4,
+            }}
+          >
+            {`Target: ${targetScore} points`}
+          </Text>
+          <Text
+            style={{
+              color: "rgba(255,255,255,0.8)",
+              fontSize: 14,
+              marginBottom: 16,
+            }}
+          >
+            {`${daysRemaining} days remaining`}
+          </Text>
+          {/* Progress bar */}
+          <View
+            style={{
+              height: 6,
+              backgroundColor: "rgba(255,255,255,0.3)",
+              borderRadius: 100,
+              overflow: "hidden",
+            }}
+          >
+            <View
+              style={{
+                width: `${progressPercent}%`,
+                height: "100%",
+                backgroundColor: "rgba(255,255,255,0.85)",
+                borderRadius: 100,
+              }}
+            />
+          </View>
+        </LinearGradient>
+
         <View
           style={{
             paddingBottom: 1,
@@ -106,19 +178,7 @@ export default () => {
               }}
               onPress={() => navigation.navigate("StudyPlanCreate")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/ocedbh75_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 20,
-                  height: 20,
-                  marginBottom: 8,
-                  marginLeft: 17,
-                }}
-              />
+              <PlusCircle size={20} color="#8B6BAE" style={{ marginBottom: 8, marginLeft: 17 }} />
               <View
                 style={{
                   paddingBottom: 1,
@@ -149,19 +209,7 @@ export default () => {
               }}
               onPress={() => navigation.navigate("StudyPlanReminders")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/77k2t3b0_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 20,
-                  height: 20,
-                  marginBottom: 8,
-                  marginLeft: 17,
-                }}
-              />
+              <Bell size={20} color="#8B6BAE" style={{ marginBottom: 8, marginLeft: 17 }} />
               <View
                 style={{
                   paddingBottom: 1,
@@ -201,19 +249,7 @@ export default () => {
               }}
               onPress={() => navigation.navigate("StudyPlanDaily")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/ljehl3w3_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginBottom: 8,
-                  marginLeft: 17,
-                }}
-              />
+              <CalendarDays size={19} color="#8B6BAE" style={{ marginBottom: 8, marginLeft: 17 }} />
               <View
                 style={{
                   marginLeft: 17,
@@ -243,18 +279,7 @@ export default () => {
               }}
               onPress={() => navigation.navigate("StudyPlanWeekly")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/1p44y3tm_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginBottom: 8,
-                  marginLeft: 17,
-                }}
-              />
+              <CalendarRange size={19} color="#8B6BAE" style={{ marginBottom: 8, marginLeft: 17 }} />
               <View
                 style={{
                   marginLeft: 17,
@@ -292,18 +317,7 @@ export default () => {
               }}
               onPress={() => navigation.navigate("StudyPlanGoals")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/2q9sm3th_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginBottom: 8,
-                }}
-              />
+              <Target size={19} color="#8B6BAE" style={{ marginBottom: 8 }} />
               <View
                 style={{
                   alignSelf: "flex-start",
@@ -333,19 +347,7 @@ export default () => {
               }}
               onPress={() => navigation.navigate("StudyPlanMilestones")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/ol7jy3gt_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginBottom: 8,
-                  marginLeft: 17,
-                }}
-              />
+              <Flag size={19} color="#8B6BAE" style={{ marginBottom: 8, marginLeft: 17 }} />
               <View
                 style={{
                   marginLeft: 17,
@@ -392,17 +394,7 @@ export default () => {
             }}
             onPress={() => navigation.navigate("StudyPlanCreate")}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/lmxmayr4_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 15,
-                height: 15,
-                marginRight: 2,
-              }}
-            />
+            <Plus size={15} color="#A47551" strokeWidth={3} style={{ marginRight: 2 }} />
             <Text
               style={{
                 color: "#A47551",
