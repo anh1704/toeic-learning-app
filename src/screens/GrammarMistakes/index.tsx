@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Check, Lightbulb, X } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
@@ -31,7 +31,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -48,6 +49,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
+              marginLeft: 10,
             }}
           >
             {"Common Mistakes"}
@@ -74,14 +76,10 @@ export default () => {
               marginLeft: 18,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/ztkd87xi_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <X
+              size={20}
+              color="#E07B54"
               style={{
-                width: 20,
-                height: 20,
                 marginRight: 8,
               }}
             />
@@ -276,15 +274,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/31h1nhdn_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <X
+                size={16}
+                color="#E07B54"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
                   marginLeft: 12,
                   marginRight: 8,
                 }}
@@ -322,15 +315,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/ih6jfw96_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Check
+                size={16}
+                color="#5B9E91"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
                   marginLeft: 12,
                   marginRight: 8,
                 }}
@@ -362,14 +350,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/34ubamq3_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Lightbulb
+                size={16}
+                color="#D6AD5D"
                 style={{
-                  width: 16,
-                  height: 16,
                   marginRight: 8,
                 }}
               />
@@ -430,15 +414,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/lehusdp7_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <X
+                size={16}
+                color="#E07B54"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
                   marginLeft: 12,
                   marginRight: 8,
                 }}
@@ -476,15 +455,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/3az6etvn_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Check
+                size={16}
+                color="#5B9E91"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
                   marginLeft: 12,
                   marginRight: 8,
                 }}
@@ -518,14 +492,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/tt7pxogc_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Lightbulb
+                size={16}
+                color="#D6AD5D"
                 style={{
-                  width: 16,
-                  height: 16,
                   marginRight: 8,
                 }}
               />
@@ -584,15 +554,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/fkbox0ei_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <X
+                size={16}
+                color="#E07B54"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
                   marginLeft: 12,
                   marginRight: 8,
                 }}
@@ -630,15 +595,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/t33g1e1v_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Check
+                size={16}
+                color="#5B9E91"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
                   marginLeft: 12,
                   marginRight: 8,
                 }}
@@ -670,14 +630,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/k19hvkdi_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Lightbulb
+                size={16}
+                color="#D6AD5D"
                 style={{
-                  width: 16,
-                  height: 16,
                   marginRight: 8,
                 }}
               />
@@ -738,15 +694,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/v7ncmiom_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <X
+                size={16}
+                color="#E07B54"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
                   marginLeft: 12,
                   marginRight: 8,
                 }}
@@ -784,16 +735,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/8t67eunt_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Lightbulb
+                size={16}
+                color="#D6AD5D"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
-                  marginLeft: 12,
                   marginRight: 8,
                 }}
               />
@@ -824,14 +769,11 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/nu02ljjv_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Check
+                size={16}
+                color="#5B9E91"
                 style={{
-                  width: 16,
-                  height: 16,
+                  marginLeft: 12,
                   marginRight: 8,
                 }}
               />
@@ -889,15 +831,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/oqh5hjzc_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <X
+                size={16}
+                color="#E07B54"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
                   marginLeft: 12,
                   marginRight: 8,
                 }}
@@ -935,15 +872,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/isach6f4_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Check
+                size={16}
+                color="#5B9E91"
                 style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
                   marginLeft: 12,
                   marginRight: 8,
                 }}
@@ -975,14 +907,10 @@ export default () => {
                 marginLeft: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/86hpttki_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <Lightbulb
+                size={16}
+                color="#D6AD5D"
                 style={{
-                  width: 16,
-                  height: 16,
                   marginRight: 8,
                 }}
               />

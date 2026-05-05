@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Bookmark, Check, Lightbulb } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
@@ -29,7 +29,8 @@ export default () => {
             marginBottom: 21,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -46,6 +47,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
+              marginLeft: 10,
             }}
           >
             {"Past Continuous"}
@@ -55,16 +57,18 @@ export default () => {
               flex: 1,
             }}
           ></View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/w52tavvx_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <View
             style={{
-              width: 37,
-              height: 37,
+              width: 38,
+              height: 38,
+              borderRadius: 18,
+              backgroundColor: "#FFFFFF",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-          />
+          >
+            <Bookmark size={20} color="#000000" />
+          </View>
         </View>
         <View
           style={{
@@ -149,17 +153,7 @@ export default () => {
               marginLeft: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/wq894ltn_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 16,
-                height: 16,
-                marginRight: 8,
-              }}
-            />
+            <Check size={16} color="#5B9E91" style={{ marginRight: 8 }} />
             <Text
               style={{
                 color: "#6E6880",
@@ -178,17 +172,7 @@ export default () => {
               marginLeft: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/bf1g512x_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 16,
-                height: 16,
-                marginRight: 8,
-              }}
-            />
+            <Check size={16} color="#5B9E91" style={{ marginRight: 8 }} />
             <Text
               style={{
                 color: "#6E6880",
@@ -206,17 +190,7 @@ export default () => {
               marginLeft: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/0uzbevre_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 16,
-                height: 16,
-                marginRight: 8,
-              }}
-            />
+            <Check size={16} color="#5B9E91" style={{ marginRight: 8 }} />
             <Text
               style={{
                 color: "#6E6880",
@@ -257,17 +231,7 @@ export default () => {
               marginLeft: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/6k1l6nvh_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 16,
-                height: 16,
-                marginRight: 8,
-              }}
-            />
+            <Lightbulb size={16} color="#D6AD5D" style={{ marginRight: 8 }} />
             <Text
               style={{
                 color: "#6E6880",
@@ -286,17 +250,7 @@ export default () => {
               marginLeft: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/yrn1lyse_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 16,
-                height: 16,
-                marginRight: 8,
-              }}
-            />
+            <Lightbulb size={16} color="#D6AD5D" style={{ marginRight: 8 }} />
             <Text
               style={{
                 color: "#6E6880",

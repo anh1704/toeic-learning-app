@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Brain } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
@@ -39,7 +39,8 @@ export default () => {
             marginHorizontal: 10,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -56,6 +57,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
+              marginLeft: 10,
             }}
           >
             {"Grammar List"}
@@ -78,18 +80,10 @@ export default () => {
               marginBottom: 21,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/zui0h5he_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 24,
-                height: 23,
-                marginBottom: 7,
-                marginLeft: 18,
-              }}
+            <Brain
+              size={32}
+              color="#FFFFFF"
+              style={{ marginLeft: 18, paddingBottom: 4 }}
             />
             <Text
               style={{
@@ -220,18 +214,19 @@ export default () => {
                   marginBottom: 17,
                 }}
               >
-                <Image
-                  source={{
-                    uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/a9223r2f_expires_30_days.png",
-                  }}
-                  resizeMode={"stretch"}
+                <View
                   style={{
-                    borderRadius: 16,
                     width: 48,
                     height: 48,
-                    marginRight: 18,
+                    borderRadius: 12,
+                    backgroundColor: "#FDF8F6",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginRight: 14,
                   }}
-                />
+                >
+                  <Brain size={24} color="#E07B54" />
+                </View>
                 <View
                   style={{
                     flex: 1,
@@ -304,18 +299,19 @@ export default () => {
                 marginBottom: 17,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/c4lau1mm_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 48,
                   height: 48,
-                  marginRight: 18,
+                  borderRadius: 12,
+                  backgroundColor: "#FDF8F6",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 14,
                 }}
-              />
+              >
+                <Brain size={24} color="#E07B54" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -387,18 +383,19 @@ export default () => {
                 marginBottom: 17,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/kwfzf0nj_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 48,
                   height: 48,
-                  marginRight: 18,
+                  borderRadius: 12,
+                  backgroundColor: "#FDF8F6",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 14,
                 }}
-              />
+              >
+                <Brain size={24} color="#E07B54" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -470,18 +467,19 @@ export default () => {
                 marginBottom: 17,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/jr64g59w_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 48,
                   height: 48,
-                  marginRight: 18,
+                  borderRadius: 12,
+                  backgroundColor: "#FDF8F6",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 14,
                 }}
-              />
+              >
+                <Brain size={24} color="#E07B54" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -553,18 +551,19 @@ export default () => {
                 marginBottom: 17,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/yfi63evf_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 48,
                   height: 48,
-                  marginRight: 18,
+                  borderRadius: 12,
+                  backgroundColor: "#FDF8F6",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 14,
                 }}
-              />
+              >
+                <Brain size={24} color="#E07B54" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -636,18 +635,19 @@ export default () => {
                 marginBottom: 17,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/hz6unzpb_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 48,
                   height: 48,
-                  marginRight: 18,
+                  borderRadius: 12,
+                  backgroundColor: "#FDF8F6",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 14,
                 }}
-              />
+              >
+                <Brain size={24} color="#E07B54" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -719,18 +719,19 @@ export default () => {
                 marginBottom: 17,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/xmbyrox7_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 48,
                   height: 48,
-                  marginRight: 18,
+                  borderRadius: 12,
+                  backgroundColor: "#FDF8F6",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 14,
                 }}
-              />
+              >
+                <Brain size={24} color="#E07B54" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -801,18 +802,19 @@ export default () => {
                 paddingHorizontal: 18,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/8c0jejoy_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 48,
                   height: 48,
-                  marginRight: 18,
+                  borderRadius: 12,
+                  backgroundColor: "#FDF8F6",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 14,
                 }}
-              />
+              >
+                <Brain size={24} color="#E07B54" />
+              </View>
               <View
                 style={{
                   flex: 1,

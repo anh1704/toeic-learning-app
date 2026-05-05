@@ -1,8 +1,20 @@
-import { ArrowLeft } from "lucide-react-native";
+import {
+  ArrowLeft,
+  Clock,
+  Flame,
+  MessageCircle,
+  Star,
+  Target,
+  TrendingUp,
+  Trophy,
+  Users,
+  X,
+} from "lucide-react-native";
 import React from "react";
 import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
+import Achievements from "../Achievements";
 
 type RootStackParamList = {
   NotificationDetail: undefined;
@@ -39,7 +51,8 @@ export default () => {
               alignItems: "center",
             }}
           >
-            <TouchableOpacity onPress={() => navigation.goBack()}
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
               style={{
                 width: 38,
                 height: 38,
@@ -58,6 +71,7 @@ export default () => {
                   color: "#2C2636",
                   fontSize: 20,
                   fontWeight: "bold",
+                  marginLeft: 10,
                 }}
               >
                 {"Notifications"}
@@ -82,39 +96,40 @@ export default () => {
             marginBottom: 48,
           }}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              backgroundColor: "#FFFFFF",
-              borderColor: "#2C26361A",
-              borderRadius: 16,
-              borderWidth: 1,
-              padding: 16,
-              marginBottom: 12,
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("NotificationDetail");
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/4frzg7sq_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 39,
-                height: 39,
-                marginRight: 12,
-              }}
-            />
             <View
               style={{
-                paddingTop: 1,
-                paddingRight: 39,
-                marginRight: 12,
+                flexDirection: "row",
+                backgroundColor: "#FFFFFF",
+                borderColor: "#2C26361A",
+                borderRadius: 16,
+                borderWidth: 1,
+                padding: 16,
+                marginBottom: 12,
               }}
             >
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("NotificationDetail");
+              <View
+                style={{
+                  width: 39,
+                  height: 39,
+                  borderRadius: 16,
+                  backgroundColor: "#D4A853",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 12,
+                }}
+              >
+                <Trophy size={20} color="#FFFFFF" />
+              </View>
+              <View
+                style={{
+                  paddingTop: 1,
+                  paddingRight: 39,
+                  marginRight: 12,
                 }}
               >
                 <View
@@ -132,48 +147,39 @@ export default () => {
                     {"New Achievement!"}
                   </Text>
                 </View>
-              </TouchableOpacity>
-              <View
-                style={{
-                  marginBottom: 5,
-                }}
-              >
-                <Text
+                <View
                   style={{
-                    color: "#6E6880",
-                    fontSize: 12,
+                    marginBottom: 5,
                   }}
                 >
-                  {'You earned "Listening Master" badge'}
-                </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                }}
-              >
-                <Text
+                  <Text
+                    style={{
+                      color: "#6E6880",
+                      fontSize: 12,
+                    }}
+                  >
+                    {'You earned "Listening Master" badge'}
+                  </Text>
+                </View>
+                <View
                   style={{
-                    color: "#6E6880",
-                    fontSize: 10,
+                    alignSelf: "flex-start",
                   }}
                 >
-                  {"2m ago"}
-                </Text>
+                  <Text
+                    style={{
+                      color: "#6E6880",
+                      fontSize: 10,
+                    }}
+                  >
+                    {"2m ago"}
+                  </Text>
+                </View>
               </View>
+              <X size={15} color="#6E6880" />
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/ew6w6fw2_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
-          </View>
+          </TouchableOpacity>
+
           <View
             style={{
               flexDirection: "row",
@@ -186,18 +192,19 @@ export default () => {
               marginBottom: 12,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/6t70ar1t_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#E07B54",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Flame size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -249,17 +256,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/bowvsb5w_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <X size={15} color="#6E6880" />
           </View>
           <View
             style={{
@@ -273,18 +270,19 @@ export default () => {
               marginBottom: 13,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/d6932b20_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#A47551",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Clock size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 paddingTop: 1,
@@ -336,17 +334,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/nfplyxlq_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <X size={15} color="#6E6880" />
           </View>
           <View
             style={{
@@ -359,18 +347,19 @@ export default () => {
               marginBottom: 12,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/v85wcgbu_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#8B6BAE",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <MessageCircle size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 paddingTop: 1,
@@ -422,17 +411,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/xj7drplb_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <X size={15} color="#6E6880" />
           </View>
           <View
             style={{
@@ -446,18 +425,19 @@ export default () => {
               marginBottom: 13,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/bm122s3b_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#5B9E91",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <TrendingUp size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 paddingRight: 30,
@@ -508,17 +488,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/tdvb1dae_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <X size={15} color="#6E6880" />
           </View>
           <View
             style={{
@@ -531,18 +501,19 @@ export default () => {
               marginBottom: 12,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/4gcgz9ik_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#E07B54",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Target size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -595,17 +566,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/hm1jdmzu_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <X size={15} color="#6E6880" />
           </View>
           <View
             style={{
@@ -619,18 +580,19 @@ export default () => {
               marginBottom: 12,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/dgqqsn24_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#A47551",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Users size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -682,17 +644,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/lrzo3thw_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <X size={15} color="#6E6880" />
           </View>
           <View
             style={{
@@ -705,18 +657,19 @@ export default () => {
               paddingHorizontal: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/5sp7hfxr_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#D4A853",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Star size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -769,17 +722,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/no856flj_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <X size={15} color="#6E6880" />
           </View>
         </View>
       </ScrollView>

@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Check, Star, Lock } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
@@ -31,7 +31,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -48,6 +49,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
+              marginLeft: 10,
             }}
           >
             {"Verb Tenses"}
@@ -72,18 +74,16 @@ export default () => {
               marginBottom: 17,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/nnbwdr74_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
+                backgroundColor: "#5B9E91",
                 borderRadius: 16,
-                width: 44,
-                height: 44,
+                padding: 12,
                 marginRight: 18,
               }}
-            />
+            >
+              <Check size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -111,17 +111,7 @@ export default () => {
                 {"10 min"}
               </Text>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/qlt0dah2_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 20,
-                height: 20,
-              }}
-            />
+            <Star size={18} fill="#D4A853" color="#D4A853" />
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate("GrammarDetail")}
@@ -139,18 +129,16 @@ export default () => {
                 marginBottom: 17,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/3up3abn6_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
+                  backgroundColor: "#5B9E91",
                   borderRadius: 16,
-                  width: 44,
-                  height: 44,
+                  padding: 12,
                   marginRight: 18,
                 }}
-              />
+              >
+                <Check size={20} color="#FFFFFF" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -178,17 +166,7 @@ export default () => {
                   {"12 min"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/04ojix5c_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 20,
-                  height: 20,
-                }}
-              />
+              <Star size={18} fill="#D4A853" color="#D4A853" />
             </View>
           </TouchableOpacity>
           <View
@@ -204,18 +182,16 @@ export default () => {
               marginBottom: 17,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/v02z3biy_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
+                backgroundColor: "#5B9E91",
                 borderRadius: 16,
-                width: 44,
-                height: 44,
+                padding: 12,
                 marginRight: 18,
               }}
-            />
+            >
+              <Check size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -243,17 +219,7 @@ export default () => {
                 {"10 min"}
               </Text>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/bl88cv1v_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 20,
-                height: 20,
-              }}
-            />
+            <Star size={18} fill="#D4A853" color="#D4A853" />
           </View>
           <View
             style={{
@@ -444,18 +410,17 @@ export default () => {
               marginBottom: 17,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/auuc4edr_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
+                backgroundColor: "#F5F1EB",
                 borderRadius: 16,
-                width: 44,
-                height: 44,
-                marginHorizontal: 18,
+                padding: 12,
+                marginRight: 18,
+                marginLeft: 18,
               }}
-            />
+            >
+              <Lock size={20} color="#B4AFB9" />
+            </View>
             <View
               style={{
                 paddingBottom: 1,
@@ -494,18 +459,17 @@ export default () => {
               paddingVertical: 14,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/cv5naym9_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
+                backgroundColor: "#F5F1EB",
                 borderRadius: 16,
-                width: 44,
-                height: 44,
-                marginHorizontal: 18,
+                padding: 12,
+                marginRight: 18,
+                marginLeft: 18,
               }}
-            />
+            >
+              <Lock size={20} color="#B4AFB9" />
+            </View>
             <View
               style={{
                 paddingBottom: 1,

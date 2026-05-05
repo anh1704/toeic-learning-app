@@ -2,6 +2,14 @@ import React from "react";
 import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
+import {
+  ArrowLeft,
+  Bookmark,
+  Share2,
+  Target,
+  TrendingUp,
+  Trophy,
+} from "lucide-react-native";
 export default () => {
   const navigation = useNavigation();
   return (
@@ -34,21 +42,17 @@ export default () => {
             }}
           >
             <TouchableOpacity
-              onPress={() => {
-                navigation.goBack();
+              onPress={() => navigation.goBack()}
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: 16,
+                backgroundColor: "#FFFFFF",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/cb9n90z2_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 38,
-                  height: 38,
-                  marginRight: 12,
-                }}
-              />
+              <ArrowLeft size={20} color="#2C2636" />
             </TouchableOpacity>
             <View>
               <Text
@@ -56,22 +60,17 @@ export default () => {
                   color: "#2C2636",
                   fontSize: 20,
                   fontWeight: "bold",
+                  marginLeft: 10,
                 }}
               >
                 {"Notification Detail"}
               </Text>
             </View>
           </View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/prshyvqs_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              width: 79,
-              height: 35,
-            }}
-          />
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Bookmark size={20} color="#2C2636" style={{ marginRight: 12 }} />
+            <Share2 size={20} color="#2C2636" />
+          </View>
         </View>
         <View
           style={{
@@ -79,19 +78,10 @@ export default () => {
             backgroundColor: "#D4A853",
             paddingVertical: 19,
             marginBottom: 20,
+            borderRadius: 16,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/4p9cdt0p_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              width: 79,
-              height: 79,
-              marginBottom: 3,
-            }}
-          />
+          <Trophy size={32} color="#FFFFFF" style={{ marginBottom: 8 }} />
           <Text
             style={{
               color: "#FFFFFF",
@@ -162,18 +152,7 @@ export default () => {
               marginRight: 20,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/jnarersa_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 19,
-                height: 19,
-                marginBottom: 4,
-              }}
-            />
+            <Trophy size={19} color="#D4A853" style={{ marginBottom: 4 }} />
             <View
               style={{
                 marginBottom: 1,
@@ -211,18 +190,7 @@ export default () => {
               marginRight: 20,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/lj8uci07_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 19,
-                height: 19,
-                marginBottom: 4,
-              }}
-            />
+            <Target size={19} color="#A47551" style={{ marginBottom: 4 }} />
             <View
               style={{
                 marginBottom: 1,
@@ -259,18 +227,7 @@ export default () => {
               paddingVertical: 13,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/lqr2jefk_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 19,
-                height: 19,
-                marginBottom: 4,
-              }}
-            />
+            <TrendingUp size={19} color="#5B9E91" style={{ marginBottom: 4 }} />
             <View
               style={{
                 marginBottom: 1,

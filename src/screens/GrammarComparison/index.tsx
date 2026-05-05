@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Brain, ChevronRight } from "lucide-react-native";
 import React from "react";
 import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -32,7 +32,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -49,6 +50,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
+              marginLeft: 10,
             }}
           >
             {"Grammar Comparison"}
@@ -74,17 +76,7 @@ export default () => {
               marginLeft: 18,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/odrl040p_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 20,
-                height: 20,
-                marginRight: 8,
-              }}
-            />
+            <Brain size={20} color="#FFFFFF" style={{ marginRight: 8 }} />
             <Text
               style={{
                 color: "#FFFFFF",
@@ -132,18 +124,19 @@ export default () => {
               marginBottom: 15,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/mejkelaa_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 44,
                 height: 44,
+                borderRadius: 18,
+                backgroundColor: "#A47551",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 18,
               }}
-            />
+            >
+              <Brain size={24} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 paddingRight: 29,
@@ -190,17 +183,6 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/hlbd2jf9_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 20,
-                height: 20,
-              }}
-            />
           </View>
           <View
             style={{
@@ -214,18 +196,19 @@ export default () => {
               marginBottom: 15,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/tcc13jdp_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 44,
                 height: 44,
+                borderRadius: 18,
+                backgroundColor: "#8B6BAE",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 18,
               }}
-            />
+            >
+              <Brain size={24} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -272,17 +255,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/gtioukfo_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 20,
-                height: 20,
-              }}
-            />
+            <ChevronRight size={20} color="#6E6880" />
           </View>
           <View
             style={{
@@ -296,18 +269,19 @@ export default () => {
               marginBottom: 15,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/yteircj8_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 44,
                 height: 44,
+                borderRadius: 18,
+                backgroundColor: "#E07B54",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 18,
               }}
-            />
+            >
+              <Brain size={24} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -354,17 +328,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/0v8kdxc9_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 20,
-                height: 20,
-              }}
-            />
+            <ChevronRight size={20} color="#6E6880" />
           </View>
           <View
             style={{
@@ -378,18 +342,19 @@ export default () => {
               marginBottom: 15,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/36q8jrdu_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 44,
                 height: 44,
+                borderRadius: 18,
+                backgroundColor: "#5B9E91",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 18,
               }}
-            />
+            >
+              <Brain size={24} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -436,17 +401,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/pklw1x9g_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 20,
-                height: 20,
-              }}
-            />
+            <ChevronRight size={20} color="#6E6880" />
           </View>
           <View
             style={{
@@ -459,18 +414,19 @@ export default () => {
               padding: 18,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/005cv6dw_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 44,
                 height: 44,
+                borderRadius: 18,
+                backgroundColor: "#D4A853",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 18,
               }}
-            />
+            >
+              <Brain size={24} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -517,17 +473,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/x8cykvwf_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 20,
-                height: 20,
-              }}
-            />
+            <ChevronRight size={20} color="#6E6880" />
           </View>
         </View>
       </ScrollView>
