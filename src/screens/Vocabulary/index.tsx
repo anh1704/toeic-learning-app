@@ -1,52 +1,23 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { ArrowLeft, BookOpen } from "lucide-react-native";
+import { ArrowLeft, BookOpen, LayoutList, CircleHelp, Gamepad2, Sunrise, Mic, RefreshCw, Brain } from "lucide-react-native";
 
 import {
   getVocabularyBankStats,
   type VocabularyBankStats,
 } from "../../lib/vocabularyBankService";
 
-const TOPIC_META: Record<string, { iconUri: string; barColor: string }> = {
-  Finance: {
-    iconUri:
-      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/917zj2j0_expires_30_days.png",
-    barColor: "#8B6BAE",
-  },
-  Business: {
-    iconUri:
-      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/fs1o3g26_expires_30_days.png",
-    barColor: "#A47551",
-  },
-  Marketing: {
-    iconUri:
-      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/arco7lg9_expires_30_days.png",
-    barColor: "#E07B54",
-  },
-  HR: {
-    iconUri:
-      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/ufedizdy_expires_30_days.png",
-    barColor: "#5B9E91",
-  },
-  Technology: {
-    iconUri:
-      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/2e1llk5g_expires_30_days.png",
-    barColor: "#D9A441",
-  },
-  Travel: {
-    iconUri:
-      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/mo17i1oz_expires_30_days.png",
-    barColor: "#A47551",
-  },
+const TOPIC_META: Record<string, { barColor: string }> = {
+  Finance:    { barColor: "#8B6BAE" },
+  Business:   { barColor: "#A47551" },
+  Marketing:  { barColor: "#E07B54" },
+  HR:         { barColor: "#5B9E91" },
+  Technology: { barColor: "#D9A441" },
+  Travel:     { barColor: "#A47551" },
 };
-
-const DEFAULT_TOPIC_META = {
-  iconUri:
-    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/fs1o3g26_expires_30_days.png",
-} as const;
 
 const TOPIC_COLOR_PALETTE = ["#8B6BAE", "#E07B54", "#5B9E91"] as const;
 
@@ -200,17 +171,7 @@ export default () => {
                 marginHorizontal: 24,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/ulk157as_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 8,
-                }}
-              />
+              <Brain size={19} color="#FFFFFF" style={{ marginRight: 8 }} />
               <View>
                 <Text
                   style={{
@@ -355,18 +316,17 @@ export default () => {
               }}
               onPress={() => navigation.navigate("VocabularyFlashcards")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/nf2va5z5_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
+                  width: 32,
+                  height: 32,
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <LayoutList size={20} color="#5B9E91" />
+              </View>
               <View
                 style={{
                   marginHorizontal: 24,
@@ -396,18 +356,17 @@ export default () => {
               }}
               onPress={() => navigation.navigate("VocabularyQuiz")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/v9xwul2e_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
+                  width: 32,
+                  height: 32,
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <CircleHelp size={20} color="#5B9E91" />
+              </View>
               <View>
                 <Text
                   style={{
@@ -431,18 +390,17 @@ export default () => {
               }}
               onPress={() => navigation.navigate("VocabularyGame")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/29l9nph4_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
+                  width: 32,
+                  height: 32,
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <Gamepad2 size={20} color="#5B9E91" />
+              </View>
               <View
                 style={{
                   marginHorizontal: 23,
@@ -480,18 +438,17 @@ export default () => {
               }}
               onPress={() => navigation.navigate("VocabularyWordOfDay")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/w5r772x1_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
-                  width: 20,
-                  height: 20,
+                  width: 32,
+                  height: 32,
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 7,
                 }}
-              />
+              >
+                <Sunrise size={20} color="#5B9E91" />
+              </View>
               <View
                 style={{
                   marginHorizontal: 24,
@@ -521,18 +478,17 @@ export default () => {
               }}
               onPress={() => navigation.navigate("VocabularyPronunciation")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/oeyh3j9v_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
+                  width: 32,
+                  height: 32,
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <Mic size={20} color="#5B9E91" />
+              </View>
               <View>
                 <Text
                   style={{
@@ -556,18 +512,17 @@ export default () => {
               }}
               onPress={() => navigation.navigate("VocabularySpacedRepetition")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/5m1p5vhi_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
-                  width: 20,
-                  height: 20,
+                  width: 32,
+                  height: 32,
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 7,
                 }}
-              />
+              >
+                <RefreshCw size={20} color="#5B9E91" />
+              </View>
               <View
                 style={{
                   alignItems: "center",
@@ -638,13 +593,9 @@ export default () => {
               ordered.push(...rest);
 
               return ordered.map((topicName) => {
-                const baseMeta = TOPIC_META[topicName] ?? DEFAULT_TOPIC_META;
-                const meta = {
-                  iconUri: baseMeta.iconUri,
-                  barColor:
-                    TOPIC_META[topicName]?.barColor ??
-                    stableColorForTopic(topicName),
-                };
+                const barColor =
+                  TOPIC_META[topicName]?.barColor ??
+                  stableColorForTopic(topicName);
                 const { total, mastered } = getTopicCounts(topicName);
                 const pct = getProgressPct(mastered, total);
 
@@ -675,7 +626,7 @@ export default () => {
                           width: 39,
                           height: 39,
                           borderRadius: 16,
-                          backgroundColor: meta.barColor,
+                              backgroundColor: barColor,
                           alignItems: "center",
                           justifyContent: "center",
                           marginRight: 12,
@@ -733,7 +684,7 @@ export default () => {
                             style={{
                               width: `${pct * 100}%`,
                               height: 5,
-                              backgroundColor: meta.barColor,
+                                  backgroundColor: barColor,
                               borderRadius: 16,
                             }}
                           />

@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Sparkles } from "lucide-react-native";
 import React, { useCallback, useMemo, useState } from "react";
 import {
   ActivityIndicator,
@@ -152,7 +152,7 @@ export default () => {
               backgroundColor: "#FFFFFF",
               alignItems: "center",
               justifyContent: "center",
-              marginRight: 12,
+              marginRight: 10,
             }}
           >
             <ArrowLeft size={20} color="#2C2636" />
@@ -186,18 +186,7 @@ export default () => {
               marginBottom: 21,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/s3ovia41_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 31,
-                height: 31,
-                marginBottom: 11,
-              }}
-            />
+           <Sparkles size={30} color="#D4A853" />
             {isLoading && !currentWord ? (
               <View
                 style={{

@@ -57,6 +57,7 @@ export default () => {
         flex: 1,
         backgroundColor: "#FFFFFF",
       }}
+      edges={["top", "left", "right"]}
     >
       <ScrollView
         style={{

@@ -1,4 +1,4 @@
-import { ArrowLeft, RefreshCw } from "lucide-react-native";
+import { ArrowLeft, Clock, RefreshCw } from "lucide-react-native";
 import React, { useCallback, useState } from "react";
 import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -103,7 +103,7 @@ export default () => {
               backgroundColor: "#FFFFFF",
               alignItems: "center",
               justifyContent: "center",
-              marginRight: 12,
+              marginRight: 10,
             }}
           >
             <ArrowLeft size={20} color="#2C2636" />
@@ -303,18 +303,7 @@ export default () => {
                 marginBottom: 13,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/2za0mw2n_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Clock size={20} style={{ marginRight: 10 }} color="#E07B54" />
               <View
                 style={{
                   flex: 1,
@@ -363,18 +352,7 @@ export default () => {
                 marginBottom: 12,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/4yvo6id4_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Clock size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -403,18 +381,7 @@ export default () => {
                 marginBottom: 13,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/19dlwqhb_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Clock size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -442,18 +409,7 @@ export default () => {
                 paddingHorizontal: 12,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/3u2w3x83_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Clock size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,

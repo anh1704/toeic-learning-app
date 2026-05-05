@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Trophy, Timer, Star, Clock } from "lucide-react-native";
 import React, {
   useCallback,
   useEffect,
@@ -10,7 +10,6 @@ import {
   Alert,
   View,
   ScrollView,
-  Image,
   Text,
   TouchableOpacity,
 } from "react-native";
@@ -176,7 +175,7 @@ export default () => {
               backgroundColor: "#FFFFFF",
               alignItems: "center",
               justifyContent: "center",
-              marginRight: 12,
+              marginRight: 10,
             }}
           >
             <ArrowLeft size={20} color="#2C2636" />
@@ -211,17 +210,16 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/h5u1klla_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 8,
+                  width: 30,
+                  height: 30,
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
-              />
+              >
+                <Star size={20} color="#D4A853" />
+              </View>
               <View>
                 <Text
                   style={{
@@ -239,17 +237,16 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/ltzllog6_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 8,
+                  width: 30,
+                  height: 30,
+                  alignItems: "center",
+                  justifyContent: "center"
                 }}
-              />
+              >
+                <Clock size={20} color="#E07B54" />
+              </View>
               <View>
                 <Text
                   style={{

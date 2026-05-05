@@ -1,6 +1,6 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Lightbulb, Volume2, Mic, Trophy, RotateCcw, ArrowRight, AlertCircle } from "lucide-react-native";
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
@@ -40,7 +40,7 @@ export default () => {
               backgroundColor: "#FFFFFF",
               alignItems: "center",
               justifyContent: "center",
-              marginRight: 12,
+              marginRight: 10,
             }}
           >
             <ArrowLeft size={20} color="#2C2636" />
@@ -279,19 +279,10 @@ export default () => {
                 padding: 13,
                 marginBottom: 17,
                 marginRight: 14,
+                width: "100%",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/t7qaz34w_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                  marginRight: 8,
-                }}
-              />
+              <AlertCircle size={15} color="#D4A853" style={{ marginRight: 8 }} />
               <View
                 style={{
                   flex: 1,
@@ -321,18 +312,7 @@ export default () => {
                 marginRight: 14,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/ujgo2sh5_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 15,
-                  height: 15,
-                  marginRight: 8,
-                }}
-              />
+              <Volume2 size={15} color="#A47551" style={{ marginRight: 8 }} />
               <View>
                 <Text
                   style={{
@@ -371,18 +351,21 @@ export default () => {
                 {"Tap the mic to practice"}
               </Text>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/8ab76j99_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 79,
                 height: 79,
+                borderRadius: 40,
+                borderColor: "#A47551",
+                borderWidth: 2,
+                backgroundColor: "#A475511A",
+                alignItems: "center",
+                justifyContent: "center",
                 marginBottom: 41,
               }}
-            />
+            >
+              <Mic size={35} color="#A47551" />
+            </View>
           </View>
           <View
             style={{
@@ -399,7 +382,7 @@ export default () => {
                 borderRadius: 16,
                 borderWidth: 1,
                 padding: 13,
-                marginRight: 25,
+                marginRight: 20,
               }}
             >
               <View
@@ -409,17 +392,7 @@ export default () => {
                   marginBottom: 4,
                 }}
               >
-                <Image
-                  source={{
-                    uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/bw0uzp20_expires_30_days.png",
-                  }}
-                  resizeMode={"stretch"}
-                  style={{
-                    width: 15,
-                    height: 15,
-                    marginRight: 8,
-                  }}
-                />
+                <Trophy size={15} color="#A47551" style={{ marginRight: 4 }} />
                 <View>
                   <Text
                     style={{
@@ -459,17 +432,7 @@ export default () => {
                   marginBottom: 4,
                 }}
               >
-                <Image
-                  source={{
-                    uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/v3ywp3nd_expires_30_days.png",
-                  }}
-                  resizeMode={"stretch"}
-                  style={{
-                    width: 15,
-                    height: 15,
-                    marginRight: 8,
-                  }}
-                />
+                <RotateCcw size={15} color="#A47551" style={{ marginRight: 4 }} />
                 <View>
                   <Text
                     style={{
@@ -515,17 +478,7 @@ export default () => {
             >
               {"Next Word "}
             </Text>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/6bkuz865_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <ArrowRight size={15} color="#FFFFFF" />
           </TouchableOpacity>
         </View>
       </ScrollView>
