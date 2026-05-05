@@ -1,10 +1,29 @@
-import { ArrowLeft } from "lucide-react-native";
+import {
+  ArrowLeft,
+  Users,
+  MessageCircle,
+  Trophy,
+  Heart,
+  MessageSquare,
+  Send,
+} from "lucide-react-native";
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import {
+  View,
+  ScrollView,
+  Image,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import { getHotTopics, getCommunityMemberCount, ForumPost } from "../../lib/communityService";
+import {
+  getHotTopics,
+  getCommunityMemberCount,
+  ForumPost,
+} from "../../lib/communityService";
 
 export default () => {
   const navigation = useNavigation<any>();
@@ -70,7 +89,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -87,7 +107,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
-              marginLeft: 10
+              marginLeft: 10,
             }}
           >
             {"Community"}
@@ -104,17 +124,10 @@ export default () => {
             marginLeft: 19,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/r9cq2nzm_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              width: 23,
-              height: 23,
-              marginBottom: 7,
-              marginLeft: 27,
-            }}
+          <Users
+            size={23}
+            color="#FFFFFF"
+            style={{ marginBottom: 7, marginLeft: 27 }}
           />
           <Text
             style={{
@@ -164,17 +177,10 @@ export default () => {
               }}
               onPress={() => navigation.navigate("CommunityForum")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/3nat44im_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginLeft: 16,
-                  marginRight: 12,
-                }}
+              <MessageCircle
+                size={19}
+                color="#A47551"
+                style={{ marginLeft: 16, marginRight: 12 }}
               />
               <View>
                 <Text
@@ -208,17 +214,10 @@ export default () => {
               }}
               onPress={() => navigation.navigate("CommunityGroups")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/pdneam9w_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginLeft: 16,
-                  marginRight: 12,
-                }}
+              <Users
+                size={19}
+                color="#A47551"
+                style={{ marginLeft: 16, marginRight: 12 }}
               />
               <View>
                 <Text
@@ -262,17 +261,10 @@ export default () => {
               }}
               onPress={() => navigation.navigate("CommunityGroups")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/sm80xcja_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginLeft: 16,
-                  marginRight: 12,
-                }}
+              <Send
+                size={19}
+                color="#A47551"
+                style={{ marginLeft: 16, marginRight: 12 }}
               />
               <View>
                 <Text
@@ -306,17 +298,10 @@ export default () => {
               }}
               onPress={() => navigation.navigate("CommunityRanking")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/e0jqxtv2_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginLeft: 16,
-                  marginRight: 12,
-                }}
+              <Trophy
+                size={19}
+                color="#A47551"
+                style={{ marginLeft: 16, marginRight: 12 }}
               />
               <View>
                 <Text
@@ -354,13 +339,19 @@ export default () => {
             </Text>
           </View>
           {loading ? (
-            <ActivityIndicator size="large" color="#A47551" style={{ marginTop: 20 }} />
+            <ActivityIndicator
+              size="large"
+              color="#A47551"
+              style={{ marginTop: 20 }}
+            />
           ) : (
             <View>
               {hotTopics.map((topic, index) => (
                 <TouchableOpacity
                   key={topic.id}
-                  onPress={() => navigation.navigate("CommunityPost", { postId: topic.id })}
+                  onPress={() =>
+                    navigation.navigate("CommunityPost", { postId: topic.id })
+                  }
                 >
                   <View
                     style={{
@@ -422,16 +413,10 @@ export default () => {
                           marginRight: 13,
                         }}
                       >
-                        <Image
-                          source={{
-                            uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/qzltlw8j_expires_30_days.png",
-                          }}
-                          resizeMode={"stretch"}
-                          style={{
-                            width: 9,
-                            height: 9,
-                            marginRight: 6,
-                          }}
+                        <MessageCircle
+                          size={11}
+                          color="#6E6880"
+                          style={{ marginRight: 6 }}
                         />
                         <Text
                           style={{
@@ -449,16 +434,10 @@ export default () => {
                           alignItems: "center",
                         }}
                       >
-                        <Image
-                          source={{
-                            uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/314518ss_expires_30_days.png",
-                          }}
-                          resizeMode={"stretch"}
-                          style={{
-                            width: 9,
-                            height: 8,
-                            marginRight: 4,
-                          }}
+                        <Heart
+                          size={11}
+                          color="#6E6880"
+                          style={{ marginRight: 4 }}
                         />
                         <Text
                           style={{

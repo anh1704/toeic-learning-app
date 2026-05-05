@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Search } from "lucide-react-native";
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -29,9 +29,10 @@ export default () => {
     if (textInput1.trim() === "") {
       setFilteredGroups(groups);
     } else {
-      const filtered = groups.filter((group) =>
-        group.name.toLowerCase().includes(textInput1.toLowerCase()) ||
-        group.description?.toLowerCase().includes(textInput1.toLowerCase())
+      const filtered = groups.filter(
+        (group) =>
+          group.name.toLowerCase().includes(textInput1.toLowerCase()) ||
+          group.description?.toLowerCase().includes(textInput1.toLowerCase()),
       );
       setFilteredGroups(filtered);
     }
@@ -80,7 +81,8 @@ export default () => {
               marginBottom: 17,
             }}
           >
-            <TouchableOpacity onPress={() => navigation.goBack()}
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
               style={{
                 width: 38,
                 height: 38,
@@ -97,7 +99,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
-                marginLeft: 10
+                marginLeft: 10,
               }}
             >
               {"Study Groups"}
@@ -114,17 +116,10 @@ export default () => {
               marginBottom: 22,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/rdjsr9kk_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 19,
-                height: 19,
-                marginLeft: 11,
-                marginRight: 9,
-              }}
+            <Search
+              size={16}
+              color="#6E6880"
+              style={{ marginLeft: 15, marginRight: 4 }}
             />
             <TextInput
               placeholder={"Search groups..."}
@@ -145,9 +140,20 @@ export default () => {
             }}
           >
             {loading ? (
-              <ActivityIndicator size="large" color="#A47551" style={{ marginTop: 40 }} />
+              <ActivityIndicator
+                size="large"
+                color="#A47551"
+                style={{ marginTop: 40 }}
+              />
             ) : filteredGroups.length === 0 ? (
-              <Text style={{ color: "#6E6880", fontSize: 14, textAlign: "center", marginTop: 40 }}>
+              <Text
+                style={{
+                  color: "#6E6880",
+                  fontSize: 14,
+                  textAlign: "center",
+                  marginTop: 40,
+                }}
+              >
                 {textInput1 ? "No groups found" : "No groups available"}
               </Text>
             ) : (
@@ -169,7 +175,11 @@ export default () => {
                     style={{
                       borderRadius: 16,
                     }}
-                    onPress={() => navigation.navigate("CommunityChat", { groupId: group.id })}
+                    onPress={() =>
+                      navigation.navigate("CommunityChat", {
+                        groupId: group.id,
+                      })
+                    }
                   >
                     <LinearGradient
                       start={{ x: 0, y: 0 }}
@@ -189,7 +199,8 @@ export default () => {
                           fontWeight: "bold",
                         }}
                       >
-                        {group.avatar_letter || group.name.charAt(0).toUpperCase()}
+                        {group.avatar_letter ||
+                          group.name.charAt(0).toUpperCase()}
                       </Text>
                     </LinearGradient>
                   </TouchableOpacity>

@@ -1,4 +1,12 @@
-import { ArrowLeft } from "lucide-react-native";
+import {
+  ArrowLeft,
+  Heart,
+  MessageCircle,
+  Send,
+  Share,
+  Share2,
+  ThumbsUp,
+} from "lucide-react-native";
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -94,7 +102,11 @@ export default () => {
   if (loading) {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-        <ActivityIndicator size="large" color="#A47551" style={{ marginTop: 100 }} />
+        <ActivityIndicator
+          size="large"
+          color="#A47551"
+          style={{ marginTop: 100 }}
+        />
       </SafeAreaView>
     );
   }
@@ -133,7 +145,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -150,7 +163,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
-              marginLeft: 10
+              marginLeft: 10,
             }}
           >
             {"Discussion"}
@@ -279,17 +292,7 @@ export default () => {
                 marginRight: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/u206cpmm_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                  marginRight: 2,
-                }}
-              />
+              <Heart size={13} color="#6E6880" style={{ marginRight: 4 }} />
               <Text
                 style={{
                   color: "#6E6880",
@@ -307,16 +310,10 @@ export default () => {
                 marginRight: 17,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/lytyqq1l_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                  marginRight: 4,
-                }}
+              <MessageCircle
+                size={13}
+                color="#6E6880"
+                style={{ marginRight: 6 }}
               />
               <Text
                 style={{
@@ -333,17 +330,7 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/axm91myf_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                  marginRight: 3,
-                }}
-              />
+              <Share2 size={13} color="#6E6880" style={{ marginRight: 6 }} />
               <Text
                 style={{
                   color: "#6E6880",
@@ -381,7 +368,14 @@ export default () => {
           }}
         >
           {replies.length === 0 ? (
-            <Text style={{ color: "#6E6880", fontSize: 14, textAlign: "center", marginVertical: 20 }}>
+            <Text
+              style={{
+                color: "#6E6880",
+                fontSize: 14,
+                textAlign: "center",
+                marginVertical: 20,
+              }}
+            >
               No replies yet. Be the first to reply!
             </Text>
           ) : (
@@ -469,16 +463,10 @@ export default () => {
                     marginLeft: 12,
                   }}
                 >
-                  <Image
-                    source={{
-                      uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/b97tkdzi_expires_30_days.png",
-                    }}
-                    resizeMode={"stretch"}
-                    style={{
-                      width: 11,
-                      height: 11,
-                      marginRight: 3,
-                    }}
+                  <ThumbsUp
+                    size={13}
+                    color="#6E6880"
+                    style={{ marginRight: 6 }}
                   />
                   <Text
                     style={{
@@ -527,17 +515,19 @@ export default () => {
             {submitting ? (
               <ActivityIndicator size="small" color="#A47551" />
             ) : (
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/6sbcgxre_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
                   width: 43,
                   height: 43,
+                  borderRadius: 12,
+                  backgroundColor: "#A47551",
+                  alignItems: "center",
+                  justifyContent: "center",
                   opacity: replyText.trim() ? 1 : 0.5,
                 }}
-              />
+              >
+                <Send size={20} color="#FFFFFF" />
+              </View>
             )}
           </TouchableOpacity>
         </View>

@@ -1,6 +1,13 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Heart, MessageCircle, Plus } from "lucide-react-native";
 import React, { useEffect, useState, useCallback } from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import {
+  View,
+  ScrollView,
+  Image,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { getForumPosts, ForumPost } from "../../lib/communityService";
@@ -8,13 +15,15 @@ import { getForumPosts, ForumPost } from "../../lib/communityService";
 export default () => {
   const navigation = useNavigation<any>();
   const [posts, setPosts] = useState<ForumPost[]>([]);
-  const [filter, setFilter] = useState<"latest" | "popular" | "unanswered">("latest");
+  const [filter, setFilter] = useState<"latest" | "popular" | "unanswered">(
+    "latest",
+  );
   const [loading, setLoading] = useState(true);
 
   useFocusEffect(
     useCallback(() => {
       loadPosts();
-    }, [filter])
+    }, [filter]),
   );
 
   const loadPosts = async () => {
@@ -77,7 +86,8 @@ export default () => {
               alignItems: "center",
             }}
           >
-            <TouchableOpacity onPress={() => navigation.goBack()}
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
               style={{
                 width: 38,
                 height: 38,
@@ -94,7 +104,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
-                marginLeft: 10
+                marginLeft: 10,
               }}
             >
               {"Forum"}
@@ -103,16 +113,19 @@ export default () => {
           <TouchableOpacity
             onPress={() => navigation.navigate("CommunityCreatePost")}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/7wlu5qzg_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                width: 35,
-                height: 35,
+                width: 45,
+                height: 45,
+                borderRadius: 12,
+                backgroundColor: "#A47551",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 9,
               }}
-            />
+            >
+              <Plus size={20} color="#FFFFFF" />
+            </View>
           </TouchableOpacity>
         </View>
         <View
@@ -198,16 +211,29 @@ export default () => {
           }}
         >
           {loading ? (
-            <ActivityIndicator size="large" color="#A47551" style={{ marginTop: 40 }} />
+            <ActivityIndicator
+              size="large"
+              color="#A47551"
+              style={{ marginTop: 40 }}
+            />
           ) : posts.length === 0 ? (
-            <Text style={{ color: "#6E6880", fontSize: 14, textAlign: "center", marginTop: 40 }}>
+            <Text
+              style={{
+                color: "#6E6880",
+                fontSize: 14,
+                textAlign: "center",
+                marginTop: 40,
+              }}
+            >
               No posts found
             </Text>
           ) : (
             posts.map((post, index) => (
               <TouchableOpacity
                 key={post.id}
-                onPress={() => navigation.navigate("CommunityPost", { postId: post.id })}
+                onPress={() =>
+                  navigation.navigate("CommunityPost", { postId: post.id })
+                }
               >
                 <View
                   style={{
@@ -345,16 +371,10 @@ export default () => {
                       marginLeft: 16,
                     }}
                   >
-                    <Image
-                      source={{
-                        uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/h4s0i89i_expires_30_days.png",
-                      }}
-                      resizeMode={"stretch"}
-                      style={{
-                        width: 11,
-                        height: 11,
-                        marginRight: 4,
-                      }}
+                    <MessageCircle
+                      size={11}
+                      color="#6E6880"
+                      style={{ marginRight: 6 }}
                     />
                     <Text
                       style={{
@@ -366,16 +386,10 @@ export default () => {
                     >
                       {post.like_count}
                     </Text>
-                    <Image
-                      source={{
-                        uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/nc2f5pne_expires_30_days.png",
-                      }}
-                      resizeMode={"stretch"}
-                      style={{
-                        width: 11,
-                        height: 11,
-                        marginRight: 4,
-                      }}
+                    <Heart
+                      size={11}
+                      color="#6E6880"
+                      style={{ marginRight: 4 }}
                     />
                     <Text
                       style={{

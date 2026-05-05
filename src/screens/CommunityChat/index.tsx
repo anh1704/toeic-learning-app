@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, User, Send, Plus } from "lucide-react-native";
 import React, { useState, useEffect, useRef } from "react";
 import {
   View,
@@ -57,7 +57,9 @@ export default () => {
   }, [groupId]);
 
   const getCurrentUser = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (user) {
       setCurrentUserId(user.id);
     }
@@ -65,7 +67,7 @@ export default () => {
 
   const loadMessages = async () => {
     if (!groupId) return;
-    
+
     try {
       setLoading(true);
       const data = await getGroupMessages(groupId, 50);
@@ -136,7 +138,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -153,7 +156,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
-              marginLeft: 10
+              marginLeft: 10,
             }}
           >
             {"Group Chat"}
@@ -457,17 +460,21 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/9tjzh671_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <View
             style={{
               width: 45,
               height: 45,
+              borderRadius: 12,
+              backgroundColor: "#FFFFFF",
+              borderColor: "#2C26361A",
+              borderWidth: 1,
+              alignItems: "center",
+              justifyContent: "center",
               marginRight: 9,
             }}
-          />
+          >
+            <Plus size={20} color="#6E6880" />
+          </View>
           <TextInput
             placeholder={"Type a message..."}
             value={messageText}
@@ -493,17 +500,19 @@ export default () => {
             {sending ? (
               <ActivityIndicator size="small" color="#A47551" />
             ) : (
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/qwziswcd_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
                   width: 43,
                   height: 45,
+                  borderRadius: 12,
+                  backgroundColor: "#A47551",
+                  alignItems: "center",
+                  justifyContent: "center",
                   opacity: messageText.trim() ? 1 : 0.5,
                 }}
-              />
+              >
+                <Send size={20} color="#FFFFFF" />
+              </View>
             )}
           </TouchableOpacity>
         </View>
@@ -511,4 +520,3 @@ export default () => {
     </SafeAreaView>
   );
 };
-          
