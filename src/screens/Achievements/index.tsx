@@ -1,5 +1,17 @@
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import {
+  ArrowLeft,
+  Trophy,
+  Award,
+  Swords,
+  Flame,
+  ShoppingBag,
+  Headphones,
+  BookOpen,
+  Goal,
+  Gift,
+} from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
@@ -14,6 +26,7 @@ export default () => {
         flex: 1,
         backgroundColor: "#FFFFFF",
       }}
+      edges={["top", "left", "right"]}
     >
       <ScrollView
         style={{
@@ -34,18 +47,17 @@ export default () => {
             onPress={() => {
               navigator.goBack();
             }}
+            style={{
+              width: 37,
+              height: 37,
+              borderRadius: 16,
+              backgroundColor: "#FFFFFF",
+              alignItems: "center",
+              justifyContent: "center",
+              marginRight: 12,
+            }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/zrefy57a_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 37,
-                height: 37,
-                marginRight: 12,
-              }}
-            />
+            <ArrowLeft size={20} color="#2C2636" />
           </TouchableOpacity>
           <View>
             <Text
@@ -86,17 +98,19 @@ export default () => {
             marginHorizontal: 22,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/0akvehon_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <View
             style={{
               width: 55,
               height: 55,
+              borderRadius: 28,
+              backgroundColor: "rgba(255,255,255,0.25)",
+              alignItems: "center",
+              justifyContent: "center",
               marginRight: 12,
             }}
-          />
+          >
+            <Trophy size={30} color="#FFFFFF" />  
+          </View>
           <View
             style={{
               flex: 1,
@@ -188,19 +202,7 @@ export default () => {
                   width: 170,
                 }}
               >
-                <Image
-                  source={{
-                    uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/wk6ptwnf_expires_30_days.png",
-                  }}
-                  resizeMode={"stretch"}
-                  style={{
-                    borderRadius: 16,
-                    width: 19,
-                    height: 19,
-                    marginBottom: 4,
-                    marginLeft: 17,
-                  }}
-                />
+                <Award size={19} color="#D4A853" style={{ marginBottom: 4, marginLeft: 17 }} />
                 <View
                   style={{
                     marginBottom: 6,
@@ -246,19 +248,7 @@ export default () => {
                   width: 170,
                 }}
               >
-                <Image
-                  source={{
-                    uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/7cswghod_expires_30_days.png",
-                  }}
-                  resizeMode={"stretch"}
-                  style={{
-                    borderRadius: 16,
-                    width: 19,
-                    height: 19,
-                    marginBottom: 4,
-                    marginLeft: 17,
-                  }}
-                />
+                <Goal size={19} color="#D4A853" style={{ marginBottom: 4, marginLeft: 17 }} />
                 <View
                   style={{
                     marginBottom: 6,
@@ -311,19 +301,7 @@ export default () => {
                   width: 170,
                 }}
               >
-                <Image
-                  source={{
-                    uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/h45ulfu6_expires_30_days.png",
-                  }}
-                  resizeMode={"stretch"}
-                  style={{
-                    borderRadius: 16,
-                    width: 19,
-                    height: 19,
-                    marginBottom: 4,
-                    marginLeft: 17,
-                  }}
-                />
+                <Flame size={19} color="#D4A853" style={{ marginBottom: 4, marginLeft: 17 }} />
                 <View
                   style={{
                     marginBottom: 6,
@@ -368,19 +346,7 @@ export default () => {
                   paddingRight: 17,
                 }}
               >
-                <Image
-                  source={{
-                    uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/eylydtsk_expires_30_days.png",
-                  }}
-                  resizeMode={"stretch"}
-                  style={{
-                    borderRadius: 16,
-                    width: 19,
-                    height: 19,
-                    marginBottom: 4,
-                    marginLeft: 17,
-                  }}
-                />
+                <Gift size={19} color="#D4A853" style={{ marginBottom: 4, marginLeft: 17 }} />
                 <View
                   style={{
                     marginBottom: 6,
@@ -414,7 +380,7 @@ export default () => {
         <View
           style={{
             alignSelf: "flex-start",
-            marginBottom: 22,
+            marginBottom: 10,
             marginLeft: 20,
           }}
         >
@@ -446,18 +412,19 @@ export default () => {
               marginBottom: 12,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/pe2re068_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 47,
                 height: 47,
+                borderRadius: 16,
+                backgroundColor: "#A47551",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Headphones size={26} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -513,18 +480,19 @@ export default () => {
               marginBottom: 13,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/gg9bmptc_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 47,
                 height: 47,
+                borderRadius: 16,
+                backgroundColor: "#E07B54",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Flame size={26} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -582,18 +550,19 @@ export default () => {
               paddingHorizontal: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/rqi8hgks_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 47,
                 height: 47,
+                borderRadius: 16,
+                backgroundColor: "#5B9E91",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <BookOpen size={26} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,

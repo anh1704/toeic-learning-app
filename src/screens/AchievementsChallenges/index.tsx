@@ -1,6 +1,6 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Swords, Zap, CircleCheckBig, Timer, Star, Languages, Headphones, Users, Sparkle, Sparkles, Clock, Goal } from "lucide-react-native";
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
@@ -12,6 +12,7 @@ export default () => {
         flex: 1,
         backgroundColor: "#FFFFFF",
       }}
+      edges={["top", "left", "right"]}
     >
       <ScrollView
         style={{
@@ -26,7 +27,7 @@ export default () => {
             alignSelf: "flex-start",
             flexDirection: "row",
             alignItems: "center",
-            marginBottom: 21,
+            marginBottom: 10,
             marginLeft: 20,
           }}
         >
@@ -48,6 +49,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10,
               }}
             >
               {"Challenges"}
@@ -74,17 +76,7 @@ export default () => {
               marginLeft: 19,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/g9n66y7w_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 19,
-                height: 19,
-                marginRight: 8,
-              }}
-            />
+            <Goal size={19} color="#FFFFFF" style={{ marginRight: 8 }} />
             <View>
               <Text
                 style={{
@@ -131,7 +123,7 @@ export default () => {
         <View
           style={{
             alignSelf: "flex-start",
-            marginBottom: 22,
+            marginBottom: 10,
             marginLeft: 21,
           }}
         >
@@ -169,17 +161,19 @@ export default () => {
                 marginHorizontal: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/f0ameqwb_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
                   width: 47,
                   height: 47,
+                  borderRadius: 16,
+                  backgroundColor: "#E07B54",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginRight: 12,
                 }}
-              />
+              >
+                <Zap size={26} color="#FFFFFF" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -230,17 +224,7 @@ export default () => {
                     marginBottom: 4,
                   }}
                 >
-                  <Image
-                    source={{
-                      uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/2ce6lc44_expires_30_days.png",
-                    }}
-                    resizeMode={"stretch"}
-                    style={{
-                      width: 11,
-                      height: 11,
-                      marginRight: 4,
-                    }}
-                  />
+                  <Sparkles size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
                   <Text
                     style={{
                       color: "#D4A853",
@@ -298,17 +282,19 @@ export default () => {
                 marginHorizontal: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/3xg9ahda_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
                   width: 47,
                   height: 47,
+                  borderRadius: 16,
+                  backgroundColor: "#A47551",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginRight: 12,
                 }}
-              />
+              >
+                <CircleCheckBig size={26} color="#FFFFFF" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -359,17 +345,7 @@ export default () => {
                     marginBottom: 4,
                   }}
                 >
-                  <Image
-                    source={{
-                      uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/43jvbmh0_expires_30_days.png",
-                    }}
-                    resizeMode={"stretch"}
-                    style={{
-                      width: 11,
-                      height: 11,
-                      marginRight: 4,
-                    }}
-                  />
+                  <Sparkles size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
                   <Text
                     style={{
                       color: "#D4A853",
@@ -383,6 +359,7 @@ export default () => {
                   style={{
                     color: "#E07B54",
                     fontSize: 10,
+                    marginLeft: 5
                   }}
                 >
                   {"Expert"}
@@ -425,17 +402,19 @@ export default () => {
                 marginHorizontal: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/266nma9t_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
                   width: 47,
                   height: 47,
+                  borderRadius: 16,
+                  backgroundColor: "#8B6BAE",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginRight: 12,
                 }}
-              />
+              >
+                <Clock size={26} color="#FFFFFF" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -480,17 +459,7 @@ export default () => {
                     marginBottom: 4,
                   }}
                 >
-                  <Image
-                    source={{
-                      uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/musga7oy_expires_30_days.png",
-                    }}
-                    resizeMode={"stretch"}
-                    style={{
-                      width: 11,
-                      height: 11,
-                      marginRight: 4,
-                    }}
-                  />
+                  <Sparkles size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
                   <Text
                     style={{
                       color: "#D4A853",
@@ -534,7 +503,7 @@ export default () => {
         <View
           style={{
             alignSelf: "flex-start",
-            marginBottom: 22,
+            marginBottom: 10,
             marginLeft: 21,
           }}
         >
@@ -550,7 +519,7 @@ export default () => {
         </View>
         <View
           style={{
-            marginBottom: 46,
+            marginBottom: 20,
             marginLeft: 20,
           }}
         >
@@ -566,18 +535,19 @@ export default () => {
               marginBottom: 12,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/6cr9hxbb_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#5B9E91",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Languages size={22} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -647,18 +617,19 @@ export default () => {
               marginBottom: 13,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/4t0ttokv_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#D4A853",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Headphones size={22} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -728,18 +699,19 @@ export default () => {
               paddingHorizontal: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/gcrw8h9d_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 39,
                 height: 39,
+                borderRadius: 16,
+                backgroundColor: "#E07B54",
+                alignItems: "center",
+                justifyContent: "center",
                 marginRight: 12,
               }}
-            />
+            >
+              <Users size={22} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,

@@ -1,5 +1,16 @@
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import {
+  ArrowLeft,
+  Headphones,
+  Star,
+  BookOpen,
+  Flame,
+  Trophy,
+  BookMarked,
+  Lock,
+  Zap,
+} from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 export default () => {
@@ -10,6 +21,7 @@ export default () => {
         flex: 1,
         backgroundColor: "#FFFFFF",
       }}
+      edges={["top", "left", "right"]}
     >
       <ScrollView
         style={{
@@ -30,18 +42,17 @@ export default () => {
             onPress={() => {
               navigator.goBack();
             }}
+            style={{
+              width: 37,
+              height: 37,
+              borderRadius: 16,
+              backgroundColor: "#FFFFFF",
+              alignItems: "center",
+              justifyContent: "center",
+              marginRight: 12,
+            }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/edywtg5y_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 37,
-                height: 37,
-                marginRight: 12,
-              }}
-            />
+            <ArrowLeft size={20} color="#2C2636" />
           </TouchableOpacity>
 
           <View>
@@ -131,18 +142,19 @@ export default () => {
                 marginRight: 13,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/ahs8bg3q_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 47,
                   height: 47,
+                  borderRadius: 16,
+                  backgroundColor: "#D4A853",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <Star size={26} color="#FFFFFF" fill="#D4A853" />
+              </View>
               <View>
                 <Text
                   style={{
@@ -166,18 +178,19 @@ export default () => {
                 marginRight: 13,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/o23oxjf2_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 47,
                   height: 47,
+                  borderRadius: 16,
+                  backgroundColor: "#A47551",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <Headphones size={26} color="#FFFFFF" />
+              </View>
               <View>
                 <Text
                   style={{
@@ -200,18 +213,19 @@ export default () => {
                 paddingVertical: 13,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/05pwnc3j_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 47,
                   height: 47,
+                  borderRadius: 16,
+                  backgroundColor: "#5B9E91",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <BookOpen size={26} color="#FFFFFF" />
+              </View>
               <View>
                 <Text
                   style={{
@@ -243,18 +257,19 @@ export default () => {
                 marginRight: 13,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/6wrji536_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 47,
                   height: 47,
+                  borderRadius: 16,
+                  backgroundColor: "#E07B54",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <Flame size={26} color="#FFFFFF" />
+              </View>
               <View>
                 <Text
                   style={{
@@ -278,18 +293,19 @@ export default () => {
                 marginRight: 13,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/x8otppw2_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 47,
                   height: 47,
+                  borderRadius: 16,
+                  backgroundColor: "#8B6BAE",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <Zap size={26} color="#FFFFFF" />
+              </View>
               <View>
                 <Text
                   style={{
@@ -312,18 +328,19 @@ export default () => {
                 paddingVertical: 13,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/x9z2krlr_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 47,
                   height: 47,
+                  borderRadius: 16,
+                  backgroundColor: "#A47551",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginBottom: 8,
                 }}
-              />
+              >
+                <BookMarked size={26} color="#FFFFFF" />
+              </View>
               <View>
                 <Text
                   style={{
@@ -336,6 +353,7 @@ export default () => {
               </View>
             </View>
           </View>
+          {/* Row 3 - Locked */}
           <View
             style={{
               flexDirection: "row",
@@ -343,233 +361,96 @@ export default () => {
               marginBottom: 12,
             }}
           >
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                paddingVertical: 13,
-                marginRight: 13,
-              }}
-            >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/rn0c5k84_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 47,
-                  height: 47,
-                  marginBottom: 8,
-                }}
-              />
+            {[
+              { label: "Grammar Guru" },
+              { label: "Perfect Score" },
+              { label: "Endurance" },
+            ].map((badge, i) => (
               <View
+                key={badge.label}
                 style={{
-                  marginHorizontal: 21,
+                  flex: 1,
+                  alignItems: "center",
+                  backgroundColor: "#FAF6F1",
+                  borderColor: "#2C26361A",
+                  borderRadius: 16,
+                  borderWidth: 1,
+                  paddingVertical: 13,
+                  marginRight: i < 2 ? 13 : 0,
                 }}
               >
+                <View
+                  style={{
+                    width: 47,
+                    height: 47,
+                    borderRadius: 16,
+                    backgroundColor: "#F0EBE4",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 8,
+                  }}
+                >
+                  <Lock size={24} color="#A09AB0" />
+                </View>
                 <Text
                   style={{
-                    color: "#2C2636",
+                    color: "#A09AB0",
                     fontSize: 10,
                   }}
                 >
-                  {"Grammar Guru"}
+                  {badge.label}
                 </Text>
               </View>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                paddingVertical: 13,
-                marginRight: 13,
-              }}
-            >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/xln6fsit_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 47,
-                  height: 47,
-                  marginBottom: 8,
-                }}
-              />
-              <View
-                style={{
-                  marginHorizontal: 23,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 10,
-                  }}
-                >
-                  {"Perfect Score"}
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                paddingVertical: 13,
-              }}
-            >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/gnmsouh3_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 47,
-                  height: 47,
-                  marginBottom: 8,
-                }}
-              />
-              <View>
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 10,
-                  }}
-                >
-                  {"Endurance"}
-                </Text>
-              </View>
-            </View>
+            ))}
           </View>
+          {/* Row 4 - Locked */}
           <View
             style={{
               flexDirection: "row",
               alignItems: "center",
             }}
           >
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                paddingVertical: 13,
-                marginRight: 13,
-              }}
-            >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/n7yef8js_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 47,
-                  height: 47,
-                  marginBottom: 8,
-                }}
-              />
-              <View>
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 10,
-                  }}
-                >
-                  {"Top 10"}
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                paddingVertical: 13,
-                marginRight: 13,
-              }}
-            >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/f8fvbu6r_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 47,
-                  height: 47,
-                  marginBottom: 8,
-                }}
-              />
+            {[
+              { label: "Top 10" },
+              { label: "Vocabulary King" },
+              { label: "Social Star" },
+            ].map((badge, i) => (
               <View
+                key={badge.label}
                 style={{
-                  marginHorizontal: 16,
+                  flex: 1,
+                  alignItems: "center",
+                  backgroundColor: "#FAF6F1",
+                  borderColor: "#2C26361A",
+                  borderRadius: 16,
+                  borderWidth: 1,
+                  paddingVertical: 13,
+                  marginRight: i < 2 ? 13 : 0,
                 }}
               >
+                <View
+                  style={{
+                    width: 47,
+                    height: 47,
+                    borderRadius: 16,
+                    backgroundColor: "#F0EBE4",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 8,
+                  }}
+                >
+                  <Lock size={24} color="#A09AB0" />
+                </View>
                 <Text
                   style={{
-                    color: "#2C2636",
+                    color: "#A09AB0",
                     fontSize: 10,
                   }}
                 >
-                  {"Vocabulary King"}
+                  {badge.label}
                 </Text>
               </View>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                backgroundColor: "#FFFFFF",
-                borderColor: "#2C26361A",
-                borderRadius: 16,
-                borderWidth: 1,
-                paddingVertical: 13,
-              }}
-            >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/aydszggi_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 47,
-                  height: 47,
-                  marginBottom: 8,
-                }}
-              />
-              <View>
-                <Text
-                  style={{
-                    color: "#2C2636",
-                    fontSize: 10,
-                  }}
-                >
-                  {"Social Star"}
-                </Text>
-              </View>
-            </View>
+            ))}
           </View>
         </View>
       </ScrollView>
