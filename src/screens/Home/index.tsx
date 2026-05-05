@@ -4,9 +4,20 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  Image,
-  ImageBackground,
 } from "react-native";
+import {
+  Flame,
+  Trophy,
+  Bell,
+  CalendarDays,
+  BookOpen,
+  Users,
+  Languages,
+  ChevronRight,
+  Star,
+  Lightbulb,
+  Zap,
+} from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
@@ -132,18 +143,7 @@ export default () => {
                 marginRight: 8,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/52zk4aq3_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 16,
-                  height: 16,
-                  marginRight: 4,
-                }}
-              />
+              <Flame size={16} color="#E07B54" style={{ marginRight: 4 }} />
               <Text
                 style={{
                   color: "#E07B54",
@@ -155,32 +155,30 @@ export default () => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate("Achievements")}
+              style={{
+                width: 41,
+                height: 41,
+                borderRadius: 16,
+                backgroundColor: "#FFFFFF",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 6,
+              }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/4hwhdwin_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 41,
-                  height: 41,
-                  marginRight: 6,
-                }}
-              />
+              <Trophy size={22} color="#2C2636" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate("Notifications")}
+              style={{
+                width: 41,
+                height: 41,
+                borderRadius: 16,
+                backgroundColor: "#FFFFFF",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/vnt14spf_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 41,
-                  height: 41,
-                }}
-              />
+              <Bell size={22} color="#2C2636" />
             </TouchableOpacity>
           </View>
         </View>
@@ -249,26 +247,27 @@ export default () => {
               </Text>
             </View>
           </View>
-          <ImageBackground
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/ea59s3sq_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <View
             style={{
-              paddingVertical: 30,
-              paddingHorizontal: 27,
-              marginLeft: 83,
+              width: 80,
+              height: 80,
+              borderRadius: 40,
+              backgroundColor: "rgba(255,255,255,0.2)",
+              alignItems: "center",
+              justifyContent: "center",
+              marginLeft: 16,
             }}
           >
             <Text
               style={{
                 color: "#FFFFFF",
-                fontSize: 14,
+                fontSize: 20,
+                fontWeight: "bold",
               }}
             >
               {`${getProgressPercent()}%`}
             </Text>
-          </ImageBackground>
+          </View>
         </LinearGradient>
         <View
           style={{
@@ -291,18 +290,19 @@ export default () => {
             }}
             onPress={() => navigation.navigate("StudyPlan")}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/tvuwj72z_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 40,
                 height: 40,
+                borderRadius: 16,
+                backgroundColor: "#A47551",
+                alignItems: "center",
+                justifyContent: "center",
                 marginBottom: 8,
               }}
-            />
+            >
+              <CalendarDays size={22} color="#FFFFFF" />
+            </View>
             <Text
               style={{
                 color: "#6E6880",
@@ -326,18 +326,19 @@ export default () => {
             }}
             onPress={() => navigation.navigate("ResourcesHome")}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/m4avneko_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 40,
                 height: 40,
+                borderRadius: 16,
+                backgroundColor: "#8B6BAE",
+                alignItems: "center",
+                justifyContent: "center",
                 marginBottom: 8,
               }}
-            />
+            >
+              <BookOpen size={22} color="#FFFFFF" />
+            </View>
             <Text
               style={{
                 color: "#6E6880",
@@ -361,18 +362,19 @@ export default () => {
             }}
             onPress={() => navigation.navigate("Community")}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/vmpa1aqo_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 40,
                 height: 40,
+                borderRadius: 16,
+                backgroundColor: "#E07B54",
+                alignItems: "center",
+                justifyContent: "center",
                 marginBottom: 8,
               }}
-            />
+            >
+              <Users size={22} color="#FFFFFF" />
+            </View>
             <Text
               style={{
                 color: "#6E6880",
@@ -395,18 +397,19 @@ export default () => {
             }}
             onPress={() => navigation.navigate("Vocabulary")}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/1i6o2ieg_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
-                borderRadius: 16,
                 width: 40,
                 height: 40,
+                borderRadius: 16,
+                backgroundColor: "#5B9E91",
+                alignItems: "center",
+                justifyContent: "center",
                 marginBottom: 8,
               }}
-            />
+            >
+              <Languages size={22} color="#FFFFFF" />
+            </View>
             <Text
               style={{
                 color: "#6E6880",
@@ -454,16 +457,7 @@ export default () => {
             >
               {"View all "}
             </Text>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/0j3svs0i_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 15,
-                height: 15,
-              }}
-            />
+            <ChevronRight size={15} color="#A47551" />
           </View>
         </View>
         <TouchableOpacity
@@ -501,17 +495,7 @@ export default () => {
                   flex: 1,
                 }}
               ></View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/bnyswe3h_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 11,
-                  height: 11,
-                  marginRight: 4,
-                }}
-              />
+              <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
               <Text
                 style={{
                   color: "#D4A853",
@@ -577,17 +561,7 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/cuoicev2_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 11,
-                  height: 11,
-                  marginRight: 4,
-                }}
-              />
+              <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
               <Text
                 style={{
                   color: "#D4A853",
@@ -649,17 +623,7 @@ export default () => {
                 flex: 1,
               }}
             ></View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/2qlt02t4_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 11,
-                height: 11,
-                marginRight: 4,
-              }}
-            />
+            <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
             <Text
               style={{
                 color: "#D4A853",
@@ -724,17 +688,7 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/dlfrs06i_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 11,
-                  height: 11,
-                  marginRight: 4,
-                }}
-              />
+              <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
               <Text
                 style={{
                   color: "#D4A853",
@@ -805,17 +759,7 @@ export default () => {
                     alignSelf: "stretch",
                   }}
                 ></View>
-                <Image
-                  source={{
-                    uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/lif08755_expires_30_days.png",
-                  }}
-                  resizeMode={"stretch"}
-                  style={{
-                    width: 11,
-                    height: 11,
-                    marginRight: 4,
-                  }}
-                />
+                <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
                 <Text
                   style={{
                     color: "#D4A853",
@@ -852,19 +796,20 @@ export default () => {
                 paddingVertical: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/quze5fd0_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
                   width: 39,
                   height: 39,
+                  borderRadius: 16,
+                  backgroundColor: "#C9B8E8",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginLeft: 15,
                   marginRight: 12,
                 }}
-              />
+              >
+                <Lightbulb size={22} color="#6B3FA0" />
+              </View>
               <View>
                 <Text
                   style={{
