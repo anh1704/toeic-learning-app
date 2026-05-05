@@ -1,8 +1,8 @@
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import { ArrowLeft} from "lucide-react-native";
+import { ArrowLeft, Gauge, Volume, Volume2 } from "lucide-react-native";
 export default () => {
   const navigation = useNavigation<any>();
   return (
@@ -70,17 +70,17 @@ export default () => {
               marginHorizontal: 29,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/xvhw5qe9_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <View
               style={{
                 width: 40,
                 height: 40,
+                alignItems: "center",
+                justifyContent: "center",
                 marginBottom: 8,
               }}
-            />
+            >
+              <Volume2 size={40} color="#A47551" />
+            </View>
             <Text
               style={{
                 color: "#000000",

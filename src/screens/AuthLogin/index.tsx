@@ -3,15 +3,19 @@ import {
   View,
   ScrollView,
   Text,
-  Image,
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
+  Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { signIn } from "../../lib/authService";
+import { BookOpen, Mail, Lock, Eye } from "lucide-react-native";
+import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+
 
 export default () => {
   const navigation = useNavigation<any>();
@@ -69,10 +73,11 @@ export default () => {
 
   return (
     <SafeAreaView
-      edges={["top", "left", "right"]}
+      edges={["left", "right"]}
       style={{
         flex: 1,
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#FAF6F1",
+        marginTop: 50,
       }}
     >
       <ScrollView
@@ -88,17 +93,21 @@ export default () => {
             paddingTop: 19,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/3gqt4d1p_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            colors={["#A47551", "#E07B54"]}
             style={{
               width: 64,
               height: 64,
+              borderRadius: 18,
+              alignItems: "center",
+              justifyContent: "center",
               marginBottom: 16,
             }}
-          />
+          >
+            <BookOpen size={34} color="#FFFFFF" />
+          </LinearGradient>
           <Text
             style={{
               color: "#2C2636",
@@ -136,18 +145,7 @@ export default () => {
                 width: "100%",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/o3jq91xh_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 20,
-                  height: 20,
-                  marginLeft: 19,
-                  marginRight: 12,
-                }}
-              />
+              <Mail size={20} color="#6E6880" style={{ marginLeft: 19, marginRight: 12 }} />
               <TextInput
                 placeholder={"Email address"}
                 value={textInput1}
@@ -179,17 +177,7 @@ export default () => {
                 marginBottom: 16,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/yikwzejk_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 20,
-                  height: 20,
-                  marginRight: 10,
-                }}
-              />
+              <Lock size={20} color="#6E6880" style={{ marginRight: 10 }} />
               <TextInput
                 placeholder={"Password"}
                 value={textInput2}
@@ -209,17 +197,7 @@ export default () => {
                 }}
               />
               <View pointerEvents="none">
-                <Image
-                  source={{
-                    uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/rqpc1ev3_expires_30_days.png",
-                  }}
-                  resizeMode={"stretch"}
-                  style={{
-                    borderRadius: 16,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
+                <Eye size={20} color="#6E6880" />
               </View>
             </View>
             <View
@@ -345,18 +323,18 @@ export default () => {
               }}
               onPress={() => alert("Pressed!")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/6v9b0kl3_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 20,
-                  height: 20,
-                  marginRight: 8,
-                }}
-              />
+            <Image
+              source={{
+                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/6v9b0kl3_expires_30_days.png",
+              }}
+              resizeMode={"stretch"}
+              style={{
+                borderRadius: 16,
+                width: 20,
+                height: 20,
+                marginRight: 8,
+              }}
+            />
               <Text
                 style={{
                   color: "#2C2636",
@@ -380,18 +358,19 @@ export default () => {
               }}
               onPress={() => alert("Pressed!")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/b4go86tj_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
+              <View
                 style={{
-                  borderRadius: 16,
-                  width: 20,
-                  height: 20,
+                  width: 25,
+                  height: 25,
+                  borderRadius: 24689098000,
+                  backgroundColor: "#1877F2",
+                  alignItems: "center",
+                  justifyContent: "center",
                   marginRight: 8,
                 }}
-              />
+              >
+                <FontAwesome name="facebook-f" size={17} color="#FFFFFF" />
+              </View>
               <Text
                 style={{
                   color: "#2C2636",
