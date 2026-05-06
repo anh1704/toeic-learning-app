@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Plus } from "lucide-react-native";
 import React from "react";
 import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -32,7 +32,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -54,7 +55,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
-                marginLeft: 10
+                marginLeft: 10,
               }}
             >
               {"Goals"}
@@ -75,18 +76,7 @@ export default () => {
             marginLeft: 21,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/8lcg236c_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 19,
-              height: 19,
-              marginRight: 6,
-            }}
-          />
+          <Plus size={19} color="#A47551" style={{ marginRight: 6 }} />
           <Text
             style={{
               color: "#A47551",

@@ -1,12 +1,7 @@
 import { ArrowLeft } from "lucide-react-native";
+import Svg, { Circle } from "react-native-svg";
 import React, { useCallback, useMemo, useState } from "react";
-import {
-  View,
-  ScrollView,
-  Text,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import {
@@ -96,7 +91,9 @@ export default () => {
 
   const todayStudyTime = schedule?.today_study_time ?? "2h 40m";
   const progressPercent =
-    typeof schedule?.progress_percent === "number" ? schedule.progress_percent : 70;
+    typeof schedule?.progress_percent === "number"
+      ? schedule.progress_percent
+      : 70;
 
   return (
     <SafeAreaView
@@ -123,7 +120,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -141,7 +139,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
-                marginLeft: 10
+                marginLeft: 10,
               }}
             >
               {"Daily Schedule"}
@@ -158,8 +156,7 @@ export default () => {
             borderColor: "#2C26361A",
             borderRadius: 16,
             borderWidth: 1,
-            paddingVertical: 16,
-            paddingHorizontal: 17,
+            padding: 17,
             marginBottom: 23,
             marginLeft: 20,
           }}
@@ -199,32 +196,49 @@ export default () => {
               </Text>
             </View>
           </View>
-
-          <ImageBackground
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/72vhdpwm_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <View
             style={{
-              paddingVertical: 23,
-              paddingHorizontal: 19,
+              alignItems: "center",
+              justifyContent: "center",
+              marginRight: -10,
             }}
           >
-            <View
+            <Svg width={90} height={90}>
+              {/* nền */}
+              <Circle
+                cx="45"
+                cy="45"
+                r="30"
+                stroke="#F0EBE4"
+                strokeWidth="6"
+                fill="none"
+              />
+
+              {/* 4 đoạn */}
+              <Circle
+                cx="45"
+                cy="45"
+                r="30"
+                stroke="#A47551"
+                strokeWidth="6"
+                fill="none"
+                strokeDasharray={`${((2 * Math.PI * 30) / 4) * 0.4}, ${((2 * Math.PI * 30) / 4) * 0.6}`}
+                strokeLinecap="round"
+                rotation="-90"
+                origin="45,45"
+              />
+            </Svg>
+
+            <Text
               style={{
-                alignSelf: "flex-start",
+                position: "absolute",
+                fontSize: 14,
+                color: "#333",
               }}
             >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 12,
-                }}
-              >
-                {`${progressPercent}%`}
-              </Text>
-            </View>
-          </ImageBackground>
+              70%
+            </Text>
+          </View>
         </View>
 
         <View

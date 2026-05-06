@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import {
   Flame,
   Trophy,
@@ -18,6 +13,7 @@ import {
   Lightbulb,
   Zap,
 } from "lucide-react-native";
+import Svg, { Circle } from "react-native-svg";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
@@ -34,12 +30,14 @@ export default () => {
     try {
       const user = await getCurrentUser();
       if (user) {
-        setUserName(user.name || user.email?.split('@')[0] || "User");
-        
+        setUserName(user.name || user.email?.split("@")[0] || "User");
+
         // Load profile data
         const profile = await getProfile();
         if (profile) {
-          setUserName(profile.name || user.name || user.email?.split('@')[0] || "User");
+          setUserName(
+            profile.name || user.name || user.email?.split("@")[0] || "User",
+          );
           setCurrentScore(profile.current_score || 650);
           setTargetScore(profile.target_score || 800);
         }
@@ -52,7 +50,7 @@ export default () => {
   useFocusEffect(
     React.useCallback(() => {
       loadUserData();
-    }, [])
+    }, []),
   );
 
   const getProgressPercent = () => {
@@ -188,7 +186,6 @@ export default () => {
           colors={["#A47551", "#A47551", "#E07B54"]}
           style={{
             flexDirection: "row",
-            justifyContent: "space-between",
             alignItems: "center",
             borderRadius: 16,
             paddingVertical: 18,
@@ -197,76 +194,63 @@ export default () => {
             marginHorizontal: 19,
           }}
         >
-          <View>
-            <View
-              style={{
-                alignSelf: "flex-start",
-                paddingBottom: 1,
-                marginBottom: 3,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#FFFFFF",
-                  fontSize: 14,
-                }}
-              >
-                {"Current Score"}
-              </Text>
-            </View>
-            <View
-              style={{
-                alignSelf: "flex-start",
-                paddingRight: 27,
-                marginBottom: 3,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#FFFFFF",
-                  fontSize: 36,
-                }}
-              >
-                {currentScore}
-              </Text>
-            </View>
-            <View
-              style={{
-                alignSelf: "flex-start",
-                paddingTop: 1,
-                paddingRight: 17,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#FFFFFF",
-                  fontSize: 14,
-                }}
-              >
-                {`Target: ${targetScore}`}
-              </Text>
-            </View>
+          {/* LEFT */}
+          <View style={{ flex: 1 }}>
+            <Text style={{ color: "#FFFFFF", fontSize: 14 }}>
+              Current Score
+            </Text>
+
+            <Text style={{ color: "#FFFFFF", fontSize: 36 }}>
+              {currentScore}
+            </Text>
+
+            <Text style={{ color: "#FFFFFF", fontSize: 14 }}>
+              {`Target: ${targetScore}`}
+            </Text>
           </View>
+
+          {/* RIGHT */}
           <View
             style={{
-              width: 80,
-              height: 80,
-              borderRadius: 40,
-              backgroundColor: "rgba(255,255,255,0.2)",
-              alignItems: "center",
+              flex: 1,
+              alignItems: "flex-end",
               justifyContent: "center",
-              marginLeft: 16,
             }}
           >
-            <Text
+            <View
               style={{
-                color: "#FFFFFF",
-                fontSize: 20,
-                fontWeight: "bold",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: -10,
               }}
             >
-              {`${getProgressPercent()}%`}
-            </Text>
+              <Svg width={100} height={100}>
+                <Circle cx="50" cy="50" r="35" strokeWidth="6" fill="none" />
+
+                <Circle
+                  cx="50"
+                  cy="50"
+                  r="35"
+                  stroke="#FFFFFF"
+                  strokeWidth="6"
+                  fill="none"
+                  strokeDasharray={`${((2 * Math.PI * 35) / 8) * 0.4}, ${((2 * Math.PI * 35) / 8) * 0.6}`}
+                  strokeLinecap="round"
+                  rotation="-90"
+                  origin="50,50"
+                />
+              </Svg>
+
+              <Text
+                style={{
+                  position: "absolute",
+                  fontSize: 14,
+                  color: "#FFFFFF",
+                }}
+              >
+                {`${getProgressPercent()}%`}
+              </Text>
+            </View>
           </View>
         </LinearGradient>
         <View
@@ -495,7 +479,12 @@ export default () => {
                   flex: 1,
                 }}
               ></View>
-              <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
+              <Zap
+                size={11}
+                color="#D4A853"
+                fill="#FFFFFF"
+                style={{ marginRight: 4 }}
+              />
               <Text
                 style={{
                   color: "#D4A853",
@@ -561,7 +550,12 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
+              <Zap
+                size={11}
+                color="#D4A853"
+                fill="#FFFFFF"
+                style={{ marginRight: 4 }}
+              />
               <Text
                 style={{
                   color: "#D4A853",
@@ -623,7 +617,12 @@ export default () => {
                 flex: 1,
               }}
             ></View>
-            <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
+            <Zap
+              size={11}
+              color="#D4A853"
+              fill="#FFFFFF"
+              style={{ marginRight: 4 }}
+            />
             <Text
               style={{
                 color: "#D4A853",
@@ -688,7 +687,12 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
+              <Zap
+                size={11}
+                color="#D4A853"
+                fill="#FFFFFF"
+                style={{ marginRight: 4 }}
+              />
               <Text
                 style={{
                   color: "#D4A853",
@@ -759,7 +763,12 @@ export default () => {
                     alignSelf: "stretch",
                   }}
                 ></View>
-                <Zap size={11} color="#D4A853" fill="#FFFFFF" style={{ marginRight: 4 }} />
+                <Zap
+                  size={11}
+                  color="#D4A853"
+                  fill="#FFFFFF"
+                  style={{ marginRight: 4 }}
+                />
                 <Text
                   style={{
                     color: "#D4A853",

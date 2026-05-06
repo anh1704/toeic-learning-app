@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Plus, Bell } from "lucide-react-native";
 import React from "react";
 import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -31,7 +31,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -49,7 +50,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
-                marginLeft: 10
+                marginLeft: 10,
               }}
             >
               {"Reminders"}
@@ -83,17 +84,7 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/zgig9sgc_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+              <Bell size={19} color="#A47551" style={{ marginRight: 12 }} />
               <View>
                 <View
                   style={{
@@ -459,18 +450,7 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/h6v00mh6_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 19,
-              height: 19,
-              marginRight: 7,
-            }}
-          />
+          <Plus size={19} color="#A47551" style={{ marginRight: 7 }} />
           <Text
             style={{
               color: "#A47551",

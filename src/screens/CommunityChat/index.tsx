@@ -70,15 +70,13 @@ export default () => {
 
     try {
       setLoading(true);
-      const data = await getGroupMessages(groupId, 50);
-      setMessages(data);
+      // const data = await getGroupMessages(groupId, 50);
+      // setMessages(data);
       // Scroll to bottom after loading
       setTimeout(() => {
         scrollViewRef.current?.scrollToEnd({ animated: false });
       }, 100);
     } catch (error) {
-      console.error("Error loading messages:", error);
-      Alert.alert("Error", "Failed to load messages");
     } finally {
       setLoading(false);
     }
@@ -93,8 +91,6 @@ export default () => {
       // Message will be added via real-time subscription
       setMessageText("");
     } catch (error) {
-      console.error("Error sending message:", error);
-      Alert.alert("Error", "Failed to send message");
     } finally {
       setSending(false);
     }

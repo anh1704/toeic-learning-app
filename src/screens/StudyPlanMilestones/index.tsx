@@ -1,6 +1,14 @@
-import { ArrowLeft } from "lucide-react-native";
+import {
+  ArrowLeft,
+  Check,
+  Flame,
+  Trophy,
+  Brain,
+  Medal,
+  CheckCircle,
+} from "lucide-react-native";
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
@@ -31,7 +39,8 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.goBack()}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
             style={{
               width: 38,
               height: 38,
@@ -49,7 +58,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
-                marginLeft: 10
+                marginLeft: 10,
               }}
             >
               {"Milestones"}
@@ -63,50 +72,51 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/oe8gkhpi_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 23,
-                height: 55,
-                marginRight: 12,
-              }}
-            />
+          {/* Timeline Container */}
+          <View style={{ position: "relative" }}>
+            {/* Vertical Line */}
             <View
               style={{
-                paddingBottom: 20,
+                position: "absolute",
+                left: 12,
+                top: 0,
+                bottom: 0,
+                width: 2,
+                backgroundColor: "#5B9E91",
+              }}
+            />
+
+            {/* Item 1: First 100 Words */}
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "flex-start",
+                marginBottom: 18,
               }}
             >
               <View
                 style={{
-                  alignSelf: "flex-start",
-                  paddingBottom: 1,
-                  marginBottom: 1,
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  backgroundColor: "#5B9E91",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 12,
                 }}
               >
+                <Check size={14} color="#FFFFFF" strokeWidth={3} />
+              </View>
+              <View style={{ flex: 1, paddingTop: 4 }}>
                 <Text
                   style={{
                     color: "#5B9E91",
                     fontSize: 14,
+                    marginBottom: 2,
                   }}
                 >
                   {"First 100 Words"}
                 </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginRight: 47,
-                }}
-              >
                 <Text
                   style={{
                     color: "#6E6880",
@@ -117,50 +127,38 @@ export default () => {
                 </Text>
               </View>
             </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/zh8vaj4o_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 23,
-                height: 55,
-                marginRight: 12,
-              }}
-            />
+
+            {/* Item 2: Score 500+ */}
             <View
               style={{
-                paddingBottom: 19,
+                flexDirection: "row",
+                alignItems: "flex-start",
+                marginBottom: 18,
               }}
             >
               <View
                 style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  backgroundColor: "#5B9E91",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 12,
                 }}
               >
+                <Check size={14} color="#FFFFFF" strokeWidth={3} />
+              </View>
+              <View style={{ flex: 1, paddingTop: 4 }}>
                 <Text
                   style={{
                     color: "#5B9E91",
                     fontSize: 14,
+                    marginBottom: 2,
                   }}
                 >
                   {"Score 500+"}
                 </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginRight: 24,
-                }}
-              >
                 <Text
                   style={{
                     color: "#6E6880",
@@ -171,50 +169,38 @@ export default () => {
                 </Text>
               </View>
             </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/foldyAO6yE/kyzywc31_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 23,
-                height: 55,
-                marginRight: 12,
-              }}
-            />
+
+            {/* Item 3: Score 600+ */}
             <View
               style={{
-                paddingBottom: 19,
+                flexDirection: "row",
+                alignItems: "flex-start",
+                marginBottom: 18,
               }}
             >
               <View
                 style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  backgroundColor: "#5B9E91",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 12,
                 }}
               >
+                <Check size={14} color="#FFFFFF" strokeWidth={3} />
+              </View>
+              <View style={{ flex: 1, paddingTop: 4 }}>
                 <Text
                   style={{
                     color: "#5B9E91",
                     fontSize: 14,
+                    marginBottom: 2,
                   }}
                 >
                   {"Score 600+"}
                 </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginRight: 23,
-                }}
-              >
                 <Text
                   style={{
                     color: "#6E6880",
@@ -225,60 +211,45 @@ export default () => {
                 </Text>
               </View>
             </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginBottom: 1,
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                backgroundColor: "#F0EBE4",
-                borderRadius: 28138600,
-                paddingVertical: 4,
-                paddingHorizontal: 8,
-                marginBottom: 32,
-                marginRight: 12,
-              }}
-              onPress={() => alert("Pressed!")}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 10,
-                }}
-              >
-                {"4"}
-              </Text>
-            </TouchableOpacity>
+
+            {/* Item 4: 30-Day Streak */}
             <View
               style={{
-                paddingBottom: 19,
+                flexDirection: "row",
+                alignItems: "flex-start",
+                marginBottom: 18,
               }}
             >
               <View
                 style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  backgroundColor: "#E8E3D8",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 12,
                 }}
               >
                 <Text
                   style={{
                     color: "#2C2636",
+                    fontSize: 12,
+                  }}
+                >
+                  {"4"}
+                </Text>
+              </View>
+              <View style={{ flex: 1, paddingTop: 4 }}>
+                <Text
+                  style={{
+                    color: "#2C2636",
                     fontSize: 14,
+                    marginBottom: 2,
                   }}
                 >
                   {"30-Day Streak"}
                 </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginRight: 63,
-                }}
-              >
                 <Text
                   style={{
                     color: "#6E6880",
@@ -289,60 +260,45 @@ export default () => {
                 </Text>
               </View>
             </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginBottom: 1,
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                backgroundColor: "#F0EBE4",
-                borderRadius: 28138600,
-                paddingVertical: 4,
-                paddingHorizontal: 8,
-                marginBottom: 32,
-                marginRight: 12,
-              }}
-              onPress={() => alert("Pressed!")}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 10,
-                }}
-              >
-                {"5"}
-              </Text>
-            </TouchableOpacity>
+
+            {/* Item 5: Score 700+ */}
             <View
               style={{
-                paddingBottom: 19,
+                flexDirection: "row",
+                alignItems: "flex-start",
+                marginBottom: 18,
               }}
             >
               <View
                 style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  backgroundColor: "#E8E3D8",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 12,
                 }}
               >
                 <Text
                   style={{
                     color: "#2C2636",
+                    fontSize: 12,
+                  }}
+                >
+                  {"5"}
+                </Text>
+              </View>
+              <View style={{ flex: 1, paddingTop: 4 }}>
+                <Text
+                  style={{
+                    color: "#2C2636",
                     fontSize: 14,
+                    marginBottom: 2,
                   }}
                 >
                   {"Score 700+"}
                 </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginRight: 28,
-                }}
-              >
                 <Text
                   style={{
                     color: "#6E6880",
@@ -353,60 +309,45 @@ export default () => {
                 </Text>
               </View>
             </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginBottom: 1,
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                backgroundColor: "#F0EBE4",
-                borderRadius: 28138600,
-                paddingVertical: 4,
-                paddingHorizontal: 8,
-                marginBottom: 32,
-                marginRight: 12,
-              }}
-              onPress={() => alert("Pressed!")}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 10,
-                }}
-              >
-                {"6"}
-              </Text>
-            </TouchableOpacity>
+
+            {/* Item 6: Master 500 Words */}
             <View
               style={{
-                paddingBottom: 19,
+                flexDirection: "row",
+                alignItems: "flex-start",
+                marginBottom: 18,
               }}
             >
               <View
                 style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  backgroundColor: "#E8E3D8",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 12,
                 }}
               >
                 <Text
                   style={{
                     color: "#2C2636",
+                    fontSize: 12,
+                  }}
+                >
+                  {"6"}
+                </Text>
+              </View>
+              <View style={{ flex: 1, paddingTop: 4 }}>
+                <Text
+                  style={{
+                    color: "#2C2636",
                     fontSize: 14,
+                    marginBottom: 2,
                   }}
                 >
                   {"Master 500 Words"}
                 </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginRight: 72,
-                }}
-              >
                 <Text
                   style={{
                     color: "#6E6880",
@@ -417,117 +358,94 @@ export default () => {
                 </Text>
               </View>
             </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginBottom: 1,
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                backgroundColor: "#F0EBE4",
-                borderRadius: 28138600,
-                paddingVertical: 4,
-                paddingHorizontal: 9,
-                marginBottom: 32,
-                marginRight: 12,
-              }}
-              onPress={() => alert("Pressed!")}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 10,
-                }}
-              >
-                {"7"}
-              </Text>
-            </TouchableOpacity>
+
+            {/* Item 7: Score 800+ */}
             <View
               style={{
-                paddingBottom: 18,
+                flexDirection: "row",
+                alignItems: "flex-start",
+                marginBottom: 18,
               }}
             >
               <View
                 style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  backgroundColor: "#E8E3D8",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 12,
                 }}
               >
                 <Text
                   style={{
                     color: "#2C2636",
+                    fontSize: 12,
+                    fontWeight: "600",
+                  }}
+                >
+                  {"7"}
+                </Text>
+              </View>
+              <View style={{ flex: 1, paddingTop: 4 }}>
+                <Text
+                  style={{
+                    color: "#2C2636",
                     fontSize: 14,
+                    marginBottom: 2,
                   }}
                 >
                   {"Score 800+"}
                 </Text>
+                <Text
+                  style={{
+                    color: "#6E6880",
+                    fontSize: 12,
+                  }}
+                >
+                  {"650/800"}
+                </Text>
               </View>
-              <Text
-                style={{
-                  color: "#6E6880",
-                  fontSize: 12,
-                  marginRight: 28,
-                }}
-              >
-                {"650/800"}
-              </Text>
             </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                backgroundColor: "#F0EBE4",
-                borderRadius: 28138600,
-                paddingVertical: 4,
-                paddingHorizontal: 8,
-                marginBottom: 28,
-                marginRight: 12,
-              }}
-              onPress={() => alert("Pressed!")}
-            >
-              <Text
-                style={{
-                  color: "#2C2636",
-                  fontSize: 10,
-                }}
-              >
-                {"8"}
-              </Text>
-            </TouchableOpacity>
+
+            {/* Item 8: Complete All Tests */}
             <View
               style={{
-                paddingBottom: 15,
+                flexDirection: "row",
+                alignItems: "flex-start",
               }}
             >
               <View
                 style={{
-                  alignSelf: "flex-start",
-                  marginBottom: 2,
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  backgroundColor: "#E8E3D8",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: 12,
                 }}
               >
                 <Text
                   style={{
                     color: "#2C2636",
+                    fontSize: 12,
+                  }}
+                >
+                  {"8"}
+                </Text>
+              </View>
+              <View style={{ flex: 1, paddingTop: 4 }}>
+                <Text
+                  style={{
+                    color: "#2C2636",
                     fontSize: 14,
+                    marginBottom: 2,
                   }}
                 >
                   {"Complete All Tests"}
                 </Text>
-              </View>
-              <View
-                style={{
-                  alignSelf: "flex-start",
-                  marginRight: 96,
-                }}
-              >
                 <Text
                   style={{
                     color: "#6E6880",
