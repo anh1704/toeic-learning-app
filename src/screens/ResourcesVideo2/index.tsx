@@ -1,8 +1,9 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Play, PlayCircle } from "lucide-react-native";
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, ImageBackground, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 export default () => {
   const navigation = useNavigation<any>();
   return (
@@ -60,16 +61,22 @@ export default () => {
             marginHorizontal: 20,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/0amr17ci_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <ImageBackground
+            source={require("../../../images/resource1.png")}
+            resizeMode="cover"
             style={{
               height: 170,
               marginBottom: 8,
+              borderRadius: 16,
+              overflow: "hidden",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
+          >
+          <View style={{ width: 48, height: 48, borderRadius: 286098700, backgroundColor: "#A47551CC", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+            <Play size={24} color="#FFFFFF" />
+          </View>
+          </ImageBackground>
           <View
             style={{
               paddingBottom: 1,
@@ -239,19 +246,20 @@ export default () => {
               marginBottom: 10,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/2krsvouo_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <LinearGradient
+              colors={["#A47551", "#E07B54"]}
               style={{
                 borderRadius: 16,
                 width: 64,
                 height: 48,
                 marginLeft: 15,
                 marginRight: 19,
+                justifyContent: "center",
+                alignItems: "center",
               }}
-            />
+            >
+              <Play size={20} color="#FFFFFF" />
+            </LinearGradient>
             <View
               style={{
                 paddingRight: 21,
@@ -300,19 +308,20 @@ export default () => {
               marginBottom: 10,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/7v3f3k4a_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <LinearGradient
+              colors={["#A47551", "#E07B54"]}
               style={{
                 borderRadius: 16,
                 width: 64,
                 height: 48,
                 marginLeft: 15,
                 marginRight: 19,
+                justifyContent: "center",
+                alignItems: "center",
               }}
-            />
+            >
+              <Play size={20} color="#FFFFFF" />
+            </LinearGradient>
             <View
               style={{
                 paddingRight: 21,
@@ -360,19 +369,20 @@ export default () => {
               paddingVertical: 9,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/1b2nyggg_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
+            <LinearGradient
+              colors={["#A47551", "#E07B54"]}
               style={{
                 borderRadius: 16,
                 width: 64,
                 height: 48,
                 marginLeft: 15,
                 marginRight: 19,
+                justifyContent: "center",
+                alignItems: "center",
               }}
-            />
+            >
+              <Play size={20} color="#FFFFFF" />
+            </LinearGradient>
             <View
               style={{
                 paddingRight: 21,

@@ -1,6 +1,6 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Play, PlayCircle } from "lucide-react-native";
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, ImageBackground, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 export default () => {
@@ -63,16 +63,23 @@ export default () => {
           }}
           onPress={() => navigation.navigate("ResourcesVideo2")}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/vqvpe8w7_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <ImageBackground
+            source={require("../../../images/resource1.png")}
+            resizeMode="cover"
             style={{
               height: 149,
               marginBottom: 3,
+              borderRadius: 16,
+              overflow: "hidden",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
+          >
+          <View style={{ width: 48, height: 48, borderRadius: 286098700, backgroundColor: "#A47551CC", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+            <Play size={24} color="#FFFFFF" />
+          </View>
+
+          </ImageBackground>
           <View
             style={{
               paddingBottom: 1,
@@ -112,16 +119,22 @@ export default () => {
           }}
           onPress={() => navigation.navigate("ResourcesVideo2")}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/ghgzspu0_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <ImageBackground
+            source={require("../../../images/resource2.png")}
+            resizeMode="cover"
             style={{
               height: 149,
               marginBottom: 3,
+              borderRadius: 16,
+              overflow: "hidden",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
+          >
+          <View style={{ width: 48, height: 48, borderRadius: 286098700, backgroundColor: "#A47551CC", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+            <Play size={24} color="#FFFFFF" />
+          </View>
+          </ImageBackground>
           <View
             style={{
               paddingBottom: 1,
@@ -161,16 +174,22 @@ export default () => {
           }}
           onPress={() => navigation.navigate("ResourcesVideo2")}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/prlf971f_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <ImageBackground
+            source={require("../../../images/resource3.png")}
+            resizeMode="cover"
             style={{
               height: 149,
               marginBottom: 3,
+              borderRadius: 16,
+              overflow: "hidden",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
+          >
+           <View style={{ width: 48, height: 48, borderRadius: 286098700, backgroundColor: "#A47551CC", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+            <Play size={24} color="#FFFFFF" />
+          </View>
+          </ImageBackground>
           <View
             style={{
               paddingBottom: 1,
@@ -210,15 +229,21 @@ export default () => {
           }}
           onPress={() => navigation.navigate("ResourcesVideo2")}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/j4kh8q7y_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <ImageBackground
+            source={require("../../../images/resource4.png")}
+            resizeMode="cover"
             style={{
               height: 149,
+              borderRadius: 16,
+              overflow: "hidden",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
+          >
+          <View style={{ width: 48, height: 48, borderRadius: 286098700, backgroundColor: "#A47551CC", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+            <Play size={24} color="#FFFFFF" />
+          </View>
+          </ImageBackground>
         </TouchableOpacity>
         <View
           style={{
@@ -261,16 +286,22 @@ export default () => {
           }}
           onPress={() => navigation.navigate("ResourcesVideo2")}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/7pa7nl13_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <ImageBackground
+            source={require("../../../images/resource5.png")}
+            resizeMode="cover"
             style={{
               height: 149,
               marginBottom: 3,
+              borderRadius: 16,
+              overflow: "hidden",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
+          >
+          <View style={{ width: 48, height: 48, borderRadius: 286098700, backgroundColor: "#A47551CC", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+            <Play size={24} color="#FFFFFF" />
+          </View>
+          </ImageBackground>
           <View
             style={{
               paddingBottom: 1,

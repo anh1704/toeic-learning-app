@@ -1,6 +1,6 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, BookOpen, FileText, Headphones, Download, Check, CheckCircle, Lock } from "lucide-react-native";
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 export default () => {
@@ -137,18 +137,9 @@ export default () => {
             marginHorizontal: 22,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/ake9b9r6_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 39,
-              height: 39,
-              marginRight: 12,
-            }}
-          />
+          <View style={{ width: 39, height: 39, borderRadius: 12, backgroundColor: "#5B9E911A", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+            <CheckCircle size={20} color="#5B9E91" />
+          </View>
           <View
             style={{
               flex: 1,
@@ -179,17 +170,9 @@ export default () => {
               {"PDF · 12.5 MB"}
             </Text>
           </View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/8s7t7iti_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 31,
-              height: 31,
-            }}
-          />
+          <View style={{ width: 31, height: 31, borderRadius: 16, backgroundColor: "#FAF6F1", alignItems: "center", justifyContent: "center" }}>
+            <Download size={16} color="#6E6880" />
+          </View>
         </View>
         <View
           style={{
@@ -204,18 +187,9 @@ export default () => {
             marginHorizontal: 22,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/nlp29uwo_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 39,
-              height: 39,
-              marginRight: 12,
-            }}
-          />
+          <View style={{ width: 39, height: 39, borderRadius: 12, backgroundColor: "#5B9E911A", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+            <CheckCircle size={20} color="#5B9E91" />
+          </View>
           <View
             style={{
               flex: 1,
@@ -252,17 +226,9 @@ export default () => {
               </Text>
             </View>
           </View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/w42n3xdz_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 31,
-              height: 31,
-            }}
-          />
+          <View style={{ width: 31, height: 31, borderRadius: 16, backgroundColor: "#FAF6F1", alignItems: "center", justifyContent: "center" }}>
+            <Download size={16} color="#6E6880" />
+          </View>
         </View>
         <View
           style={{
@@ -278,18 +244,9 @@ export default () => {
             marginHorizontal: 22,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/gx762kmg_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 39,
-              height: 39,
-              marginRight: 12,
-            }}
-          />
+            <View style={{ width: 39, height: 39, borderRadius: 12, backgroundColor: "#A4755133", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+              <FileText size={20} color="#A47551" />
+            </View>
           <View
             style={{
               flex: 1,
@@ -326,17 +283,9 @@ export default () => {
               </Text>
             </View>
           </View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/nb4joc2e_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 31,
-              height: 31,
-            }}
-          />
+          <View style={{ width: 31, height: 31, borderRadius: 16, backgroundColor: "#FAF6F1", alignItems: "center", justifyContent: "center" }}>
+            <Download size={16} color="#A47551" />
+          </View>
         </View>
         <View
           style={{
@@ -352,18 +301,9 @@ export default () => {
             marginHorizontal: 22,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/gffo0xig_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 39,
-              height: 39,
-              marginRight: 12,
-            }}
-          />
+            <View style={{ width: 39, height: 39, borderRadius: 12, backgroundColor: "#A4755133", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+              <FileText size={20} color="#A47551" />
+            </View>
           <View
             style={{
               flex: 1,
@@ -400,17 +340,9 @@ export default () => {
               </Text>
             </View>
           </View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/dt0r2j74_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 31,
-              height: 31,
-            }}
-          />
+          <View style={{ width: 31, height: 31, borderRadius: 16, backgroundColor: "#FAF6F1", alignItems: "center", justifyContent: "center" }}>
+            <Download size={16} color="#A47551" />
+          </View>
         </View>
         <View
           style={{
@@ -425,18 +357,9 @@ export default () => {
             marginHorizontal: 22,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/1sdv0lfq_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 39,
-              height: 39,
-              marginRight: 12,
-            }}
-          />
+            <View style={{ width: 39, height: 39, borderRadius: 12, backgroundColor: "#A4755133", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+              <FileText size={20} color="#A47551" />
+            </View>
           <View
             style={{
               flex: 1,
@@ -465,16 +388,7 @@ export default () => {
                   {"Practice Test #1 Audio"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/pscq7c4n_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 11,
-                  height: 11,
-                }}
-              />
+              <Lock size={11} color="#A47551" />
             </View>
             <View
               style={{
@@ -491,17 +405,9 @@ export default () => {
               </Text>
             </View>
           </View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/nzuzfua2_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 31,
-              height: 31,
-            }}
-          />
+          <View style={{ width: 31, height: 31, borderRadius: 16, backgroundColor: "#FAF6F1", alignItems: "center", justifyContent: "center" }}>
+            <Download size={16} color="#A47551" />
+          </View>
         </View>
         <View
           style={{
@@ -517,18 +423,9 @@ export default () => {
             marginHorizontal: 22,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/xnppwhd1_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 39,
-              height: 39,
-              marginRight: 12,
-            }}
-          />
+            <View style={{ width: 39, height: 39, borderRadius: 12, backgroundColor: "#A4755133", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+              <FileText size={20} color="#A47551" />
+            </View>
           <View
             style={{
               flex: 1,
@@ -556,16 +453,7 @@ export default () => {
                   {"Practice Test #2 Audio"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/oxd5qu8r_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 11,
-                  height: 11,
-                }}
-              />
+              <Lock size={11} color="#A47551" />
             </View>
             <Text
               style={{
@@ -576,17 +464,9 @@ export default () => {
               {"MP3 · 48 MB"}
             </Text>
           </View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/ox0pn0c7_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 31,
-              height: 31,
-            }}
-          />
+          <View style={{ width: 31, height: 31, borderRadius: 16, backgroundColor: "#FAF6F1", alignItems: "center", justifyContent: "center" }}>
+            <Download size={16} color="#A47551" />
+          </View>
         </View>
         <View
           style={{
@@ -602,18 +482,9 @@ export default () => {
             marginHorizontal: 22,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/syhcfakg_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 39,
-              height: 39,
-              marginRight: 12,
-            }}
-          />
+            <View style={{ width: 39, height: 39, borderRadius: 12, backgroundColor: "#A4755133", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+              <FileText size={20} color="#A47551" />
+            </View>
           <View
             style={{
               flex: 1,
@@ -650,17 +521,9 @@ export default () => {
               </Text>
             </View>
           </View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/qehwohq1_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 31,
-              height: 31,
-            }}
-          />
+          <View style={{ width: 31, height: 31, borderRadius: 16, backgroundColor: "#FAF6F1", alignItems: "center", justifyContent: "center" }}>
+            <Download size={16} color="#A47551" />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
