@@ -1,11 +1,10 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Camera, MailIcon, PhoneIcon, User } from "lucide-react-native";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   View,
   ScrollView,
   Text,
-  Image,
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
@@ -118,55 +117,68 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10,
               }}
             >
               {"Edit Profile"}
             </Text>
           </View>
         </View>
-        <View
+ <View
+  style={{
+    alignItems: "center",
+    marginBottom: 21,
+  }}
+>
+  {loading ? (
+    <ActivityIndicator color="#A47551" size="large" />
+  ) : (
+    <View style={{ position: "relative" }}>
+      {/* Avatar */}
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        colors={["#A47551", "#8B6BAE"]}
+        style={{
+          width: 100,
+          height: 100,
+          borderRadius: 60,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Text
           style={{
-            alignItems: "center",
-            marginBottom: 21,
+            color: "#FFFFFF",
+            fontSize: 48,
+            fontWeight: "300",
           }}
         >
-          {loading ? (
-            <ActivityIndicator color="#A47551" size="large" />
-          ) : (
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              colors={["#A47551", "#8B6BAE"]}
-              style={{
-                flexDirection: "row",
-                borderRadius: 28138600,
-              }}
-            >
-              <Text
-                style={{
-                  color: "#FFFFFF",
-                  fontSize: 30,
-                  marginTop: 29,
-                  marginLeft: 36,
-                  marginRight: 10,
-                }}
-              >
-                {getInitial()}
-              </Text>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/vumzdv3r_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 31,
-                  height: 31,
-                  marginTop: 63,
-                }}
-              />
-            </LinearGradient>
-          )}
-        </View>
+          {getInitial()}
+        </Text>
+      </LinearGradient>
+
+      {/* Camera Button */}
+      <View
+        style={{
+          position: "absolute",
+          bottom: 0,
+          right: 0,
+          width: 36,
+          height: 36,
+          borderRadius: 18,
+          backgroundColor: "#A47551",
+          borderWidth: 3,
+          borderColor: "#FFFFFF",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Camera size={18} color="#FFFFFF" />
+      </View>
+    </View>
+  )}
+</View>
         <View
           style={{
             marginBottom: 48,
@@ -203,18 +215,7 @@ export default () => {
                 borderWidth: 1,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/xgwr6265_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginLeft: 11,
-                  marginRight: 9,
-                }}
-              />
+            <User size={20} style={{ marginLeft: 10, marginRight: 10 }} color="#6E6880" />
               <TextInput
                 placeholder={"Full Name"}
                 value={textInput1}
@@ -260,18 +261,7 @@ export default () => {
                 borderWidth: 1,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/wn9p9hf8_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginLeft: 11,
-                  marginRight: 9,
-                }}
-              />
+            <MailIcon size={20} style={{ marginLeft: 10, marginRight: 10 }} color="#6E6880" />
               <TextInput
                 placeholder={"Email"}
                 value={textInput2}
@@ -317,18 +307,7 @@ export default () => {
                 borderWidth: 1,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/5j53x0d4_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginLeft: 11,
-                  marginRight: 9,
-                }}
-              />
+            <PhoneIcon size={20} style={{ marginLeft: 10, marginRight: 10 }} color="#6E6880" />
               <TextInput
                 placeholder={"Add phone number"}
                 value={textInput3}

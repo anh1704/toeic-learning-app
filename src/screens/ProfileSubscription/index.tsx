@@ -1,7 +1,7 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Crown, Star } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -67,18 +67,7 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/wwsjd8gv_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 39,
-              height: 39,
-              marginBottom: 9,
-            }}
-          />
+          <Crown size={40} color="#FFFFFF" />
           <View>
             <Text
               style={{
@@ -115,17 +104,7 @@ export default () => {
               marginBottom: 12,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/3pv2si1r_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 15,
-                height: 15,
-                marginRight: 8,
-              }}
-            />
+            <Star size={15} style={{ marginRight: 10 }} color="#D4A853" />
             <View
               style={{
                 paddingBottom: 1,
@@ -148,17 +127,7 @@ export default () => {
               marginBottom: 13,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/n3fs2wq5_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 15,
-                height: 15,
-                marginRight: 8,
-              }}
-            />
+            <Star size={15} style={{ marginRight: 10 }} color="#D4A853" />
             <View>
               <Text
                 style={{
@@ -177,17 +146,7 @@ export default () => {
               marginBottom: 13,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/3afhvxvt_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 15,
-                height: 15,
-                marginRight: 8,
-              }}
-            />
+            <Star size={15} style={{ marginRight: 10 }} color="#D4A853" />
             <View>
               <Text
                 style={{
@@ -206,17 +165,7 @@ export default () => {
               marginBottom: 13,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/ycgcv550_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 15,
-                height: 15,
-                marginRight: 8,
-              }}
-            />
+            <Star size={15} style={{ marginRight: 10 }} color="#D4A853" />
             <View>
               <Text
                 style={{
@@ -235,17 +184,7 @@ export default () => {
               marginBottom: 13,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/h0x1j1ra_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 15,
-                height: 15,
-                marginRight: 8,
-              }}
-            />
+            <Star size={15} style={{ marginRight: 10 }} color="#D4A853" />
             <View>
               <Text
                 style={{
@@ -263,17 +202,7 @@ export default () => {
               alignItems: "center",
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/ygkao43j_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 15,
-                height: 15,
-                marginRight: 8,
-              }}
-            />
+            <Star size={15} style={{ marginRight: 10 }} color="#D4A853" />
             <View>
               <Text
                 style={{

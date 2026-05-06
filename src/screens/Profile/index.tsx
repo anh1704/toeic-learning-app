@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
-import { View, ScrollView, Text, Image, TouchableOpacity, ActivityIndicator } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity, ActivityIndicator, Settings } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getCurrentUser, signOut } from "../../lib/authService";
 import { getProfile } from "../../lib/profileService";
+import { AlertCircle, Bell, ChevronRight, ColumnsSettings, Crown, Edit, HelpCircle, LogOut, MessageSquare, MoveRight, Settings2, Settings2Icon } from "lucide-react-native";
 
 export default () => {
   const navigation = useNavigation<any>();
@@ -98,7 +99,7 @@ export default () => {
               borderRadius: 16,
               borderWidth: 1,
               paddingVertical: 25,
-              marginBottom: 21,
+              marginBottom: 20,
               marginHorizontal: 20,
             }}
           >
@@ -107,7 +108,7 @@ export default () => {
                 borderRadius: 28138600,
                 paddingVertical: 23,
                 paddingHorizontal: 30,
-                marginBottom: 14,
+                marginBottom: 0,
               }}
               onPress={() => alert("Pressed!")}
             >
@@ -118,8 +119,7 @@ export default () => {
                 style={{
                   borderRadius: 28138600,
                   paddingVertical: 23,
-                  paddingHorizontal: 30,
-                  marginBottom: 14,
+                  paddingHorizontal: 30
                 }}
               >
                 <Text
@@ -289,18 +289,7 @@ export default () => {
                 marginBottom: 4,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/c97mlvyv_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Edit size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -317,17 +306,7 @@ export default () => {
                   {"Edit Profile"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/oebe33dw_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate("ProfileSettings")}
@@ -341,18 +320,7 @@ export default () => {
                 marginBottom: 5,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/5utp0gt1_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <ColumnsSettings size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -369,17 +337,7 @@ export default () => {
                   {"Settings"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/gis5jmk7_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate("ProfileNotifications")}
@@ -393,18 +351,7 @@ export default () => {
                 marginBottom: 5,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/v8b35q0q_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Bell size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -421,17 +368,7 @@ export default () => {
                   {"Notifications"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/ftb9bq84_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate("ProfileSubscription")}
@@ -445,18 +382,7 @@ export default () => {
                 marginBottom: 5,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/rxdef12q_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Crown size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -473,17 +399,7 @@ export default () => {
                   {"Premium"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/eb97hqk0_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </TouchableOpacity>
             <View
               style={{
@@ -495,18 +411,7 @@ export default () => {
                 marginBottom: 5,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/o952s7ky_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <HelpCircle size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -523,17 +428,7 @@ export default () => {
                   {"Help & FAQ"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/mlp714qd_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </View>
             <View
               style={{
@@ -545,18 +440,7 @@ export default () => {
                 marginBottom: 5,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/81dj9gl6_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <AlertCircle size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -573,17 +457,7 @@ export default () => {
                   {"About"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/sj8f0zvw_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </View>
             <View
               style={{
@@ -594,18 +468,7 @@ export default () => {
                 paddingHorizontal: 11,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/v4mf5b1v_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <MessageSquare size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -622,17 +485,7 @@ export default () => {
                   {"Feedback"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/q7cam2db_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </View>
           </View>
           <TouchableOpacity
@@ -648,19 +501,7 @@ export default () => {
               marginHorizontal: 20,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/7oo47559_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 19,
-                height: 19,
-                marginLeft: 11,
-                marginRight: 12,
-              }}
-            />
+            <LogOut size={20} style={{ marginRight: 10 , marginLeft: 10}} color="#6E6880" />
             <View>
               <Text
                 style={{

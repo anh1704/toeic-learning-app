@@ -1,7 +1,7 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Bell, MailIcon, Vibrate, Volume2Icon } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default () => {
@@ -48,6 +48,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10,
               }}
             >
               {"Notifications"}
@@ -90,17 +91,7 @@ export default () => {
               marginBottom: 1,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/pwmz6opt_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 19,
-                height: 19,
-                marginRight: 12,
-              }}
-            />
+            <Bell size={20} style={{ marginRight: 10 }} color="#6E6880" />
             <View
               style={{
                 flex: 1,
@@ -151,17 +142,7 @@ export default () => {
               marginBottom: 1,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/wi1lz60u_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 19,
-                height: 19,
-                marginRight: 12,
-              }}
-            />
+            <MailIcon size={20} style={{ marginRight: 10 }} color="#6E6880" />
             <View
               style={{
                 flex: 1,
@@ -212,17 +193,7 @@ export default () => {
               marginBottom: 1,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/v9rjeiqt_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 19,
-                height: 19,
-                marginRight: 12,
-              }}
-            />
+            <Volume2Icon size={20} style={{ marginRight: 10 }} color="#6E6880" />
             <View
               style={{
                 flex: 1,
@@ -272,17 +243,7 @@ export default () => {
               padding: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/m8sqz5c4_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 19,
-                height: 19,
-                marginRight: 12,
-              }}
-            />
+            <Vibrate size={20} style={{ marginRight: 10 }} color="#6E6880" />
             <View
               style={{
                 flex: 1,

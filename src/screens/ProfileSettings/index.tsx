@@ -1,7 +1,7 @@
-import { ArrowLeft } from "lucide-react-native";
+import { AlertCircle, ArrowLeft, Bell, ChevronRight, CreditCard, Globe, HelpCircle, Lock, MessageSquare, Palette } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default () => {
@@ -48,6 +48,7 @@ export default () => {
                 color: "#2C2636",
                 fontSize: 20,
                 fontWeight: "bold",
+                marginLeft: 10,
               }}
             >
               {"Settings"}
@@ -91,17 +92,7 @@ export default () => {
                 marginBottom: 33,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/7u1xqx1s_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Globe size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -128,16 +119,7 @@ export default () => {
               >
                 {"Vietnamese"}
               </Text>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/hc9thnn8_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </View>
             <View
               style={{
@@ -146,17 +128,7 @@ export default () => {
                 marginBottom: 33,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/6l7iivtn_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Bell size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -173,16 +145,7 @@ export default () => {
                   {"Notifications"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/xpkduk0j_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                }}
-              />
+               <ChevronRight size={20} color="#6E6880" />
             </View>
             <View
               style={{
@@ -190,17 +153,7 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/srgw5iql_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <Lock size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -217,16 +170,7 @@ export default () => {
                   {"Theme"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/l45t0btt_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                }}
-              />
+               <ChevronRight size={20} color="#6E6880" />
             </View>
           </View>
         </View>
@@ -267,17 +211,7 @@ export default () => {
                 marginBottom: 33,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/w40ktjwt_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <HelpCircle size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -294,16 +228,7 @@ export default () => {
                   {"Privacy & Security"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/fhst1elz_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                }}
-              />
+               <ChevronRight size={20} color="#6E6880" />
             </View>
             <View
               style={{
@@ -311,17 +236,7 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/s9niuthh_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <CreditCard size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -338,16 +253,7 @@ export default () => {
                   {"Subscription"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/ebo8bl9u_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </View>
           </View>
         </View>
@@ -388,17 +294,7 @@ export default () => {
                 marginBottom: 33,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/ocqa98uf_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <HelpCircle size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -415,16 +311,7 @@ export default () => {
                   {"Help & FAQ"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/1f6f50nb_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </View>
             <View
               style={{
@@ -433,17 +320,7 @@ export default () => {
                 marginBottom: 33,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/dhnjzr1w_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <AlertCircle size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -460,16 +337,7 @@ export default () => {
                   {"About"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/es4k07an_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                }}
-              />
+              <ChevronRight size={20} color="#6E6880" />
             </View>
             <View
               style={{
@@ -477,17 +345,7 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/f6wgykbf_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 19,
-                  height: 19,
-                  marginRight: 12,
-                }}
-              />
+            <MessageSquare size={20} style={{ marginRight: 10 }} color="#6E6880" />
               <View
                 style={{
                   flex: 1,
@@ -504,16 +362,7 @@ export default () => {
                   {"Feedback"}
                 </Text>
               </View>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/axzhicfb_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 15,
-                  height: 15,
-                }}
-              />
+            <ChevronRight size={20} color="#6E6880" />
             </View>
           </View>
         </View>
