@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Target, Clock, FileText, ChevronRight, GraduationCap, Zap } from "lucide-react-native";
 
 export default () => {
   const navigation = useNavigation<any>();
@@ -97,19 +97,7 @@ export default () => {
             marginHorizontal: 20,
           }}
         >
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/vhl92kiz_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
-            style={{
-              borderRadius: 16,
-              width: 23,
-              height: 23,
-              marginBottom: 8,
-              marginLeft: 19,
-            }}
-          />
+            <GraduationCap size={24} style={{ marginLeft: 19, marginBottom: 5 }} color="#FFFFFF" />
           <View
             style={{
               alignSelf: "flex-start",
@@ -163,19 +151,9 @@ export default () => {
               marginRight: 12,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/03qq3nkg_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 39,
-                height: 39,
-                marginBottom: 8,
-                marginLeft: 16,
-              }}
-            />
+            <View style={{ width: 39, height: 39, borderRadius: 12, backgroundColor: "#A47551", alignItems: "center", justifyContent: "center", marginBottom: 8, marginLeft: 16 }}>
+              <Zap size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 alignSelf: "flex-start",
@@ -223,19 +201,9 @@ export default () => {
               paddingRight: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/iwzca79q_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 39,
-                height: 39,
-                marginBottom: 8,
-                marginLeft: 16,
-              }}
-            />
+            <View style={{ width: 39, height: 39, borderRadius: 12, backgroundColor: "#E07B54", alignItems: "center", justifyContent: "center", marginBottom: 8, marginLeft: 16 }}>
+              <FileText size={20} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 alignSelf: "flex-start",
@@ -379,17 +347,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/ygf1jzl0_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <ChevronRight size={20} color="#9B97A7" />
           </View>
           <View
             style={{
@@ -462,17 +420,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/o9zk19u6_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <ChevronRight size={20} color="#9B97A7" />
           </View>
           <View
             style={{
@@ -544,17 +492,7 @@ export default () => {
                 </Text>
               </View>
             </View>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/6q7dkmni_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 15,
-                height: 15,
-              }}
-            />
+            <ChevronRight size={20} color="#9B97A7" />
           </View>
         </View>
       </ScrollView>
