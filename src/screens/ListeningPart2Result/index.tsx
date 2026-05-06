@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { Check, X, ArrowLeft } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -275,8 +275,8 @@ export default (props: ListeningPart2ResultProps) => {
                       alignItems: "center",
                     }}
                   >
-                    <View style={{ width: 28, height: 28, borderRadius: 14, backgroundColor: row.isCorrect ? "#5B9E911A" : "#E07B541A", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
-                      {row.isCorrect ? <Check size={16} color="#5B9E91" /> : <X size={16} color="#E07B54" />}
+                    <View style={{ width: 33, height: 33, borderRadius: 26890000, backgroundColor: row.isCorrect ? "#5B9E911A" : "#E07B541A", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+                      {row.isCorrect ? <Check size={18} color="#5B9E91" /> : <X size={16} color="#E07B54" />}
                     </View>
                     <Text
                       style={{

@@ -17,7 +17,7 @@ import ListeningPart3 from "./src/screens/ListeningPart3";
 import ListeningPart31 from "./src/screens/ListeningPart31";
 import ListeningPart3Result from "./src/screens/ListeningPart3Result";
 import ListeningDictation from "./src/screens/ListeningDictation";
-import ListeningDictationResult from "./src/screens/ListeningDictationResult";
+
 import ListeningHistory from "./src/screens/ListeningHistory";
 import ListeningTips from "./src/screens/ListeningTips";
 import AudioControl from "./src/screens/AudioControl";
@@ -113,7 +113,7 @@ export type RootStackParamList = {
       }
     | undefined;
   ListeningDictation: undefined;
-  ListeningDictationResult: undefined;
+
   ListeningHistory: undefined;
   ListeningTips: undefined;
   AudioControl: undefined;
@@ -228,10 +228,7 @@ const ListeningStack = () => {
         component={ListeningPart3Result}
       />
       <Stack.Screen name="ListeningDictation" component={ListeningDictation} />
-      <Stack.Screen
-        name="ListeningDictationResult"
-        component={ListeningDictationResult}
-      />
+
       <Stack.Screen name="ListeningHistory" component={ListeningHistory} />
       <Stack.Screen name="ListeningTips" component={ListeningTips} />
       <Stack.Screen name="AudioControl" component={AudioControl} />
@@ -502,7 +499,7 @@ const TabsNavigator = () => {
             routeName === "ListeningPart31" ||
             routeName === "ListeningPart3Result" ||
             routeName === "ListeningDictation" ||
-            routeName === "ListeningDictationResult" ||
+
             routeName === "ListeningTips" ||
             routeName === "ListeningHistory" ||
             routeName === "AudioControl";

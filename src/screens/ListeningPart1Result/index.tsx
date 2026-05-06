@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import { ArrowLeft, Check, CircleCheck, CircleX, X } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -37,10 +38,7 @@ export default (props: ListeningPart1ResultProps) => {
         ? "Good Job!"
         : "Keep Practicing!";
 
-  const correctIconUri =
-    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/h8f875eu_expires_30_days.png";
-  const incorrectIconUri =
-    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/tkiy6g94_expires_30_days.png";
+
 
   return (
     <SafeAreaView
@@ -80,18 +78,17 @@ export default (props: ListeningPart1ResultProps) => {
           <TouchableOpacity
             onPress={() => props.navigation.pop(2)}
             activeOpacity={0.7}
+            style={{
+              width: 38,
+              height: 38,
+              borderRadius: 16,
+              backgroundColor: "#FFFFFF",
+              alignItems: "center",
+              justifyContent: "center",
+              marginRight: 12,
+            }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/vhieiw1t_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 37,
-                height: 37,
-                marginRight: 12,
-              }}
-            />
+            <ArrowLeft size={20} color="#2C2636" />
           </TouchableOpacity>
           <View>
             <Text
@@ -269,9 +266,7 @@ export default (props: ListeningPart1ResultProps) => {
                     justifyContent: "space-between",
                     alignItems: "center",
                     backgroundColor: "#FFFFFF",
-                    borderColor: "#2C263633",
                     borderRadius: 16,
-                    borderWidth: 1,
                     paddingVertical: 9,
                     paddingLeft: 20,
                     paddingRight: 31,
@@ -284,17 +279,25 @@ export default (props: ListeningPart1ResultProps) => {
                       alignItems: "center",
                     }}
                   >
-                    <Image
-                      source={{
-                        uri: row.isCorrect ? correctIconUri : incorrectIconUri,
-                      }}
-                      resizeMode={"stretch"}
-                      style={{
-                        width: 33,
-                        height: 33,
+                    {row.isCorrect ? (
+                      <View style={{
+                        width: 33, height: 33, borderRadius: 246854689000,
+                        backgroundColor: "#EFF5F4",
+                        alignItems: "center", justifyContent: "center",
                         marginRight: 8,
-                      }}
-                    />
+                      }}>
+                        <Check size={18} color="#5B9E91" strokeWidth={2.5} />
+                      </View>
+                    ) : (
+                      <View style={{
+                        width: 33, height: 33, borderRadius: 246854689000,
+                        backgroundColor: "#FCF2EE",
+                        alignItems: "center", justifyContent: "center",
+                        marginRight: 8,
+                      }}>
+                        <X size={18} color="#E07B54" strokeWidth={2.5} />
+                      </View>
+                    )}
                     <Text
                       style={{
                         color: "#2C2636",

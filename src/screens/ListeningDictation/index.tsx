@@ -251,7 +251,7 @@ export default (props: ListeningDictationProps) => {
               paddingVertical: 16,
             }}
             onPress={() =>
-              props.navigation.navigate("ListeningDictationResult")
+              props.navigation.goBack()
             }
           >
             <Text
