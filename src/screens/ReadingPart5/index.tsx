@@ -1,7 +1,7 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Check, PenLine } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default () => {
@@ -47,7 +47,7 @@ export default () => {
               color: "#000000",
               fontSize: 20,
               fontWeight: "bold",
-              marginRight: 12,
+              marginLeft: 10,
             }}
           >
             {"Part 5: Incomplete Sentences"}
@@ -92,18 +92,14 @@ export default () => {
                 marginBottom: 17,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/mbkog3l7_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 44,
-                  height: 44,
-                  marginRight: 18,
-                }}
-              />
+              <View style={{
+                width: 44, height: 44, borderRadius: 14,
+                backgroundColor: "#5B9E91",
+                alignItems: "center", justifyContent: "center",
+                marginRight: 18,
+              }}>
+                <Check size={22} color="#FFFFFF" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -154,18 +150,14 @@ export default () => {
               marginBottom: 17,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/kpjba4td_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 48,
-                height: 48,
-                marginRight: 18,
-              }}
-            />
+            <View style={{
+              width: 44, height: 44, borderRadius: 14,
+              backgroundColor: "#5B9E91",
+              alignItems: "center", justifyContent: "center",
+              marginRight: 18,
+            }}>
+              <Check size={22} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,
@@ -215,18 +207,14 @@ export default () => {
               marginBottom: 17,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/mdwlvw0y_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 48,
-                height: 48,
-                marginRight: 18,
-              }}
-            />
+            <View style={{
+              width: 44, height: 44, borderRadius: 14,
+              backgroundColor: "#5B9E91",
+              alignItems: "center", justifyContent: "center",
+              marginRight: 18,
+            }}>
+              <Check size={22} color="#FFFFFF" />
+            </View>
             <View
               style={{
                 flex: 1,

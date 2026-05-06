@@ -1,5 +1,6 @@
+import { ArrowLeft, Check, X } from "lucide-react-native";
 import React, { useMemo } from "react";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -34,10 +35,6 @@ export default () => {
         ? "Good Job!"
         : "Keep Practicing!";
 
-  const correctIconUri =
-    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/h8f875eu_expires_30_days.png";
-  const incorrectIconUri =
-    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/tkiy6g94_expires_30_days.png";
 
   return (
     <SafeAreaView
@@ -67,18 +64,17 @@ export default () => {
           <TouchableOpacity
             onPress={() => navigation.pop(2)}
             activeOpacity={0.7}
+            style={{
+              width: 38,
+              height: 38,
+              borderRadius: 16,
+              backgroundColor: "#FFFFFF",
+              alignItems: "center",
+              justifyContent: "center",
+              marginRight: 12,
+            }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/3VY847oyGC/vhieiw1t_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 37,
-                height: 37,
-                marginRight: 12,
-              }}
-            />
+            <ArrowLeft size={20} color="#2C2636" />
           </TouchableOpacity>
           <View>
             <Text
@@ -271,17 +267,25 @@ export default () => {
                       alignItems: "center",
                     }}
                   >
-                    <Image
-                      source={{
-                        uri: row.isCorrect ? correctIconUri : incorrectIconUri,
-                      }}
-                      resizeMode={"stretch"}
-                      style={{
-                        width: 33,
-                        height: 33,
+                    {row.isCorrect ? (
+                      <View style={{
+                        width: 33, height: 33, borderRadius: 246854689000,
+                        backgroundColor: "#EFF5F4",
+                        alignItems: "center", justifyContent: "center",
                         marginRight: 8,
-                      }}
-                    />
+                      }}>
+                        <Check size={18} color="#5B9E91" strokeWidth={2.5} />
+                      </View>
+                    ) : (
+                      <View style={{
+                        width: 33, height: 33, borderRadius: 246854689000,
+                        backgroundColor: "#FCF2EE",
+                        alignItems: "center", justifyContent: "center",
+                        marginRight: 8,
+                      }}>
+                        <X size={18} color="#E07B54" strokeWidth={2.5} />
+                      </View>
+                    )}
                     <Text
                       style={{
                         color: "#2C2636",

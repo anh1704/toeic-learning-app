@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import { ArrowLeft, Clock, Bookmark } from "lucide-react-native";
 
 type Question = {
   id: string;
@@ -116,6 +117,7 @@ export default () => {
         flex: 1,
         backgroundColor: "#FFFFFF",
       }}
+      edges={["top", "right", "left"]}
     >
       <ScrollView
         style={{
@@ -134,17 +136,18 @@ export default () => {
             marginLeft: 20,
           }}
         >
-          <TouchableOpacity onPress={handlePrevious}>
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/zbkg07d8_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 37,
-                height: 37,
-              }}
-            />
+          <TouchableOpacity
+            onPress={handlePrevious}
+            style={{
+              width: 38,
+              height: 38,
+              borderRadius: 16,
+              backgroundColor: "#FFFFFF",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ArrowLeft size={20} color="#2C2636" />
           </TouchableOpacity>
           <View
             style={{
@@ -152,17 +155,7 @@ export default () => {
               alignItems: "center",
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/s6rlpkzl_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 15,
-                height: 15,
-                marginRight: 9,
-              }}
-            />
+            <Clock size={15} color="#6E6880" style={{ marginRight: 9 }} />
             <Text
               style={{
                 color: "#6E6880",
@@ -172,16 +165,18 @@ export default () => {
               {"12:45"}
             </Text>
           </View>
-          <Image
-            source={{
-              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/9htlkde3_expires_30_days.png",
-            }}
-            resizeMode={"stretch"}
+          <View
             style={{
-              width: 37,
-              height: 37,
+              width: 38,
+              height: 38,
+              borderRadius: 16,
+              backgroundColor: "#FFFFFF",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-          />
+          >
+            <Bookmark size={20} color="#2C2636" />
+          </View>
         </View>
         <View
           style={{

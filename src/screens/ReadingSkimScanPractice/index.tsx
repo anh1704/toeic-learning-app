@@ -1,7 +1,7 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Check, Eye, Funnel } from "lucide-react-native";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, ScrollView, Image, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 export default () => {
   const navigation = useNavigation<any>();
@@ -46,6 +46,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
+              marginLeft: 10
             }}
           >
             {"Skim & Scan Practice"}
@@ -72,18 +73,7 @@ export default () => {
             }}
             onPress={() => alert("Pressed!")}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/x4ldbf0t_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 20,
-                height: 20,
-                marginBottom: 4,
-              }}
-            />
+            <Eye size={20} color="#FFFFFF" />
             <Text
               style={{
                 color: "#FFFFFF",
@@ -106,18 +96,7 @@ export default () => {
             }}
             onPress={() => alert("Pressed!")}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/59c3ctkk_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                borderRadius: 16,
-                width: 20,
-                height: 20,
-                marginBottom: 4,
-              }}
-            />
+            <Funnel size={20} color="#1A1635" />
             <Text
               style={{
                 color: "#2C2636",
@@ -172,17 +151,7 @@ export default () => {
               marginLeft: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/nl2t4b6w_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 12,
-                height: 12,
-                marginRight: 8,
-              }}
-            />
+            <Check size={18} style={{ marginRight: 8 }} color="#A47551" />
             <Text
               style={{
                 color: "#6E6880",
@@ -200,17 +169,7 @@ export default () => {
               marginLeft: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/irckokvg_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 12,
-                height: 12,
-                marginRight: 8,
-              }}
-            />
+            <Check size={18} style={{ marginRight: 8 }} color="#A47551" />
             <Text
               style={{
                 color: "#6E6880",
@@ -227,17 +186,7 @@ export default () => {
               marginLeft: 16,
             }}
           >
-            <Image
-              source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/Ikm4tDedUs/33p0thlm_expires_30_days.png",
-              }}
-              resizeMode={"stretch"}
-              style={{
-                width: 12,
-                height: 12,
-                marginRight: 8,
-              }}
-            />
+            <Check size={18} style={{ marginRight: 8 }} color="#A47551" />
             <Text
               style={{
                 color: "#6E6880",

@@ -1,7 +1,7 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, BookOpen, ArrowLeftRight, AlertTriangle, FileSearch, TrendingUp, Bookmark, Trophy, List, Scale, XCircle, TextInitial, ChartColumn, BookMarked, Award } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default () => {
@@ -48,6 +48,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
+              marginLeft: 10,
             }}
           >
             {"Grammar"}
@@ -79,18 +80,14 @@ export default () => {
               }}
               onPress={() => navigation.navigate("Grammar")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/4wn66iry_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 48,
-                  height: 48,
-                  marginBottom: 11,
-                }}
-              />
+              <View style={{
+                width: 48, height: 48, borderRadius: 14,
+                backgroundColor: "#E07B54",
+                alignItems: "center", justifyContent: "center",
+                marginBottom: 11,
+              }}>
+                <List size={24} color="#FFFFFF" />
+              </View>
               <Text
                 style={{
                   color: "#2C2636",
@@ -113,18 +110,14 @@ export default () => {
               }}
               onPress={() => navigation.navigate("GrammarComparison")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/l09nv861_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 48,
-                  height: 48,
-                  marginBottom: 11,
-                }}
-              />
+              <View style={{
+                width: 48, height: 48, borderRadius: 14,
+                backgroundColor: "#5B9E91",
+                alignItems: "center", justifyContent: "center",
+                marginBottom: 11,
+              }}>
+                <Scale size={24} color="#FFFFFF" />
+              </View>
               <Text
                 style={{
                   color: "#2C2636",
@@ -146,18 +139,14 @@ export default () => {
               }}
               onPress={() => navigation.navigate("GrammarMistakes")}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/mniq3z7n_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 48,
-                  height: 48,
-                  marginBottom: 11,
-                }}
-              />
+              <View style={{
+                width: 48, height: 48, borderRadius: 14,
+                backgroundColor: "#D4183D",
+                alignItems: "center", justifyContent: "center",
+                marginBottom: 11,
+              }}>
+                <XCircle size={24} color="#FFFFFF" />
+              </View>
               <Text
                 style={{
                   color: "#2C2636",
@@ -187,18 +176,14 @@ export default () => {
                 opacity: 0.5,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/wn5sd1oz_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 48,
-                  height: 48,
-                  marginBottom: 11,
-                }}
-              />
+              <View style={{
+                width: 48, height: 48, borderRadius: 14,
+                backgroundColor: "#8B6BAE",
+                alignItems: "center", justifyContent: "center",
+                marginBottom: 11,
+              }}>
+                <TextInitial size={24} color="#FFFFFF" />
+              </View>
               <Text
                 style={{
                   color: "#2C2636",
@@ -221,18 +206,14 @@ export default () => {
                 opacity: 0.5,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/gwaxl63o_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 48,
-                  height: 48,
-                  marginBottom: 11,
-                }}
-              />
+              <View style={{
+                width: 48, height: 48, borderRadius: 14,
+                backgroundColor: "#A47551",
+                alignItems: "center", justifyContent: "center",
+                marginBottom: 11,
+              }}>
+                <ChartColumn size={24} color="#FFFFFF" />
+              </View>
               <Text
                 style={{
                   color: "#2C2636",
@@ -254,18 +235,14 @@ export default () => {
                 opacity: 0.5,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/5ri7x06a_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  borderRadius: 16,
-                  width: 48,
-                  height: 48,
-                  marginBottom: 11,
-                }}
-              />
+              <View style={{
+                width: 48, height: 48, borderRadius: 14,
+                backgroundColor: "#D4A853",
+                alignItems: "center", justifyContent: "center",
+                marginBottom: 11,
+              }}>
+                <BookMarked size={24} color="#FFFFFF" />
+              </View>
               <Text
                 style={{
                   color: "#2C2636",
@@ -319,17 +296,14 @@ export default () => {
                 marginBottom: 14,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/daeelsol_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 48,
-                  height: 48,
-                  marginRight: 12,
-                }}
-              />
+              <View style={{
+                width: 48, height: 48, borderRadius: 14,
+                backgroundColor: "#5B9E91",
+                alignItems: "center", justifyContent: "center",
+                marginRight: 12,
+              }}>
+                <Award size={24} color="#FFFFFF" />
+              </View>
               <View
                 style={{
                   marginRight: 22,
@@ -486,17 +460,14 @@ export default () => {
                 marginBottom: 14,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/xv9jsasm_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 48,
-                  height: 48,
-                  marginRight: 12,
-                }}
-              />
+              <View style={{
+                width: 48, height: 48, borderRadius: 14,
+                backgroundColor: "#A47551",
+                alignItems: "center", justifyContent: "center",
+                marginRight: 12,
+              }}>
+                <Award size={24} color="#FFFFFF" />
+              </View>
               <View
                 style={{
                   flex: 1,
@@ -653,17 +624,14 @@ export default () => {
                 marginBottom: 14,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/vc6oslmi_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 48,
-                  height: 48,
-                  marginRight: 12,
-                }}
-              />
+              <View style={{
+                width: 48, height: 48, borderRadius: 14,
+                backgroundColor: "#E07B54",
+                alignItems: "center", justifyContent: "center",
+                marginRight: 12,
+              }}>
+                <Award size={24} color="#FFFFFF" />
+              </View>
               <View
                 style={{
                   flex: 1,

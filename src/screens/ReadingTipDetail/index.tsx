@@ -1,7 +1,7 @@
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, Lightbulb, HelpCircle, ListChecks, Zap, Star, ChartColumn, Brain } from "lucide-react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default () => {
@@ -48,6 +48,7 @@ export default () => {
               color: "#2C2636",
               fontSize: 20,
               fontWeight: "bold",
+              marginLeft: 10
             }}
           >
             {"Skim First"}
@@ -77,17 +78,14 @@ export default () => {
                 marginHorizontal: 18,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/sbcdjx14_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 40,
-                  height: 40,
-                  marginRight: 12,
-                }}
-              />
+              <View style={{
+                width: 40, height: 40, borderRadius: 12,
+                backgroundColor: "#D4A853",
+                alignItems: "center", justifyContent: "center",
+                marginRight: 12,
+              }}>
+                <Lightbulb size={22} color="#FFFFFF" />
+              </View>
               <Text
                 style={{
                   color: "#2C2636",
@@ -130,17 +128,7 @@ export default () => {
                 marginLeft: 18,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/uriot7rj_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 16,
-                  height: 16,
-                  marginRight: 8,
-                }}
-              />
+              <Star size={16} color="#A47551" style={{ marginRight: 8 }} />
               <Text
                 style={{
                   color: "#2C2636",
@@ -182,17 +170,7 @@ export default () => {
                 marginBottom: 10,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/qbjllb8q_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 16,
-                  height: 16,
-                  marginRight: 8,
-                }}
-              />
+              <ChartColumn size={16} color="#8B6BAE" style={{ marginRight: 8 }} />
               <Text
                 style={{
                   color: "#2C2636",
@@ -394,17 +372,7 @@ export default () => {
                 marginHorizontal: 18,
               }}
             >
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/57Y4lcQuwE/woaod52p_expires_30_days.png",
-                }}
-                resizeMode={"stretch"}
-                style={{
-                  width: 16,
-                  height: 16,
-                  marginRight: 8,
-                }}
-              />
+              <Brain size={16} color="#A47551" style={{ marginRight: 8 }} />
               <Text
                 style={{
                   color: "#2C2636",
