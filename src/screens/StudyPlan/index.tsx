@@ -1,4 +1,4 @@
-import { ArrowLeft, PlusCircle, Bell, CalendarDays, CalendarRange, Target, Flag, SlidersHorizontal, Plus } from "lucide-react-native";
+import { ArrowLeft, PlusCircle, Bell, CalendarDays, CalendarRange, Target, Flag, Plus, Check, Clock } from "lucide-react-native";
 import React, { useCallback, useState } from "react";
 import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -415,66 +415,69 @@ export default () => {
           }}
         >
           {todaySchedule && todaySchedule.items.length > 0 ? (
-            todaySchedule.items.map((item, index) => (
-              <View
-                key={index}
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  backgroundColor: "#FFFFFF",
-                  borderColor: "#2C26361A",
-                  borderRadius: 16,
-                  borderWidth: 1,
-                  padding: 12,
-                  marginBottom: index === todaySchedule.items.length - 1 ? 0 : 8,
-                }}
-              >
+            todaySchedule.items.map((item, index) => {
+              // Check if item is completed (you can add logic here based on your data)
+              const isCompleted = index < 2; // Example: first 2 items are completed
+              
+              return (
                 <View
+                  key={index}
                   style={{
-                    width: 31,
-                    height: 31,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    backgroundColor:"#FFFFFF",
+                    borderColor: "#2C26361A",
                     borderRadius: 16,
-                    backgroundColor: item.color || "#A47551",
-                    marginRight: 12,
-                  }}
-                />
-                <View
-                  style={{
-                    flex: 1,
+                    borderWidth: 1,
+                    paddingVertical: 14,
+                    paddingHorizontal: 14,
+                    marginBottom: index === todaySchedule.items.length - 1 ? 0 : 10,
                   }}
                 >
                   <View
                     style={{
-                      alignSelf: "flex-start",
-                      marginBottom: 2,
+                      width: 36,
+                      height: 36,
+                      borderRadius: 18,
+                      backgroundColor: isCompleted ? "#5B9E911A" : "#F0EBE4",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: 12,
+                    }}
+                  >
+                    {isCompleted ? (
+                      <Check size={20} color="#5B9E91" strokeWidth={2.5} />
+                    ) : (
+                      <Clock size={20} color="#6E6880" strokeWidth={2} />
+                    )}
+                  </View>
+                  <View
+                    style={{
+                      flex: 1,
                     }}
                   >
                     <Text
                       style={{
                         color: "#2C2636",
-                        fontSize: 14,
+                        fontSize: 15,
+                        fontWeight: "400",
+                        marginBottom: 2,
                       }}
                     >
                       {item.title}
                     </Text>
-                  </View>
-                  <View
-                    style={{
-                      alignSelf: "flex-start",
-                    }}
-                  >
                     <Text
                       style={{
-                        color: "#6E6880",
-                        fontSize: 12,
+                        color: "#9E9E9E",
+                        fontSize: 13,
                       }}
                     >
                       {item.startTime}
                     </Text>
                   </View>
                 </View>
-              </View>
-            ))
+              );
+            })
           ) : (
             <View
               style={{
@@ -484,6 +487,7 @@ export default () => {
                 borderWidth: 1,
                 padding: 20,
                 alignItems: "center",
+                marginRight: 20,
               }}
             >
               <Text
